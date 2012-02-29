@@ -1,0 +1,12 @@
+/binaries
+/publish
+bin/
+Bin/
+obj/
+_ReSharper*/
+*.Cache
+*.cache
+/msbuild.log
+source/StockTicker.1.2.dotCover
+*.user
+*.suo

@@ -25,8 +25,12 @@ namespace StockTicker
 
     using Ninject;
 
+    using StockTicker.Localization;
+
     public sealed class AppBootstrapper : Bootstrapper<IStockTickerViewModel>
     {
+        private ILocalizer localizer;
+
         private StandardKernel kernel;
 
         protected override void BuildUp(object instance)
@@ -36,12 +40,23 @@ namespace StockTicker
 
         protected override void Configure()
         {
-            this.kernel = new StandardKernel(new CaliburnModule(), new StockTickerModule());
+            this.kernel = new StandardKernel();
+            this.kernel.Load(this.SelectAssemblies());
+        }
+
+        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
+        {
+            this.localizer = this.kernel.Get<ILocalizer>();
+            this.localizer.Initialize();
+
+            base.OnStartup(sender, e);
         }
 
         protected override void OnExit(object sender, EventArgs e)
         {
             this.kernel.Dispose();
+
+            base.OnExit(sender, e);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)

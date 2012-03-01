@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="bbv Software Services AG">
+// <copyright file="LocalizeDictionaryDecorator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,20 +16,17 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
-using System.Windows;
+namespace StockTicker.Localization
+{
+    using System.Globalization;
 
-[assembly: AssemblyTitle("StockTicker")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+    using WPFLocalizeExtension.Engine;
 
-[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: NeutralResourcesLanguage("en-US")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: InternalsVisibleTo("StockTicker.Test")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+    internal class LocalizeDictionaryDecorator : ICultureSetter
+    {
+        public void SetCulture(CultureInfo culture)
+        {
+            LocalizeDictionary.Instance.Culture = culture;
+        }
+    }
+}

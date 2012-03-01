@@ -62,7 +62,7 @@
     <!-- Assembly Name is set to Project Name (overridable in Project File). -->
     <AssemblyName Condition="'$(AssemblyName)' == ''">$(StockTickerProjectName)</AssemblyName>
 
-    <SignAssembly Condition="'$(SignAssembly)' == ''">true</SignAssembly>
+    <SignAssembly Condition="'$(SignAssembly)' == ''">false</SignAssembly>
     
     <!-- Surpesses warning when informational version is set. -->
     <NoWarn>1607;1591$(StockTickerSuppressedWarnings)</NoWarn>

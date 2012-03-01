@@ -28,6 +28,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>..\packages\Caliburn.Micro\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -42,6 +43,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFLocalizeExtension">
+      <HintPath>..\packages\WpfLocalizeExtension\lib\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -50,6 +54,15 @@
     </ApplicationDefinition>
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Localization\ICultureSetter.cs" />
+    <Compile Include="Localization\ILocalizationCultureProvider.cs" />
+    <Compile Include="Localization\ILocalizer.cs" />
+    <Compile Include="Localization\LocalizationCultureProvider.cs" />
+    <Compile Include="Localization\LocalizationModule.cs" />
+    <Compile Include="Localization\Localizer.cs" />
+    <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
+    <Compile Include="Properties\ISettings.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="StockTickerModule.cs" />
     <Compile Include="StockTickerView.xaml.cs">
       <DependentUpon>StockTickerView.xaml</DependentUpon>
@@ -80,6 +93,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,6 +106,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
 </Project>

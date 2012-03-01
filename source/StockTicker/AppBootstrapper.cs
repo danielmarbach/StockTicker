@@ -20,63 +20,38 @@ namespace StockTicker
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.ComponentModel.Composition.Hosting;
-    using System.ComponentModel.Composition.Primitives;
-    using System.Linq;
 
     using Caliburn.Micro;
 
-    /// <summary>
-    /// The app bootstrapper.
-    /// </summary>
-    public class AppBootstrapper : Bootstrapper<IShell>
+    using Ninject;
+
+    public sealed class AppBootstrapper : Bootstrapper<IStockTickerViewModel>
     {
-        #region Constants and Fields
-
-        private CompositionContainer container;
-
-        #endregion
+        private StandardKernel kernel;
 
         protected override void BuildUp(object instance)
         {
-            this.container.SatisfyImportsOnce(instance);
+            this.kernel.Inject(instance);
         }
 
         protected override void Configure()
         {
-            var catalog =
-                new AggregateCatalog(
-                    AssemblySource.Instance.Select(x => new AssemblyCatalog(x)).OfType<ComposablePartCatalog>());
-
-            this.container = new CompositionContainer(catalog);
-
-            var batch = new CompositionBatch();
-
-            batch.AddExportedValue<IWindowManager>(new WindowManager());
-            batch.AddExportedValue<IEventAggregator>(new EventAggregator());
-            batch.AddExportedValue(this.container);
-            batch.AddExportedValue(catalog);
-
-            this.container.Compose(batch);
+            this.kernel = new StandardKernel(new CaliburnModule(), new StockTickerModule());
         }
 
-        protected override IEnumerable<object> GetAllInstances(Type serviceType)
+        protected override void OnExit(object sender, EventArgs e)
         {
-            return this.container.GetExportedValues<object>(AttributedModelServices.GetContractName(serviceType));
+            this.kernel.Dispose();
         }
 
-        protected override object GetInstance(Type serviceType, string key)
+        protected override IEnumerable<object> GetAllInstances(Type service)
         {
-            string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
-            var exports = this.container.GetExportedValues<object>(contract);
+            return this.kernel.GetAll(service);
+        }
 
-            if (exports.Count() > 0)
-            {
-                return exports.First();
-            }
-
-            throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
+        protected override object GetInstance(Type service, string key)
+        {
+            return string.IsNullOrEmpty(key) ? this.kernel.Get(service) : this.kernel.Get(service, key);
         }
     }
 }

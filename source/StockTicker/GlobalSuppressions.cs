@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ShellViewModel.cs" company="bbv Software Services AG">
+// <copyright file="GlobalSuppressions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,5 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker 
-{
-    using System.ComponentModel.Composition;
-
-    [Export(typeof(IShell))]
-    public class ShellViewModel : IShell
-    {
-    }
-}
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Scope = "type", Target = "StockTicker.AppBootstrapper")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "StockTicker.AppBootstrapper.#Configure()")]

@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="bbv Software Services AG">
+// <copyright file="StockTickerModule.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,21 @@
 
 namespace StockTicker
 {
-    using System.Windows;
+    using Caliburn.Micro;
 
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    using Ninject.Extensions.Conventions;
+    using Ninject.Modules;
+
+    public class StockTickerModule : NinjectModule
     {
-        public MainWindow()
+        public override void Load()
         {
-            this.InitializeComponent();
+            this.Kernel.Bind(x =>
+                x.FromThisAssembly()
+                .SelectAllClasses()
+                .InheritedFrom<INotifyPropertyChangedEx>()
+                .BindToDefaultInterface()
+                .Configure(c => c.InTransientScope()));
         }
     }
 }

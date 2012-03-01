@@ -21,6 +21,7 @@
     <Recognized>
       <!-- <Word>accessor</Word> -->
       <Word>StockTicker</Word>
+	  <Word>Caliburn</Word>
     </Recognized>
     <Deprecated>
       <!-- 
@@ -46,6 +47,7 @@
         'Whitespace').
       -->
       <!-- <Term CompoundAlternate="DataStore">datastore</Term> -->
+	  <Term CompoundAlternate="StockTicker">Stockticker</Term>
     </Compound>
     <DiscreteExceptions>
       <!--

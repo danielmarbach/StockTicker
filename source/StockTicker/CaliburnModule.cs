@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="IShell.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="CaliburnModule.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,14 @@
 
 namespace StockTicker
 {
-    public interface IShell
+    using Caliburn.Micro;
+    using Ninject.Modules;
+
+    public class CaliburnModule : NinjectModule
     {
+        public override void Load()
+        {
+            this.Kernel.Bind<IWindowManager>().To<WindowManager>().InSingletonScope();
+        }
     }
 }

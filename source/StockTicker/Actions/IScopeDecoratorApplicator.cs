@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="IScopeDecoratorApplicator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,19 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
-    using System;
+    using System.Collections.Generic;
 
     using Caliburn.Micro;
 
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal interface IScopeDecoratorApplicator
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
-        {
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
-        }
-
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Scope decorator applicators receive all results which are part of a scope.
+        /// </summary>
+        /// <param name="resultsInScope">The results of a given scope.</param>
+        /// <returns>The decorated results</returns>
+        IResult Apply(IEnumerable<IResult> resultsInScope);
     }
 }

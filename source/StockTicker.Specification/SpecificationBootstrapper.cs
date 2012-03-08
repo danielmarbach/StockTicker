@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="SpecificationBootstrapper.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,27 +18,31 @@
 
 namespace StockTicker
 {
-    using System;
+    using Ninject;
 
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal class SpecificationBootstrapper : AppBootstrapper
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
+        public SpecificationBootstrapper()
+            : base(false)
         {
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
+        public IKernel StandardKernel
         {
-            get;
-            private set;
+            get
+            {
+                return this.Kernel;
+            }
+        }
+
+        public void Start()
+        {
+            this.OnStartup(this, null);
+        }
+
+        public void Stop()
+        {
+            this.OnExit(this, null);
         }
     }
 }

@@ -10,27 +10,28 @@
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro">
-      <HintPath>..\packages\Caliburn.Micro\lib\net40\Caliburn.Micro.dll</HintPath>
+    <Reference Include="Caliburn.Micro, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Contrib">
+      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\Caliburn.Micro.Contrib.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DesignTimeProperties.WPF">
+      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\DesignTimeProperties.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Conventions">
-      <HintPath>..\packages\Ninject.Extensions.Conventions\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Factory">
-      <HintPath>..\packages\Ninject.Extensions.Factory\lib\net40\Ninject.Extensions.Factory.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Interactivity">
-      <HintPath>..\packages\Caliburn.Micro\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,13 +47,45 @@
     <Reference Include="WPFLocalizeExtension">
       <HintPath>..\packages\WpfLocalizeExtension\lib\WPFLocalizeExtension.dll</HintPath>
     </Reference>
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.1.5.0\lib\net40\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\ActionBuilder.cs" />
+    <Compile Include="Actions\ActionExtensions.cs" />
+    <Compile Include="Actions\ActionsModule.cs" />
+    <Compile Include="Actions\BusyIndication.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusyIndication.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\BusyIndicationViewModel.cs" />
+    <Compile Include="Actions\DecoratorApplicatorPipeline.cs" />
+    <Compile Include="Actions\HideBusyIndication.cs" />
+    <Compile Include="Actions\IActionBuilder.cs" />
+    <Compile Include="Actions\IBusyIndicationViewModel.cs" />
+    <Compile Include="Actions\IDecoratorApplicator.cs" />
+    <Compile Include="Actions\IDecoratorApplicatorPipeline.cs" />
+    <Compile Include="Actions\IFinishBusyIndication.cs" />
+    <Compile Include="Actions\IHideBusyIndication.cs" />
+    <Compile Include="Actions\IScopeDecoratorApplicator.cs" />
+    <Compile Include="Actions\IShowBusyIndication.cs" />
+    <Compile Include="Actions\IStartBusyIndication.cs" />
+    <Compile Include="Actions\IResultFactory.cs" />
+    <Compile Include="Actions\IUseActions.cs" />
+    <Compile Include="Actions\NinjectResultFactory.cs" />
+    <Compile Include="Actions\RequestModel.cs" />
+    <Compile Include="Actions\RescueResultDecorator.cs" />
+    <Compile Include="Actions\ResultDecoratorBase.cs" />
+    <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
+    <Compile Include="Actions\ShowBusyIndication.cs" />
     <Compile Include="CaliburnModule.cs" />
+    <Compile Include="Extensions\ResolutionRootExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Localization\ICultureSetter.cs" />
     <Compile Include="Localization\ILocalizationCultureProvider.cs" />
@@ -63,6 +96,11 @@
     <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
     <Compile Include="Properties\ISettings.cs" />
     <Compile Include="Properties\Settings.cs" />
+    <Compile Include="General.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>General.resx</DependentUpon>
+    </Compile>
     <Compile Include="StockTickerModule.cs" />
     <Compile Include="StockTickerView.xaml.cs">
       <DependentUpon>StockTickerView.xaml</DependentUpon>
@@ -89,9 +127,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Actions\BusyIndication.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BusyIndication.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>General.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -107,8 +153,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
 </Project>

@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="Popup.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,26 +19,22 @@
 namespace StockTicker
 {
     using System;
+    using System.Windows.Controls.Primitives;
 
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    public class Popup
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
+        public event EventHandler Closed = delegate { };
+
+        public bool AllowsTransparency { get; set; }
+
+        public PlacementMode Placement { get; set; }
+
+        public Window Child { get; set; }
+
+        public bool IsOpen { get; set; }
+
+        public void CaptureMouse()
         {
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
-        }
-
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
-        {
-            get;
-            private set;
         }
     }
 }

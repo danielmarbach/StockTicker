@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="CaliburnIoCFake.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,22 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.TestHelpers
 {
     using System;
 
     using Caliburn.Micro;
 
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    public sealed class CaliburnIoCFake : IDisposable
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
+        public CaliburnIoCFake()
         {
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
+            IoC.BuildUp = r => { };
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
+        public void Dispose()
         {
-            get;
-            private set;
+            IoC.BuildUp = null;
         }
     }
 }

@@ -20,53 +20,82 @@ namespace StockTicker
 {
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
 
     using Caliburn.Micro;
 
     using Ninject;
 
+    using StockTicker.Actions;
     using StockTicker.Localization;
 
-    public sealed class AppBootstrapper : Bootstrapper<IStockTickerViewModel>
+    public class AppBootstrapper : Bootstrapper
     {
         private ILocalizer localizer;
 
-        private StandardKernel kernel;
+        public AppBootstrapper()
+            : this(true)
+        {
+        }
+
+        public AppBootstrapper(bool useApplication)
+            : base(useApplication)
+        {
+        }
+
+        protected StandardKernel Kernel { get; private set; }
 
         protected override void BuildUp(object instance)
         {
-            this.kernel.Inject(instance);
+            this.Kernel.Inject(instance);
+        }
+
+        protected override IEnumerable<Assembly> SelectAssemblies()
+        {
+            yield return Assembly.GetAssembly(typeof(AppBootstrapper));
         }
 
         protected override void Configure()
         {
-            this.kernel = new StandardKernel();
-            this.kernel.Load(this.SelectAssemblies());
+            var defaultBindingAction = ViewModelBinder.Bind;
+            ViewModelBinder.Bind = (rootModel, view, context) =>
+                {
+                    defaultBindingAction(rootModel, view, context);
+
+                    var useAction = rootModel as IUseActions;
+                    if (useAction != null)
+                    {
+                        useAction.Actions = () => this.Kernel.Get<IActionBuilder>();
+                    }
+                };
+
+            this.Kernel = new StandardKernel();
+            this.Kernel.Load(this.SelectAssemblies());
         }
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
-            this.localizer = this.kernel.Get<ILocalizer>();
+            this.localizer = this.Kernel.Get<ILocalizer>();
             this.localizer.Initialize();
 
-            base.OnStartup(sender, e);
+            DisplayRootViewFor(typeof(IStockTickerViewModel));
         }
 
         protected override void OnExit(object sender, EventArgs e)
         {
-            this.kernel.Dispose();
+            this.Kernel.Dispose();
 
             base.OnExit(sender, e);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
-            return this.kernel.GetAll(service);
+            return this.Kernel.GetAll(service);
         }
 
         protected override object GetInstance(Type service, string key)
         {
-            return string.IsNullOrEmpty(key) ? this.kernel.Get(service) : this.kernel.Get(service, key);
+            return string.IsNullOrEmpty(key) ? this.Kernel.Get(service) : this.Kernel.Get(service, key);
         }
     }
 }

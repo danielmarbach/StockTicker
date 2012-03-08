@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="DecoratorApplicatorPipeline.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,16 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
-    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal class DecoratorApplicatorPipeline : IDecoratorApplicatorPipeline
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
+        public IEnumerable<IDecoratorApplicator> GetApplicators()
         {
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
-        }
-
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
-        {
-            get;
-            private set;
+            return Enumerable.Empty<IDecoratorApplicator>();
         }
     }
 }

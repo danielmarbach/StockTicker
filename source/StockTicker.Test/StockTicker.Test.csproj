@@ -15,6 +15,13 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq\lib\NET40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\Caliburn.Micro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -30,6 +37,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ActionBuilderExtensionsForTesting.cs" />
+    <Compile Include="Actions\ActionBuilderTest.cs" />
+    <Compile Include="TestHelpers\CaliburnIoCFake.cs" />
+    <Compile Include="Actions\HideBusyIndicationTest.cs" />
+    <Compile Include="Actions\ITestResult.cs" />
+    <Compile Include="Actions\RescueResultDecoratorTest.cs" />
+    <Compile Include="Actions\ResultDecoraterBaseTest.cs" />
+    <Compile Include="Actions\ResultExtensionsForTesting.cs" />
+    <Compile Include="Actions\ScopeDecoratorApplicatorTest.cs" />
+    <Compile Include="Actions\ShowBusyIndicationTest.cs" />
+    <Compile Include="Extensions\ResolutionRootExtensionsTest.cs" />
     <Compile Include="Localization\LocalizationCultureProviderTest.cs" />
     <Compile Include="Localization\LocalizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

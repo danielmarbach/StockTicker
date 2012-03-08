@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerModule.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="IDecoratorApplicatorPipeline.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,15 +16,12 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
-    using Ninject.Modules;
+    using System.Collections.Generic;
 
-    public class StockTickerModule : NinjectModule
+    internal interface IDecoratorApplicatorPipeline
     {
-        public override void Load()
-        {
-            this.Bind<IStockTickerViewModel>().To<StockTickerViewModel>().InSingletonScope();
-        }
+        IEnumerable<IDecoratorApplicator> GetApplicators();
     }
 }

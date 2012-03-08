@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="ShowBusyIndication.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,30 +15,33 @@
 //   limitations under the License.
 // </copyright>
 //-------------------------------------------------------------------------------
-
-namespace StockTicker
+namespace StockTicker.Actions
 {
     using System;
 
     using Caliburn.Micro;
 
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal class ShowBusyIndication : IShowBusyIndication
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
-        {
-            this.BusyIndication = busyIndication;
+        private readonly string message;
 
-            this.DisplayName = General.Stock_Ticker_Title;
+        private readonly IStartBusyIndication startBusyIndication;
+
+        private readonly Guid requestId;
+
+        public ShowBusyIndication(IStartBusyIndication startBusyIndication, Guid requestId, string message)
+        {
+            this.startBusyIndication = startBusyIndication;
+            this.requestId = requestId;
+            this.message = message;
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
 
-        public IBusyIndicationViewModel BusyIndication
+        public void Execute(ActionExecutionContext context)
         {
-            get;
-            private set;
+            this.startBusyIndication.Start(this.requestId, this.message);
+            this.Completed(this, new ResultCompletionEventArgs());
         }
     }
 }

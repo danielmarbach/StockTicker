@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="NinjectResultFactory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,27 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
-    using System;
+    using Ninject;
+    using Ninject.Syntax;
 
-    using Caliburn.Micro;
+    using StockTicker.Extensions;
 
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal class NinjectResultFactory : IResultFactory
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
-        {
-            this.BusyIndication = busyIndication;
+        private readonly IResolutionRoot resolutionRoot;
 
-            this.DisplayName = General.Stock_Ticker_Title;
+        public NinjectResultFactory(IResolutionRoot resolutionRoot)
+        {
+            this.resolutionRoot = resolutionRoot;
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
+        public TResult Create<TResult>(object prototype)
         {
-            get;
-            private set;
+            return prototype == null
+                       ? this.resolutionRoot.Get<TResult>()
+                       : this.resolutionRoot.Get<TResult>(prototype);
         }
     }
 }

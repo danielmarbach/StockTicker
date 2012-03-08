@@ -2,10 +2,40 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                          
+            xmlns:l="http://schemas.root-project.org/xaml/presentation"
+            xmlns:cal="http://www.caliburnproject.org"
+            xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+        mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+    <extToolkit:BusyIndicator x:Name="busyIndicator"
+                                        DisplayAfter="0"
+                                        DockPanel.Dock="Top"
+                                        IsBusy="{Binding Path=BusyIndication.IsBusy}">
+        <extToolkit:BusyIndicator.BusyContentTemplate>
+            <DataTemplate>
+                <StackPanel Margin="4">
+                    <TextBlock HorizontalAlignment="Left"
+                                           FontWeight="Bold"
+                                           Text="{l:LocText StockTicker:Actions.BusyIndication:Loading}" />
+                    <ItemsControl Height="Auto"
+                                              HorizontalAlignment="Left"
+                                              ItemsSource="{Binding Path=DataContext.BusyIndication.Requests,
+                                                                    ElementName=busyIndicator}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Message}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </DataTemplate>
+        </extToolkit:BusyIndicator.BusyContentTemplate>
+        <ContentControl x:Name="content" cal:View.Model="{Binding Path=ActiveItem}" />
+    </extToolkit:BusyIndicator>
 </Window>

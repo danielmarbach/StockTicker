@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerModule.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="IFinishBusyIndication.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,15 +16,12 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
-    using Ninject.Modules;
+    using System;
 
-    public class StockTickerModule : NinjectModule
+    public interface IFinishBusyIndication
     {
-        public override void Load()
-        {
-            this.Bind<IStockTickerViewModel>().To<StockTickerViewModel>().InSingletonScope();
-        }
+        void Finished(Guid requestId);
     }
 }

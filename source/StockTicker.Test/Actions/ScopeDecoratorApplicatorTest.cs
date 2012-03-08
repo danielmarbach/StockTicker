@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="ScopeDecoratorApplicatorTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,29 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
     using System;
-
+    using System.Linq;
     using Caliburn.Micro;
+    using FluentAssertions;
+    using Xunit;
 
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    public class ScopeDecoratorApplicatorTest
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
-        {
-            this.BusyIndication = busyIndication;
+        private readonly ScopeDecoratorApplicator testee;
 
-            this.DisplayName = General.Stock_Ticker_Title;
+        public ScopeDecoratorApplicatorTest()
+        {
+            this.testee = new ScopeDecoratorApplicator();
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
+        [Fact]
+        public void ShouldDecorateWithRescueResult()
         {
-            get;
-            private set;
+            IResult result = this.testee.Apply(Enumerable.Empty<IResult>());
+
+            result.Should().BeOfType<RescueResultDecorator<Exception>>();
         }
     }
 }

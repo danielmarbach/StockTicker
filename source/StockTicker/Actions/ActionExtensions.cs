@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="ActionExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,17 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Actions
 {
     using System;
 
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-
-    public sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel, IUseActions
+    internal static class ActionExtensions
     {
-        public StockTickerViewModel(IBusyIndicationViewModel busyIndication)
+        public static IActionBuilder WithBusyIndication(this IActionBuilder builder, Action<IActionBuilder> configure, string message)
         {
-            this.BusyIndication = busyIndication;
+            Guid requestId = Guid.NewGuid();
 
-            this.DisplayName = General.Stock_Ticker_Title;
-        }
-
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public IBusyIndicationViewModel BusyIndication
-        {
-            get;
-            private set;
+            return builder.ScopeWith<IShowBusyIndication, IHideBusyIndication>(configure, new { requestId, message }, new { requestId });
         }
     }
 }

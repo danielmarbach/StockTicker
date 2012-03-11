@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="SearchView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.FindStocks
 {
-    using Caliburn.Micro;
+    using System.Windows.Controls;
 
-    using StockTicker.Actions;
-    using StockTicker.FindStocks;
-
-    internal sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel
+    /// <summary>
+    /// Interaction logic for SearchView.xaml
+    /// </summary>
+    public partial class SearchView : UserControl
     {
-        public StockTickerViewModel(ISearchViewModel searchViewModel, IBusyIndicationViewModel busyIndication)
+        public SearchView()
         {
-            this.Search = searchViewModel;
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
+            this.InitializeComponent();
         }
-
-        public IBusyIndicationViewModel BusyIndication { get; private set; }
-
-        public ISearchViewModel Search { get; private set; }
     }
 }

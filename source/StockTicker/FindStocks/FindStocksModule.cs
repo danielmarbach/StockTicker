@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="FindStocksModule.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,15 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.FindStocks
 {
-    using Caliburn.Micro;
+    using Ninject.Modules;
 
-    using StockTicker.Actions;
-    using StockTicker.FindStocks;
-
-    internal sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel
+    public class FindStocksModule : NinjectModule
     {
-        public StockTickerViewModel(ISearchViewModel searchViewModel, IBusyIndicationViewModel busyIndication)
+        public override void Load()
         {
-            this.Search = searchViewModel;
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.Stock_Ticker_Title;
+            this.Bind<ISearchViewModel>().To<SearchViewModel>().InSingletonScope();
         }
-
-        public IBusyIndicationViewModel BusyIndication { get; private set; }
-
-        public ISearchViewModel Search { get; private set; }
     }
 }

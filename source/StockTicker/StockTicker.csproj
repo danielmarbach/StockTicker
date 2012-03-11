@@ -86,6 +86,12 @@
     <Compile Include="Actions\ShowBusyIndication.cs" />
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
+    <Compile Include="FindStocks\FindStocksModule.cs" />
+    <Compile Include="FindStocks\ISearchViewModel.cs" />
+    <Compile Include="FindStocks\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FindStocks\SearchViewModel.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Localization\ICultureSetter.cs" />
     <Compile Include="Localization\ILocalizationCultureProvider.cs" />
@@ -148,6 +154,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FindStocks\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StockTickerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

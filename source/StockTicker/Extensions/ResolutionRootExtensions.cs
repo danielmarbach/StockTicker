@@ -53,8 +53,11 @@ namespace StockTicker.Extensions
         /// <typeparam name="T">The type to resolve.</typeparam>
         /// <param name="resolutionRoot">The resolution root.</param>
         /// <param name="prototype">The argument provider prototype</param>
-        /// <returns>The resolved instance.</returns>
-        /// <extensiondoc category="ResolutionRoot" />
+        /// <param name="shouldInherit">if set to <c>true</c> the constructor parameters are inherited.</param>
+        /// <returns>
+        /// The resolved instance.
+        /// </returns>
+        /// <extensiondoc category="ResolutionRoot"/>
         public static T Get<T>(this IResolutionRoot resolutionRoot, object prototype, bool shouldInherit)
         {
             var arguments = new List<ConstructorArgument>();

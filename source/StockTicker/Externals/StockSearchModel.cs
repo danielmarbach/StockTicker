@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="SearchView.xaml.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="StockSearchModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,21 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.FindStocks
+namespace StockTicker.Externals
 {
-    /// <summary>
-    /// Interaction logic for SearchView.xaml
-    /// </summary>
-    public partial class SearchView
+    internal class StockSearchModel
     {
-        public SearchView()
+        internal StockSearchModel(string symbol, string company, string fund)
         {
-            this.InitializeComponent();
+            this.Symbol = symbol;
+            this.Company = company;
+            this.Fund = fund;
         }
+
+        public string Symbol { get; private set; }
+
+        public string Company { get; private set; }
+
+        public string Fund { get; private set; }
     }
 }

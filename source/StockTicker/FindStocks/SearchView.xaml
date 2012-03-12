@@ -3,12 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:l="http://schemas.root-project.org/xaml/presentation"
+             xmlns:uia="clr-namespace:Thinktecture.UIAnnotations;assembly=Thinktecture.UIAnnotations"
+             xmlns:FindStocks="clr-namespace:StockTicker.FindStocks"
              mc:Ignorable="d" 
-             d:DesignHeight="92" d:DesignWidth="200">
-    <Grid Height="78">
-        <TextBox Name="SearchPattern" Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" VerticalAlignment="Top" Width="176" cal:Message.Attach="[Event TextChanged] = [Action FindStocks(SearchPattern)]">
+             d:DesignHeight="92" d:DesignWidth="200" 
+             d:DataContext="{x:Static FindStocks:SearchView.SampleData}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="searchHintVisibilityConverter" />
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBox x:Name="SearchPattern" Height="23" HorizontalAlignment="Left" Margin="10,10,10,2" VerticalAlignment="Top" Width="180" TabIndex="0"
+                 cal:Message.Attach="[Event TextChanged] = [Action FindStocks(SearchPattern)]" 
+                 uia:Annotations.CueBanner="{l:LocText StockTicker:FindStocks.FindStocks:SearchHint}">
         </TextBox>
-    </Grid>
+        <ListBox ItemsSource="{Binding Path=FoundStocks}" Margin="10,0,10,10" Width="180" Height="50" Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" TabIndex="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Path=Symbol}" />
+                        <Label Content="{Binding Path=Company}" />
+                        <Label Content="{Binding Path=Fund}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </UserControl>

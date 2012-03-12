@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="SearchView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="SearchView.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,19 @@
 
 namespace StockTicker.FindStocks
 {
-    /// <summary>
-    /// Interaction logic for SearchView.xaml
-    /// </summary>
+    using StockTicker.Externals;
+
     public partial class SearchView
     {
-        public SearchView()
+        public static object SampleData
         {
-            this.InitializeComponent();
+            get
+            {
+                var searchViewModel = new SearchViewModel();
+                searchViewModel.FoundStocks.Add(new StockSearchModel("UBS", "UBS AG", "NASDAQ"));
+
+                return searchViewModel;
+            }
         }
     }
 }

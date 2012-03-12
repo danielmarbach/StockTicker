@@ -20,19 +20,42 @@ namespace StockTicker.FindStocks
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
     using System.Linq;
 
     using Caliburn.Micro;
 
     using StockTicker.Actions;
+    using StockTicker.Externals;
 
-    internal class SearchViewModel : Screen, ISearchViewModel, IUseActions
+    internal class SearchViewModel : Screen, ISearchViewModel
     {
+        public SearchViewModel()
+        {
+            this.FoundStocks = new BindableCollection<StockSearchModel>();
+            this.FoundStocks.CollectionChanged += this.HandleFoundStocksChanged;
+        }
+
         public Func<IActionBuilder> Actions { private get; set; }
+
+        public BindableCollection<StockSearchModel> FoundStocks { get; private set; }
+
+        public bool HasStocks
+        {
+            get
+            {
+                return this.FoundStocks.Any();
+            }
+        }
 
         public IEnumerable<IResult> FindStocks(string searchPattern)
         {
-            return Enumerable.Empty<IResult>();
+            return this.Actions().Search(searchPattern, this.FoundStocks);
+        }
+
+        private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            this.NotifyOfPropertyChange(() => this.HasStocks);
         }
     }
 }

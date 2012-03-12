@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerSpecification.cs" company="bbv Software Services AG">
+// <copyright file="SearchViewModelTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,39 +16,33 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.FindStocks
 {
-    using Caliburn.Micro;
+    using FluentAssertions;
+    using FluentAssertions.EventMonitoring;
 
-    using Machine.Specifications;
+    using StockTicker.Externals;
 
-    using Ninject;
+    using Xunit;
 
-    public class StockTickerSpecification
+    public class SearchViewModelTest
     {
-        protected static IKernel Kernel;
+        private readonly SearchViewModel testee;
 
-        private static SpecificationBootstrapper Bootstrapper;
-
-        Establish context = () =>
-            {
-                Bootstrapper = new SpecificationBootstrapper();
-                Kernel = Bootstrapper.StandardKernel;
-                Kernel.Rebind<IWindowManager>().To<WindowManager>().InSingletonScope();
-
-                Execute.ResetWithoutDispatcher();
-            };
-
-        Cleanup cleanup = () => { Stop(); };
-
-        protected static void Start()
+        public SearchViewModelTest()
         {
-            Bootstrapper.Start();
+            this.testee = new SearchViewModel();
         }
 
-        private static void Stop()
+        [Fact]
+        public void ShouldRaisePropertyChangedForHasStocks()
         {
-            Bootstrapper.Start();
+            this.testee.MonitorEvents();
+
+            this.testee.FoundStocks.Add(new StockSearchModel("AnySymbol", "AnyCompany", "AnyFund"));
+
+            this.testee.ShouldRaisePropertyChangeFor(x => x.HasStocks);
+            this.testee.HasStocks.Should().BeTrue();
         }
     }
 }

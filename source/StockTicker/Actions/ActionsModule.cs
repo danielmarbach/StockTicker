@@ -27,11 +27,18 @@ namespace StockTicker.Actions
             this.Bind<IActionBuilder>().To<ActionBuilder>();
             this.Bind<IResultFactory>().To<NinjectResultFactory>();
             this.Bind<IDecoratorApplicatorPipeline>().To<DecoratorApplicatorPipeline>();
+            this.Bind<IScopeDecoratorApplicator>().To<ScopeDecoratorApplicator>();
 
-            this.Bind<IHideBusyIndication>().To<HideBusyIndication>();
             this.Bind<IShowBusyIndication>().To<ShowBusyIndication>();
+            this.Bind<IHideBusyIndication>().To<HideBusyIndication>();
 
             this.Bind<IBusyIndicationViewModel, IStartBusyIndication, IFinishBusyIndication>().To<BusyIndicationViewModel>().InSingletonScope();
+
+            ////this.Kernel.Bind(x => x.FromAssemblyContaining<ActionsModule>()
+            ////    .SelectAllClasses()
+            ////    .InheritedFrom<IResult>()
+            ////    .BindToAllInterfaces()
+            ////    .Configure(c => c.InTransientScope()));
         }
     }
 }

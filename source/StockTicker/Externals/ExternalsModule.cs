@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="SearchView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="ExternalsModule.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,15 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.FindStocks
+namespace StockTicker.Externals
 {
-    /// <summary>
-    /// Interaction logic for SearchView.xaml
-    /// </summary>
-    public partial class SearchView
+    using Ninject.Modules;
+
+    public class ExternalsModule : NinjectModule
     {
-        public SearchView()
+        public override void Load()
         {
-            this.InitializeComponent();
+            this.Bind<IStockSearchService>().To<StockSearchService>().InSingletonScope();
         }
     }
 }

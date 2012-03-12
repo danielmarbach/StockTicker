@@ -10,28 +10,21 @@
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\Caliburn.Micro.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Micro.Contrib">
-      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\Caliburn.Micro.Contrib.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DesignTimeProperties.WPF">
-      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\DesignTimeProperties.WPF.dll</HintPath>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\packages\Caliburn.Micro\lib\net40\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\packages\Ninject.Extensions.Conventions\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Caliburn.Micro-Contrib.1.0.0\lib\Net40\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\Caliburn.Micro\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +34,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Thinktecture.UIAnnotations">
+      <HintPath>..\packages\thinktectureUIAnnotationsWPF\lib\Thinktecture.UIAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -48,7 +44,7 @@
       <HintPath>..\packages\WpfLocalizeExtension\lib\WPFLocalizeExtension.dll</HintPath>
     </Reference>
     <Reference Include="WPFToolkit.Extended">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.1.5.0\lib\net40\WPFToolkit.Extended.dll</HintPath>
+      <HintPath>..\packages\Extended.Wpf.Toolkit\lib\net40\WPFToolkit.Extended.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -59,10 +55,10 @@
     <Compile Include="Actions\ActionBuilder.cs" />
     <Compile Include="Actions\ActionExtensions.cs" />
     <Compile Include="Actions\ActionsModule.cs" />
-    <Compile Include="Actions\BusyIndication.Designer.cs">
+    <Compile Include="Actions\Actions.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BusyIndication.resx</DependentUpon>
+      <DependentUpon>Actions.resx</DependentUpon>
     </Compile>
     <Compile Include="Actions\BusyIndicationViewModel.cs" />
     <Compile Include="Actions\DecoratorApplicatorPipeline.cs" />
@@ -86,8 +82,21 @@
     <Compile Include="Actions\ShowBusyIndication.cs" />
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
+    <Compile Include="Externals\ExternalsModule.cs" />
+    <Compile Include="Externals\IStockSearchService.cs" />
+    <Compile Include="Externals\StockSearchModel.cs" />
+    <Compile Include="Externals\StockSearchService.cs" />
+    <Compile Include="FindStocks\FindStocks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FindStocks.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FindStocks\FindStocksActionExtensions.cs" />
     <Compile Include="FindStocks\FindStocksModule.cs" />
+    <Compile Include="FindStocks\ISearchStocks.cs" />
     <Compile Include="FindStocks\ISearchViewModel.cs" />
+    <Compile Include="FindStocks\SearchStocks.cs" />
+    <Compile Include="FindStocks\SearchView.cs" />
     <Compile Include="FindStocks\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
@@ -133,9 +142,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Actions\BusyIndication.resx">
+    <EmbeddedResource Include="Actions\Actions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BusyIndication.Designer.cs</LastGenOutput>
+      <LastGenOutput>Actions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindStocks\FindStocks.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FindStocks.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

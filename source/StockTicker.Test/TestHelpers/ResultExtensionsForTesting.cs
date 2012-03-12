@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 // <copyright file="ResultExtensionsForTesting.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Actions
+namespace StockTicker.TestHelpers
 {
     using System;
 

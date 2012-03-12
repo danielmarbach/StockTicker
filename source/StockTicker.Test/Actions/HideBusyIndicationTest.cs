@@ -24,6 +24,8 @@ namespace StockTicker.Actions
 
     using Moq;
 
+    using StockTicker.TestHelpers;
+
     using Xunit;
 
     public class HideBusyIndicationTest

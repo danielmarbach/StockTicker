@@ -18,7 +18,15 @@
 
 namespace StockTicker.FindStocks
 {
-    internal interface ISearchViewModel
+    using Caliburn.Micro;
+
+    using StockTicker.Actions;
+    using StockTicker.Externals;
+
+    internal interface ISearchViewModel : IUseActions
     {
+        BindableCollection<StockSearchModel> FoundStocks { get; }
+
+        bool HasStocks { get; }
     }
 }

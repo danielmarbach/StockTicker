@@ -63,5 +63,16 @@ namespace StockTicker.FindStocks
 
             this.foundStocks.Should().BeEquivalentTo(expectedSearchModels);
         }
+
+        [Fact]
+        public void ShouldClearInputCollection()
+        {
+            this.foundStocks.Add(new StockSearchModel("First", "First", "First"));
+            this.foundStocks.Add(new StockSearchModel("Second", "Second", "Second"));
+
+            this.testee.Execute(new ActionExecutionContext());
+
+            this.foundStocks.Should().BeEmpty();
+        }
     }
 }

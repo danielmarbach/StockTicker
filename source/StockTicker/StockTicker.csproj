@@ -17,7 +17,7 @@
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.Conventions">
-      <HintPath>..\packages\Ninject.Extensions.Conventions\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
+      <HintPath>..\packages\ninject.extensions.conventions\lib\net40\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -60,6 +60,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Actions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Actions\AsyncAttribute.cs" />
+    <Compile Include="Actions\AsyncDecoratorApplicator.cs" />
+    <Compile Include="Actions\AsyncResultDecorator.cs" />
     <Compile Include="Actions\BusyIndicationViewModel.cs" />
     <Compile Include="Actions\DecoratorApplicatorPipeline.cs" />
     <Compile Include="Actions\HideBusyIndication.cs" />
@@ -82,10 +85,13 @@
     <Compile Include="Actions\ShowBusyIndication.cs" />
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
+    <Compile Include="Externals\AuthenticationService.cs" />
     <Compile Include="Externals\ExternalsModule.cs" />
+    <Compile Include="Externals\IAuthenticationService.cs" />
     <Compile Include="Externals\IStockSearchService.cs" />
     <Compile Include="Externals\StockSearchModel.cs" />
     <Compile Include="Externals\StockSearchService.cs" />
+    <Compile Include="Externals\UserModel.cs" />
     <Compile Include="FindStocks\FindStocks.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

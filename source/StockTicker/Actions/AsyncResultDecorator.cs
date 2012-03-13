@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="DecoratorApplicatorPipeline.cs" company="bbv Software Services AG">
+// <copyright file="AsyncResultDecorator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,28 @@
 
 namespace StockTicker.Actions
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
-    internal class DecoratorApplicatorPipeline : IDecoratorApplicatorPipeline
+    using Caliburn.Micro;
+    using Executer = Caliburn.Micro.Execute;
+
+    public class AsyncResultDecorator : ResultDecoratorBase
     {
-        public IEnumerable<IDecoratorApplicator> GetApplicators()
+        public AsyncResultDecorator(IResult inner)
+            : base(inner)
         {
-            yield return new AsyncDecoratorApplicator();
+        }
+
+        public override void Execute(ActionExecutionContext context)
+        {
+            Task.Factory.StartNew(() => base.Execute(context));
+        }
+
+        protected override void InnerCompleted(object sender, ResultCompletionEventArgs args)
+        {
+            base.InnerCompleted(sender, args);
+
+            Executer.OnUIThread(() => this.OnCompleted(new ResultCompletionEventArgs { WasCancelled = args.WasCancelled, Error = args.Error }));
         }
     }
 }

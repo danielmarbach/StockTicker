@@ -18,13 +18,23 @@
 
 namespace StockTicker.Externals
 {
+    using System;
+
+    using Ninject.Extensions.Conventions;
     using Ninject.Modules;
 
     public class ExternalsModule : NinjectModule
     {
         public override void Load()
         {
-            this.Bind<IStockSearchService>().To<StockSearchService>().InSingletonScope();
+            this.Kernel.Bind(x =>
+                x.FromThisAssembly()
+                .IncludingNonePublicTypes()
+                .SelectAllClasses()
+                .InNamespaceOf<ExternalsModule>()
+                .Where(t => t.Name.EndsWith("Service", StringComparison.OrdinalIgnoreCase))
+                .BindToDefaultInterface()
+                .Configure(c => c.InSingletonScope()));
         }
     }
 }

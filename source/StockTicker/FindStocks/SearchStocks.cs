@@ -23,8 +23,10 @@ namespace StockTicker.FindStocks
 
     using Caliburn.Micro;
 
+    using StockTicker.Actions;
     using StockTicker.Externals;
 
+    [Async]
     internal class SearchStocks : ISearchStocks
     {
         private readonly IStockSearchService searchService;
@@ -44,6 +46,8 @@ namespace StockTicker.FindStocks
 
         public void Execute(ActionExecutionContext context)
         {
+            this.foundStocks.Clear();
+
             IEnumerable<StockSearchModel> stocks = this.searchService.Find(this.searchPattern);
 
             foreach (StockSearchModel stock in stocks)

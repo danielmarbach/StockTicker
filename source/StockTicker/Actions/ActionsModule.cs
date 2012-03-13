@@ -18,6 +18,9 @@
 
 namespace StockTicker.Actions
 {
+    using Caliburn.Micro;
+
+    using Ninject.Extensions.Conventions;
     using Ninject.Modules;
 
     public class ActionsModule : NinjectModule
@@ -29,16 +32,15 @@ namespace StockTicker.Actions
             this.Bind<IDecoratorApplicatorPipeline>().To<DecoratorApplicatorPipeline>();
             this.Bind<IScopeDecoratorApplicator>().To<ScopeDecoratorApplicator>();
 
-            this.Bind<IShowBusyIndication>().To<ShowBusyIndication>();
-            this.Bind<IHideBusyIndication>().To<HideBusyIndication>();
-
             this.Bind<IBusyIndicationViewModel, IStartBusyIndication, IFinishBusyIndication>().To<BusyIndicationViewModel>().InSingletonScope();
 
-            ////this.Kernel.Bind(x => x.FromAssemblyContaining<ActionsModule>()
-            ////    .SelectAllClasses()
-            ////    .InheritedFrom<IResult>()
-            ////    .BindToAllInterfaces()
-            ////    .Configure(c => c.InTransientScope()));
+            this.Kernel.Bind(x =>
+                x.FromThisAssembly()
+                .IncludingNonePublicTypes()
+                .SelectAllClasses()
+                .InheritedFrom<IResult>()
+                .BindToDefaultInterface()
+                .Configure(c => c.InTransientScope()));
         }
     }
 }

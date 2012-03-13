@@ -20,7 +20,7 @@ namespace StockTicker.Actions
 {
     using System;
 
-    public interface IStartBusyIndication
+    internal interface IStartBusyIndication
     {
         void Start(Guid requestId, string message);
     }

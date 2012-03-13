@@ -120,4 +120,7 @@
   <data name="SearchHint" xml:space="preserve">
     <value>Enter ticker symbol...</value>
   </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Searching "{0}"...</value>
+  </data>
 </root>

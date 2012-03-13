@@ -38,6 +38,8 @@
   <ItemGroup>
     <Compile Include="Actions\ActionBuilderExtensionsForTesting.cs" />
     <Compile Include="Actions\ActionBuilderTest.cs" />
+    <Compile Include="Actions\AsyncResultDecoratorTest.cs" />
+    <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
     <Compile Include="FindStocks\SearchStocksTest.cs" />
     <Compile Include="FindStocks\SearchViewModelTest.cs" />
     <Compile Include="TestHelpers\CaliburnIoCFake.cs" />

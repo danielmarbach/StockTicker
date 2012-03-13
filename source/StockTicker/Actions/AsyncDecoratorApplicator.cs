@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="DecoratorApplicatorPipeline.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="AsyncDecoratorApplicator.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,20 @@
 
 namespace StockTicker.Actions
 {
-    using System.Collections.Generic;
+    using System.Linq;
 
-    internal class DecoratorApplicatorPipeline : IDecoratorApplicatorPipeline
+    using Caliburn.Micro;
+
+    internal class AsyncDecoratorApplicator : IDecoratorApplicator
     {
-        public IEnumerable<IDecoratorApplicator> GetApplicators()
+        public IResult Apply(IResult result)
         {
-            yield return new AsyncDecoratorApplicator();
+            if (result.GetType().GetAttributes<AsyncAttribute>(true).Any())
+            {
+                return new AsyncResultDecorator(result);
+            }
+
+            return result;
         }
     }
 }

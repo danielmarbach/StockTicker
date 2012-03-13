@@ -79,7 +79,7 @@ namespace StockTicker.Actions
             }
             catch (Exception e)
             {
-                OnCompleted(new ResultCompletionEventArgs { Error = e });
+                this.OnCompleted(new ResultCompletionEventArgs { Error = e });
             }
         }
 

@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="DecoratorApplicatorPipeline.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="UserModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,15 +16,20 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Actions
+namespace StockTicker.Externals
 {
-    using System.Collections.Generic;
+    using System.Security;
 
-    internal class DecoratorApplicatorPipeline : IDecoratorApplicatorPipeline
+    internal class UserModel
     {
-        public IEnumerable<IDecoratorApplicator> GetApplicators()
+        public UserModel(string username, SecureString password)
         {
-            yield return new AsyncDecoratorApplicator();
+            this.Username = username;
+            this.Password = password;
         }
+
+        public string Username { get; private set; }
+
+        public SecureString Password { get; private set; }
     }
 }

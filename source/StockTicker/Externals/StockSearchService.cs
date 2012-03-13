@@ -18,8 +18,10 @@
 
 namespace StockTicker.Externals
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
 
     internal class StockSearchService : IStockSearchService
     {
@@ -32,6 +34,8 @@ namespace StockTicker.Externals
 
         public IEnumerable<StockSearchModel> Find(string searchString)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
             searchString = searchString.ToUpperInvariant();
 
             return this.stocks.Where(s => s.Company.Contains(searchString) || s.Fund.Contains(searchString) || s.Symbol.Contains(searchString));

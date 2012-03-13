@@ -68,5 +68,14 @@ namespace StockTicker.FindStocks {
                 return ResourceManager.GetString("SearchHint", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Searching &quot;{0}&quot;....
+        /// </summary>
+        internal static string Searching {
+            get {
+                return ResourceManager.GetString("Searching", resourceCulture);
+            }
+        }
     }
 }

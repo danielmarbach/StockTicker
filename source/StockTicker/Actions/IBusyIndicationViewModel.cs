@@ -20,7 +20,7 @@ namespace StockTicker.Actions
 {
     using System.ComponentModel;
 
-    public interface IBusyIndicationViewModel : IStartBusyIndication, IFinishBusyIndication, INotifyPropertyChanged
+    internal interface IBusyIndicationViewModel : IStartBusyIndication, IFinishBusyIndication, INotifyPropertyChanged
     {
         bool IsBusy { get; }
     }

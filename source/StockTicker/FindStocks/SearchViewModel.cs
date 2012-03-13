@@ -21,6 +21,7 @@ namespace StockTicker.FindStocks
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
+    using System.Globalization;
     using System.Linq;
 
     using Caliburn.Micro;
@@ -48,9 +49,13 @@ namespace StockTicker.FindStocks
             }
         }
 
-        public IEnumerable<IResult> FindStocks(string searchPattern)
+        public IEnumerable<IResult> Search(string searchPattern)
         {
-            return this.Actions().Search(searchPattern, this.FoundStocks);
+            string busyMessage = string.Format(CultureInfo.InvariantCulture, FindStocks.Searching, searchPattern);
+
+            return this.Actions()
+                .WithBusyIndication(
+                    busy => busy.Search(searchPattern, this.FoundStocks), busyMessage);
         }
 
         private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)

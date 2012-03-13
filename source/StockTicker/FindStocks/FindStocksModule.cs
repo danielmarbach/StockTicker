@@ -25,8 +25,6 @@ namespace StockTicker.FindStocks
         public override void Load()
         {
             this.Bind<ISearchViewModel>().To<SearchViewModel>().InSingletonScope();
-
-            this.Bind<ISearchStocks>().To<SearchStocks>();
         }
     }
 }

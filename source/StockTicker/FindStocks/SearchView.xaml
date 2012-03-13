@@ -15,10 +15,14 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBox x:Name="SearchPattern" Height="23" HorizontalAlignment="Left" Margin="10,10,10,2" VerticalAlignment="Top" Width="180" TabIndex="0"
-                 cal:Message.Attach="[Event TextChanged] = [Action FindStocks(SearchPattern)]" 
+                 cal:Message.Attach="[Event LostFocus] = [Action Search(SearchPattern)]" 
                  uia:Annotations.CueBanner="{l:LocText StockTicker:FindStocks.FindStocks:SearchHint}">
         </TextBox>
-        <ListBox ItemsSource="{Binding Path=FoundStocks}" Margin="10,0,10,10" Width="180" Height="50" Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" TabIndex="1">
+        <ListBox ItemsSource="{Binding Path=FoundStocks}" Margin="10,0,10,10" Width="180" Height="Auto" 
+                 Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" 
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 TabIndex="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

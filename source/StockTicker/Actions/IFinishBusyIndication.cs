@@ -20,7 +20,7 @@ namespace StockTicker.Actions
 {
     using System;
 
-    public interface IFinishBusyIndication
+    internal interface IFinishBusyIndication
     {
         void Finished(Guid requestId);
     }

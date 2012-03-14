@@ -18,16 +18,50 @@
 
 namespace StockTicker.Externals
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Security;
+
     internal class AuthenticationService : IAuthenticationService
     {
+        private static readonly Random Randomizer = new Random();
+
+        private readonly List<UserModel> users;
+
+        public AuthenticationService()
+        {
+            this.users = new List<UserModel>();
+        }
+
+        public IEnumerable<string> SuggestUsernames(PotentialNewUserModel user)
+        {
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant());
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}", user.LastName.ToLowerInvariant(), user.FirstName.ToLowerInvariant());
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}.{1}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant());
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}.{1}", user.LastName.ToLowerInvariant(), user.FirstName.ToLowerInvariant());
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant(), Randomizer.Next(1000));
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}.{1}{2}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant(), Randomizer.Next(1000));
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", user.LastName.ToLowerInvariant(), user.FirstName.ToLowerInvariant(), Randomizer.Next(1000));
+            yield return string.Format(CultureInfo.InvariantCulture, "{0}.{1}{2}", user.LastName.ToLowerInvariant(), user.FirstName.ToLowerInvariant(), Randomizer.Next(1000));
+        }
+
+        public void CreateUser(NewUserModel newUser)
+        {
+            // Normally we would revalidate here
+            this.users.Add(newUser.ToUser());
+        }
+
         public void LogOn(UserModel user)
         {
-            throw new System.NotImplementedException();
+            if (!this.users.Contains(user))
+            {
+                throw new SecurityException();
+            }
         }
 
         public void LogOff(UserModel user)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

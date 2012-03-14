@@ -20,6 +20,7 @@ namespace StockTicker.FindStocks
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Globalization;
     using System.Linq;
@@ -31,6 +32,8 @@ namespace StockTicker.FindStocks
 
     internal class SearchViewModel : Screen, ISearchViewModel
     {
+        private string pattern;
+
         public SearchViewModel()
         {
             this.FoundStocks = new BindableCollection<StockSearchModel>();
@@ -39,13 +42,27 @@ namespace StockTicker.FindStocks
 
         public Func<IActionBuilder> Actions { private get; set; }
 
-        public BindableCollection<StockSearchModel> FoundStocks { get; private set; }
+        public ObservableCollection<StockSearchModel> FoundStocks { get; private set; }
 
         public bool HasStocks
         {
             get
             {
                 return this.FoundStocks.Any();
+            }
+        }
+
+        public string Pattern
+        {
+            get
+            {
+                return this.pattern;
+            }
+
+            set
+            {
+                this.pattern = value;
+                this.NotifyOfPropertyChange(() => this.Pattern);
             }
         }
 
@@ -56,6 +73,12 @@ namespace StockTicker.FindStocks
             return this.Actions()
                 .WithBusyIndication(
                     busy => busy.Search(searchPattern, this.FoundStocks), busyMessage);
+        }
+
+        public void Clear()
+        {
+            this.Pattern = null;
+            this.FoundStocks.Clear();
         }
 
         private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)

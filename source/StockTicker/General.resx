@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Stock_Ticker_Title" xml:space="preserve">
+  <data name="DisplayStockDetails" xml:space="preserve">
+    <value>Fetching stock details...</value>
+  </data>
+  <data name="StockTickerTitle" xml:space="preserve">
     <value>Stock Ticker</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="ISearchViewModel.cs" company="bbv Software Services AG">
+// <copyright file="NewUserModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,19 +16,26 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.FindStocks
+namespace StockTicker.Externals
 {
-    using System.Collections.ObjectModel;
+    using System.Security;
 
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-    using StockTicker.Externals;
-
-    internal interface ISearchViewModel : IScreen, IUseActions
+    internal class NewUserModel
     {
-        ObservableCollection<StockSearchModel> FoundStocks { get; }
+        public NewUserModel(string firstName, string lastName, string username, SecureString password)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Username = username;
+            this.Password = password;
+        }
 
-        bool HasStocks { get; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Username { get; private set; }
+
+        public SecureString Password { get; private set; }
     }
 }

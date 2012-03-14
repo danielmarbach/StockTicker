@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="UserExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,13 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Externals
 {
-    using StockTicker.Actions;
-
-    public interface IStockTickerViewModel : IUseActions
+    internal static class UserExtensions
     {
+        public static UserModel ToUser(this NewUserModel user)
+        {
+            return new UserModel(user.Username, user.Password);
+        }
     }
 }

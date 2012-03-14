@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockTickerViewModel.cs" company="bbv Software Services AG">
+// <copyright file="StockDetailViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.ManageStocks
 {
-    using StockTicker.Actions;
+    using Caliburn.Micro;
 
-    public interface IStockTickerViewModel : IUseActions
+    public class StockDetailViewModel : Screen
     {
     }
 }

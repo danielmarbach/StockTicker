@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockTickerViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="PotentialNewUserModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Externals
 {
-    using StockTicker.Actions;
-
-    public interface IStockTickerViewModel : IUseActions
+    internal class PotentialNewUserModel
     {
+        public PotentialNewUserModel(string firstName, string lastName)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
     }
 }

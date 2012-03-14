@@ -18,10 +18,16 @@
 
 namespace StockTicker.Externals
 {
+    using System.Collections.Generic;
+
     internal interface IAuthenticationService
     {
         void LogOn(UserModel user);
 
         void LogOff(UserModel user);
+
+        IEnumerable<string> SuggestUsernames(PotentialNewUserModel user);
+
+        void CreateUser(NewUserModel newUser);
     }
 }

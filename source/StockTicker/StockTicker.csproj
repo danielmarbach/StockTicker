@@ -89,8 +89,11 @@
     <Compile Include="Externals\ExternalsModule.cs" />
     <Compile Include="Externals\IAuthenticationService.cs" />
     <Compile Include="Externals\IStockSearchService.cs" />
+    <Compile Include="Externals\NewUserModel.cs" />
+    <Compile Include="Externals\PotentialNewUserModel.cs" />
     <Compile Include="Externals\StockSearchModel.cs" />
     <Compile Include="Externals\StockSearchService.cs" />
+    <Compile Include="Externals\UserExtensions.cs" />
     <Compile Include="Externals\UserModel.cs" />
     <Compile Include="FindStocks\FindStocks.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -115,6 +118,7 @@
     <Compile Include="Localization\LocalizationModule.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
+    <Compile Include="ManageStocks\StockDetailViewModel.cs" />
     <Compile Include="Properties\ISettings.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="General.Designer.cs">

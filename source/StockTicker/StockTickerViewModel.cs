@@ -18,9 +18,13 @@
 
 namespace StockTicker
 {
+    using System;
+    using System.Collections.Generic;
+
     using Caliburn.Micro;
 
     using StockTicker.Actions;
+    using StockTicker.Externals;
     using StockTicker.FindStocks;
 
     internal sealed class StockTickerViewModel : Conductor<IScreen>, IStockTickerViewModel
@@ -30,11 +34,18 @@ namespace StockTicker
             this.Search = searchViewModel;
             this.BusyIndication = busyIndication;
 
-            this.DisplayName = General.Stock_Ticker_Title;
+            this.DisplayName = General.StockTickerTitle;
         }
+
+        public Func<IActionBuilder> Actions { private get; set; }
 
         public IBusyIndicationViewModel BusyIndication { get; private set; }
 
         public ISearchViewModel Search { get; private set; }
+
+        public IEnumerable<IResult> Display(StockSearchModel stock)
+        {
+            return this.Actions().WithBusyIndication(builder => { }, General.DisplayStockDetails);
+        }
     }
 }

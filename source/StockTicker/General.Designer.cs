@@ -61,11 +61,20 @@ namespace StockTicker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fetching stock details....
+        /// </summary>
+        internal static string DisplayStockDetails {
+            get {
+                return ResourceManager.GetString("DisplayStockDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stock Ticker.
         /// </summary>
-        internal static string Stock_Ticker_Title {
+        internal static string StockTickerTitle {
             get {
-                return ResourceManager.GetString("Stock_Ticker_Title", resourceCulture);
+                return ResourceManager.GetString("StockTickerTitle", resourceCulture);
             }
         }
     }

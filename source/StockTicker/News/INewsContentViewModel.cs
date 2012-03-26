@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockTickerModule.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="INewsContentViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.News
 {
-    using Ninject.Modules;
+    using Caliburn.Micro;
 
-    public class StockTickerModule : NinjectModule
+    internal interface INewsContentViewModel : IScreen
     {
-        public override void Load()
-        {
-            this.Bind<IContentViewModelFactory>().To<ContentViewModelFactory>().InSingletonScope();
-            this.Bind<IStockTickerViewModel>().To<StockTickerViewModel>().InSingletonScope();
-        }
     }
 }

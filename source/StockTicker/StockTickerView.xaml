@@ -38,11 +38,8 @@
             </DataTemplate>
         </extToolkit:BusyIndicator.BusyContentTemplate>
         <DockPanel>
-            <DockPanel DockPanel.Dock="Left" Width="200">
-                <FindStocks:SearchView DockPanel.Dock="Top" cal:View.Model="{Binding Search}"/>
-            </DockPanel>
-            <ContentControl x:Name="content" cal:View.Model="{Binding ActiveItem}" DockPanel.Dock="Right">
-            </ContentControl>
+            <FindStocks:SearchView DockPanel.Dock="Top" cal:View.Model="{Binding Search}"/>
+            <ContentControl x:Name="content" cal:View.Model="{Binding ActiveItem}" DockPanel.Dock="Bottom" />
         </DockPanel>
     </extToolkit:BusyIndicator>
 </Window>

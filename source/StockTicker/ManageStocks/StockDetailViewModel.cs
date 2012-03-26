@@ -20,7 +20,7 @@ namespace StockTicker.ManageStocks
 {
     using Caliburn.Micro;
 
-    public class StockDetailViewModel : Screen
+    public class StockDetailViewModel : Screen, IStockDetailViewModel
     {
     }
 }

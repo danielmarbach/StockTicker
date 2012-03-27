@@ -91,10 +91,15 @@
     <Compile Include="Externals\ExternalsModule.cs" />
     <Compile Include="Externals\IAuthenticationService.cs" />
     <Compile Include="Externals\IStockSearchService.cs" />
+    <Compile Include="Externals\IStockService.cs" />
     <Compile Include="Externals\NewUserModel.cs" />
     <Compile Include="Externals\PotentialNewUserModel.cs" />
+    <Compile Include="Externals\Range.cs" />
+    <Compile Include="Externals\StockDetailModel.cs" />
     <Compile Include="Externals\StockSearchModel.cs" />
     <Compile Include="Externals\StockSearchService.cs" />
+    <Compile Include="Externals\StockService.cs" />
+    <Compile Include="Externals\StockSymbols.cs" />
     <Compile Include="Externals\UserExtensions.cs" />
     <Compile Include="Externals\UserModel.cs" />
     <Compile Include="FindStocks\FindStocks.Designer.cs">

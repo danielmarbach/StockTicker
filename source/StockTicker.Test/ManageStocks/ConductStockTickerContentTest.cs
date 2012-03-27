@@ -31,7 +31,7 @@ namespace StockTicker.ManageStocks
 
     public class ConductStockTickerContentTest
     {
-        private readonly StockDetailModel searchModel;
+        private readonly Future<StockDetailModel> searchModel;
 
         private readonly Mock<IContentViewModelFactory> contentFactory;
 
@@ -39,7 +39,7 @@ namespace StockTicker.ManageStocks
 
         public ConductStockTickerContentTest()
         {
-            this.searchModel = new AnyStockDetailModel();
+            this.searchModel = new AnyStockDetailModel().As<StockDetailModel>().AsFuture();
             this.contentFactory = new Mock<IContentViewModelFactory>();
         }
 
@@ -54,7 +54,10 @@ namespace StockTicker.ManageStocks
         [Fact]
         public void ShouldAllowNullSearchModel()
         {
-            ConductStockTickerContent testee = this.CreateTestee(null);
+            var future = new Future<StockDetailModel>();
+            future.SetValue(null);
+
+            ConductStockTickerContent testee = this.CreateTestee(future);
 
             System.Action act = () => testee.Execute(new ActionExecutionContext());
 
@@ -74,7 +77,7 @@ namespace StockTicker.ManageStocks
             this.detail.Should().Be(contentViewModel);
         }
 
-        private ConductStockTickerContent CreateTestee(StockDetailModel search)
+        private ConductStockTickerContent CreateTestee(Future<StockDetailModel> search)
         {
             return new ConductStockTickerContent(search, d => this.detail = d, this.contentFactory.Object);
         }

@@ -18,7 +18,9 @@
 
 namespace StockTicker.Externals
 {
+    using System;
     using System.Collections.Generic;
+    using System.Threading;
 
     internal class StockService : IStockService
     {
@@ -33,6 +35,8 @@ namespace StockTicker.Externals
 
         public StockDetailModel Get(string symbol)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
             StockDetailModel detailModel;
             this.details.TryGetValue(symbol, out detailModel);
             return detailModel;

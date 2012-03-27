@@ -58,6 +58,7 @@
     <Compile Include="Localization\LocalizationCultureProviderTest.cs" />
     <Compile Include="Localization\LocalizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\FutureExtensions.cs" />
     <Compile Include="TestHelpers\ResultExtensionsForTesting.cs" />
   </ItemGroup>
   <ItemGroup>

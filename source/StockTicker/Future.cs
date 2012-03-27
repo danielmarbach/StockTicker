@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="HeadLinesView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="Future.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,39 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.News
+namespace StockTicker
 {
-    using System.Windows.Controls;
+    using System.Threading;
 
-    /// <summary>
-    /// Interaction logic for HeadLinesView.xaml
-    /// </summary>
-    public partial class HeadlinesView : UserControl
+    public sealed class Future<TValue>
     {
-        public HeadlinesView()
+        private readonly ManualResetEvent syncEvent;
+
+        private TValue value;
+
+        public Future()
         {
-            this.InitializeComponent();
+            this.syncEvent = new ManualResetEvent(false);
+        }
+
+        public TValue Value
+        {
+            get
+            {
+                this.syncEvent.WaitOne();
+                return this.value;
+            }
+        }
+
+        public void SetValue(TValue value)
+        {
+            ThreadPool.QueueUserWorkItem(
+                state =>
+                    {
+                        this.value = value;
+
+                        this.syncEvent.Set();
+                    });
         }
     }
 }

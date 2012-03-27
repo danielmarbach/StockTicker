@@ -26,13 +26,13 @@ namespace StockTicker.ManageStocks
 
     internal class ConductStockTickerContent : IConductStockTickerContent
     {
-        private readonly StockDetailModel detailModel;
+        private readonly Future<StockDetailModel> detailModel;
 
         private readonly Action<IStockTickerContentViewModel> conductor;
 
         private readonly IContentViewModelFactory contentFactory;
 
-        public ConductStockTickerContent(StockDetailModel detailModel, Action<IStockTickerContentViewModel> conductor, IContentViewModelFactory contentFactory)
+        public ConductStockTickerContent(Future<StockDetailModel> detailModel, Action<IStockTickerContentViewModel> conductor, IContentViewModelFactory contentFactory)
         {
             this.detailModel = detailModel;
             this.conductor = conductor;
@@ -43,7 +43,7 @@ namespace StockTicker.ManageStocks
 
         public void Execute(ActionExecutionContext context)
         {
-            IStockTickerContentViewModel contentViewModel = this.contentFactory.CreateContent(this.detailModel);
+            IStockTickerContentViewModel contentViewModel = this.contentFactory.CreateContent(this.detailModel.Value);
             this.conductor(contentViewModel);
 
             this.Completed(this, new ResultCompletionEventArgs());

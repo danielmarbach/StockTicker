@@ -101,7 +101,7 @@
     <Compile Include="Externals\StockSearchService.cs" />
     <Compile Include="Externals\StockService.cs" />
     <Compile Include="Externals\StockSymbols.cs" />
-    <Compile Include="Externals\UserExtensions.cs" />
+    <Compile Include="Externals\ExternalExtensions.cs" />
     <Compile Include="Externals\UserModel.cs" />
     <Compile Include="FindStocks\FindStocks.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -118,6 +118,7 @@
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FindStocks\SearchViewModel.cs" />
+    <Compile Include="Future.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IContentViewModelFactory.cs" />
     <Compile Include="IStockTickerContentViewModel.cs" />
@@ -136,10 +137,10 @@
     <Compile Include="ManageStocks\ManageStocksExtensions.cs" />
     <Compile Include="ManageStocks\ManageStocksModule.cs" />
     <Compile Include="ManageStocks\StockDetailViewModel.cs" />
-    <Compile Include="News\HeadLinesView.xaml.cs">
-      <DependentUpon>HeadLinesView.xaml</DependentUpon>
+    <Compile Include="News\HeadlinesView.xaml.cs">
+      <DependentUpon>HeadlinesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="News\HeadLinesViewModel.cs" />
+    <Compile Include="News\HeadlinesViewModel.cs" />
     <Compile Include="News\INewsContentViewModel.cs" />
     <Compile Include="News\INewsViewModel.cs" />
     <Compile Include="News\NewsModule.cs" />
@@ -214,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="News\HeadLinesView.xaml">
+    <Page Include="News\HeadlinesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

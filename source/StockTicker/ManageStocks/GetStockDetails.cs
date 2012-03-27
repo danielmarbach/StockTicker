@@ -23,14 +23,36 @@ namespace StockTicker.ManageStocks
     using Caliburn.Micro;
 
     using StockTicker.Actions;
+    using StockTicker.Externals;
 
     [Async]
     internal class GetStockDetails : IGetStockDetails
     {
+        private readonly string symbol;
+
+        private readonly Future<StockDetailModel> detailModel;
+
+        private readonly IStockService stockService;
+
+        public GetStockDetails(string symbol, Future<StockDetailModel> detailModel, IStockService stockService)
+        {
+            if (string.IsNullOrEmpty(symbol))
+            {
+                throw new ArgumentNullException("symbol");
+            }
+
+            this.symbol = symbol;
+            this.detailModel = detailModel;
+            this.stockService = stockService;
+        }
+
         public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
 
         public void Execute(ActionExecutionContext context)
         {
+            StockDetailModel stockDetail = this.stockService.Get(this.symbol);
+            this.detailModel.SetValue(stockDetail);
+
             this.Completed(this, new ResultCompletionEventArgs());
         }
     }

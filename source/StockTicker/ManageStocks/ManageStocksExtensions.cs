@@ -27,14 +27,22 @@ namespace StockTicker.ManageStocks
 
     internal static class ManageStocksExtensions
     {
-        public static IActionBuilder ConductContent(this IActionBuilder builder, StockDetailModel detailModel, Conductor<IStockTickerContentViewModel> conductor)
+        public static IActionBuilder ConductContent(this IActionBuilder builder, Future<StockDetailModel> detailModel, Conductor<IStockTickerContentViewModel> conductor)
         {
             return builder.Execute<IConductStockTickerContent>(new { detailModel, conductor = (Action<IStockTickerContentViewModel>)conductor.ActivateItem });
         }
 
         public static IActionBuilder ConductDefaultContent(this IActionBuilder builder, Conductor<IStockTickerContentViewModel> conductor)
         {
-            return builder.ConductContent(null, conductor);
+            var future = new Future<StockDetailModel>();
+            future.SetValue(null);
+
+            return builder.ConductContent(future, conductor);
+        }
+
+        public static IActionBuilder GetDetails(this IActionBuilder builder, StockSearchModel searchModel, Future<StockDetailModel> detailModel)
+        {
+            return builder.Execute<IGetStockDetails>(new { symbol = searchModel.ToSymbol(), detailModel });
         }
     }
 }

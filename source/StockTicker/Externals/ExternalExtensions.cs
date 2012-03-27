@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="UserExtensions.cs" company="bbv Software Services AG">
+// <copyright file="ExternalExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +18,16 @@
 
 namespace StockTicker.Externals
 {
-    internal static class UserExtensions
+    internal static class ExternalExtensions
     {
         public static UserModel ToUser(this NewUserModel user)
         {
             return new UserModel(user.Username, user.Password);
+        }
+
+        public static string ToSymbol(this StockSearchModel searchModel)
+        {
+            return searchModel.Symbol;
         }
     }
 }

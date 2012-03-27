@@ -44,9 +44,16 @@ namespace StockTicker
 
         public ISearchViewModel Search { get; private set; }
 
-        public IEnumerable<IResult> Display(StockSearchModel stock)
+        public IEnumerable<IResult> Display(StockSearchModel searched)
         {
-            return this.Actions().WithBusyIndication(builder => { }, General.DisplayStockDetails);
+            var detailModel = new Future<StockDetailModel>();
+
+            return this.Actions()
+                .WithBusyIndication(
+                    busyScope => busyScope
+                        .GetDetails(searched, detailModel)
+                        .ConductContent(detailModel, this),
+                    General.DisplayStockDetails);
         }
 
         protected override void OnInitialize()

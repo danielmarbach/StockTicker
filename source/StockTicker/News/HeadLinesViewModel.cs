@@ -20,7 +20,7 @@ namespace StockTicker.News
 {
     using Caliburn.Micro;
 
-    public class HeadLinesViewModel : Screen, INewsContentViewModel
+    public class HeadlinesViewModel : Screen, INewsContentViewModel
     {
     }
 }

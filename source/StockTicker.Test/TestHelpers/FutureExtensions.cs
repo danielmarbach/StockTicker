@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="HeadLinesView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="FutureExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,15 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.News
+namespace StockTicker.TestHelpers
 {
-    using System.Windows.Controls;
-
-    /// <summary>
-    /// Interaction logic for HeadLinesView.xaml
-    /// </summary>
-    public partial class HeadlinesView : UserControl
+    public static class FutureExtensions
     {
-        public HeadlinesView()
+        public static Future<TValue> AsFuture<TValue>(this TValue value)
         {
-            this.InitializeComponent();
+            var future = new Future<TValue>();
+            future.SetValue(value);
+            return future;
         }
     }
 }

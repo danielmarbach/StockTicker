@@ -20,7 +20,7 @@ namespace StockTicker
 {
     using System.Threading;
 
-    public sealed class Future<TValue>
+    public sealed class Future<TValue> : IFutureValueSetter<TValue>, IFutureValue<TValue>
     {
         private readonly ManualResetEvent syncEvent;
 

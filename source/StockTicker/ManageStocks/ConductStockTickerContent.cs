@@ -26,13 +26,13 @@ namespace StockTicker.ManageStocks
 
     internal class ConductStockTickerContent : IConductStockTickerContent
     {
-        private readonly Future<StockDetailModel> detailModel;
+        private readonly IFutureValue<StockDetailModel> detailModel;
 
         private readonly Action<IStockTickerContentViewModel> conductor;
 
         private readonly IContentViewModelFactory contentFactory;
 
-        public ConductStockTickerContent(Future<StockDetailModel> detailModel, Action<IStockTickerContentViewModel> conductor, IContentViewModelFactory contentFactory)
+        public ConductStockTickerContent(IFutureValue<StockDetailModel> detailModel, Action<IStockTickerContentViewModel> conductor, IContentViewModelFactory contentFactory)
         {
             this.detailModel = detailModel;
             this.conductor = conductor;

@@ -30,11 +30,11 @@ namespace StockTicker.ManageStocks
     {
         private readonly string symbol;
 
-        private readonly Future<StockDetailModel> detailModel;
+        private readonly IFutureValueSetter<StockDetailModel> detailModel;
 
         private readonly IStockService stockService;
 
-        public GetStockDetails(string symbol, Future<StockDetailModel> detailModel, IStockService stockService)
+        public GetStockDetails(string symbol, IFutureValueSetter<StockDetailModel> detailModel, IStockService stockService)
         {
             if (string.IsNullOrEmpty(symbol))
             {

@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="FutureExtensions.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="IFutureValueSetter.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,15 +16,10 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.TestHelpers
+namespace StockTicker
 {
-    public static class FutureExtensions
+    public interface IFutureValueSetter<in TValue>
     {
-        public static FutureMock<TValue> AsFuture<TValue>(this TValue value)
-        {
-            var future = new FutureMock<TValue>();
-            future.SetValue(value);
-            return future;
-        }
+        void SetValue(TValue value);
     }
 }

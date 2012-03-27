@@ -40,12 +40,12 @@ namespace StockTicker.ManageStocks
 
         private readonly string symbol;
 
-        private Future<StockDetailModel> detail;
+        private readonly FutureMock<StockDetailModel> detail;
 
         public GetStockDetailsTest()
         {
             this.symbol = "AnySymbol";
-            this.detail = new Future<StockDetailModel>();
+            this.detail = new FutureMock<StockDetailModel>();
 
             this.stockService = new Mock<IStockService>();
         }

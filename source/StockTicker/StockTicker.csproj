@@ -121,6 +121,8 @@
     <Compile Include="Future.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IContentViewModelFactory.cs" />
+    <Compile Include="IFutureValue.cs" />
+    <Compile Include="IFutureValueSetter.cs" />
     <Compile Include="IStockTickerContentViewModel.cs" />
     <Compile Include="Localization\ICultureSetter.cs" />
     <Compile Include="Localization\ILocalizationCultureProvider.cs" />

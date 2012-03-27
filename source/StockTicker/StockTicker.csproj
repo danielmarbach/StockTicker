@@ -125,6 +125,10 @@
     <Compile Include="ManageStocks\IStockDetailViewModel.cs" />
     <Compile Include="ManageStocks\ManageStocksModule.cs" />
     <Compile Include="ManageStocks\StockDetailViewModel.cs" />
+    <Compile Include="News\HeadLinesView.xaml.cs">
+      <DependentUpon>HeadLinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="News\HeadLinesViewModel.cs" />
     <Compile Include="News\INewsContentViewModel.cs" />
     <Compile Include="News\INewsViewModel.cs" />
     <Compile Include="News\NewsModule.cs" />
@@ -199,6 +203,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="News\HeadLinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="News\NewsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +220,20 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="News\Images\NewsPaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="News\Images\PersonalFinance.jpg" />
+    <Resource Include="News\Images\SpecialReports.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="News\Images\Economy.jpg" />
+    <Resource Include="News\Images\Spotlight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="News\Images\Retirement.jpg" />
+    <Resource Include="News\Images\Taxes.jpg" />
+  </ItemGroup>
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
 </Project>

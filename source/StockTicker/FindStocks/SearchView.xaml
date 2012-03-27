@@ -14,12 +14,12 @@
         <BooleanToVisibilityConverter x:Key="searchHintVisibilityConverter" />
     </UserControl.Resources>
     <StackPanel>
-        <TextBox x:Name="SearchPattern" Height="23" HorizontalAlignment="Left" Margin="10,10,10,2" VerticalAlignment="Top" Width="180" TabIndex="0"
+        <TextBox x:Name="SearchPattern" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,2" Width="180" TabIndex="0"
                  cal:Message.Attach="[Event LostFocus] = [Action Search(SearchPattern)]" 
                  Text="{Binding Path=SearchPattern, Mode=TwoWay}"
                  uia:Annotations.CueBanner="{l:LocText StockTicker:FindStocks.FindStocks:SearchHint}">
         </TextBox>
-        <ListBox ItemsSource="{Binding Path=FoundStocks}" Margin="10,0,10,10" Width="180" Height="Auto" 
+        <ListBox ItemsSource="{Binding Path=FoundStocks}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,10" Width="180" Height="Auto" 
                  x:Name="SearchHints"
                  Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"

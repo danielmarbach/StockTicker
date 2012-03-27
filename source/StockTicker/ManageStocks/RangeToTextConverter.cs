@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="RangeToTextConverter.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,30 @@
 
 namespace StockTicker.ManageStocks
 {
+    using System;
+    using System.Globalization;
+    using System.Windows.Data;
+
     using StockTicker.Externals;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel
+    [ValueConversion(typeof(Range), typeof(string))]
+    public class RangeToTextConverter : IValueConverter
     {
-        StockDetailModel Model { get; }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var range = value as Range;
+
+            if (range != null)
+            {
+                return string.Format(culture, "${0} - ${1}", range.From, range.To);
+            }
+
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

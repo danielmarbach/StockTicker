@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------------------
-// <copyright file="Range.cs" company="bbv Software Services AG">
+﻿//-------------------------------------------------------------------------------
+// <copyright file="StockDetailView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Externals
+namespace StockTicker.ManageStocks
 {
-    public class Range
+    using System.Windows.Controls;
+
+    /// <summary>
+    /// Interaction logic for StockDetailView.xaml
+    /// </summary>
+    public partial class StockDetailView : UserControl
     {
-        public Range(decimal from, decimal to)
+        public StockDetailView()
         {
-            this.From = @from;
-            this.To = to;
+            this.InitializeComponent();
         }
-
-        public decimal From { get; private set; }
-
-        public decimal To { get; private set; }
     }
 }

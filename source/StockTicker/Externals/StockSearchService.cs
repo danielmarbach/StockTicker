@@ -45,8 +45,8 @@ namespace StockTicker.Externals
         {
             return new List<StockSearchModel>
                 {
-                    new StockSearchModel(StockSymbols.Ubs, "UBS AG (USA)", StockMarkets.Nyse),
-                    new StockSearchModel(StockSymbols.Mlpl, "UBS E-TRACS 2X LEVERAGED LONG ALERIAN MLP INFRASTRUCTURE ETN", StockMarkets.Amex),
+                    new StockSearchModel(StockSymbols.Ubs, StockCompanies.Ubs, StockMarkets.Nyse),
+                    new StockSearchModel(StockSymbols.Mlpl, StockCompanies.Mlpl, StockMarkets.Amex),
                 };
         }
     }

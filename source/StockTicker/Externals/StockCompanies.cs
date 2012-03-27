@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="Range.cs" company="bbv Software Services AG">
+// <copyright file="StockCompanies.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,9 @@
 
 namespace StockTicker.Externals
 {
-    public class Range
+    internal static class StockCompanies
     {
-        public Range(decimal from, decimal to)
-        {
-            this.From = @from;
-            this.To = to;
-        }
-
-        public decimal From { get; private set; }
-
-        public decimal To { get; private set; }
+        public const string Ubs = "UBS AG (USA)";
+        public const string Mlpl = "UBS E-TRACS 2X LEVERAGED LONG ALERIAN MLP INFRASTRUCTURE ETN";
     }
 }

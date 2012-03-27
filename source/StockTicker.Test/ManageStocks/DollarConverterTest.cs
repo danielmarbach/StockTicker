@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="DollarConverterTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,36 @@
 
 namespace StockTicker.ManageStocks
 {
-    using StockTicker.Externals;
+    using System;
+    using System.Globalization;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel
+    using FluentAssertions;
+
+    using Xunit;
+
+    public class DollarConverterTest
     {
-        StockDetailModel Model { get; }
+        private readonly DollarConverter testee;
+
+        public DollarConverterTest()
+        {
+            this.testee = new DollarConverter();
+        }
+
+        [Fact]
+        public void ShouldNotConvertBack()
+        {
+            Action act = () => this.testee.ConvertBack(null, null, null, null);
+
+            act.ShouldThrow<NotSupportedException>();
+        }
+
+        [Fact]
+        public void ShouldAppendDollar()
+        {
+            var result = this.testee.Convert(10.00m, null, null, CultureInfo.InvariantCulture);
+
+            result.As<string>().Should().NotBeNull().And.Be("$10.00");
+        }
     }
 }

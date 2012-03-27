@@ -21,7 +21,7 @@ namespace StockTicker.Externals
     internal class AnyStockDetailModel : StockDetailModel
     {
         public AnyStockDetailModel()
-            : base("AnyDescription", "AnySector", "AnyIndustry", 10.01m, 9.05m, new Range<decimal>(5.15m, 12.0m), new Range<decimal>(3.66m, 20.12m), 10233, 11333)
+            : base("AnySymbol", "AnyCompany", "AnyFund", "AnyDescription", "AnySector", "AnyIndustry", 10.01m, 9.05m, new Range(5.15m, 12.0m), new Range(3.66m, 20.12m), 10233, 11333)
         {
         }
     }

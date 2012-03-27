@@ -21,8 +21,10 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +48,10 @@
     <Compile Include="FindStocks\SearchViewModelTest.cs" />
     <Compile Include="Externals\AnyStockSearchModel.cs" />
     <Compile Include="ManageStocks\ConductStockTickerContentTest.cs" />
+    <Compile Include="ManageStocks\DollarConverterTest.cs" />
     <Compile Include="ManageStocks\GetStockDetailsTest.cs" />
+    <Compile Include="ManageStocks\RangeToTextConverterTest.cs" />
+    <Compile Include="ManageStocks\StockDetailModelToTitleConverterTest.cs" />
     <Compile Include="TestHelpers\CaliburnIoCFake.cs" />
     <Compile Include="Actions\HideBusyIndicationTest.cs" />
     <Compile Include="Actions\ITestResult.cs" />

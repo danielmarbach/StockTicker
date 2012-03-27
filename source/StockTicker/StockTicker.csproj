@@ -95,6 +95,7 @@
     <Compile Include="Externals\NewUserModel.cs" />
     <Compile Include="Externals\PotentialNewUserModel.cs" />
     <Compile Include="Externals\Range.cs" />
+    <Compile Include="Externals\StockCompanies.cs" />
     <Compile Include="Externals\StockDetailModel.cs" />
     <Compile Include="Externals\StockMarkets.cs" />
     <Compile Include="Externals\StockSearchModel.cs" />
@@ -132,12 +133,24 @@
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
     <Compile Include="ManageStocks\ConductStockTickerContent.cs" />
+    <Compile Include="ManageStocks\DollarConverter.cs" />
     <Compile Include="ManageStocks\GetStockDetails.cs" />
     <Compile Include="ManageStocks\IConductStockTickerContent.cs" />
     <Compile Include="ManageStocks\IGetStockDetails.cs" />
     <Compile Include="ManageStocks\IStockDetailViewModel.cs" />
+    <Compile Include="ManageStocks\ManageStocks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManageStocks.resx</DependentUpon>
+    </Compile>
     <Compile Include="ManageStocks\ManageStocksExtensions.cs" />
     <Compile Include="ManageStocks\ManageStocksModule.cs" />
+    <Compile Include="ManageStocks\RangeToTextConverter.cs" />
+    <Compile Include="ManageStocks\StockDetailModelToTitleConverter.cs" />
+    <Compile Include="ManageStocks\StockDetailView.cs" />
+    <Compile Include="ManageStocks\StockDetailView.xaml.cs">
+      <DependentUpon>StockDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManageStocks\StockDetailViewModel.cs" />
     <Compile Include="News\HeadlinesView.xaml.cs">
       <DependentUpon>HeadlinesView.xaml</DependentUpon>
@@ -196,6 +209,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FindStocks.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageStocks\ManageStocks.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageStocks.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -214,6 +231,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="FindStocks\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageStocks\StockDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,8 +20,11 @@ namespace StockTicker.Externals
 {
     internal class StockDetailModel
     {
-        public StockDetailModel(string description, string sector, string industry, decimal todaysOpen, decimal previousClose, Range<decimal> dailyRange, Range<decimal> fiftyTwoWeekRange, long volume, long averageDailyVolume)
+        public StockDetailModel(string symbol, string company, string fund, string description, string sector, string industry, decimal todaysOpen, decimal previousClose, Range dailyRange, Range fiftyTwoWeekRange, long volume, long averageDailyVolume)
         {
+            this.Symbol = symbol;
+            this.Company = company;
+            this.Fund = fund;
             this.Description = description;
             this.Sector = sector;
             this.Industry = industry;
@@ -33,6 +36,12 @@ namespace StockTicker.Externals
             this.AverageDailyVolume = averageDailyVolume;
         }
 
+        public string Symbol { get; private set; }
+
+        public string Company { get; private set; }
+
+        public string Fund { get; private set; }
+
         public string Description { get; private set; }
 
         public string Sector { get; private set; }
@@ -43,9 +52,9 @@ namespace StockTicker.Externals
 
         public decimal PreviousClose { get; private set; }
 
-        public Range<decimal> DailyRange { get; private set; }
+        public Range DailyRange { get; private set; }
 
-        public Range<decimal> FiftyTwoWeekRange { get; private set; }
+        public Range FiftyTwoWeekRange { get; private set; }
 
         public long Volume { get; private set; }
 

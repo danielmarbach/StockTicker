@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------------------
-// <copyright file="Range.cs" company="bbv Software Services AG">
+﻿//-------------------------------------------------------------------------------
+// <copyright file="DollarConverter.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,23 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Externals
+namespace StockTicker.ManageStocks
 {
-    public class Range
+    using System;
+    using System.Globalization;
+    using System.Windows.Data;
+
+    [ValueConversion(typeof(decimal), typeof(string))]
+    public class DollarConverter : IValueConverter
     {
-        public Range(decimal from, decimal to)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            this.From = @from;
-            this.To = to;
+            return string.Format(culture, "${0}", value);
         }
 
-        public decimal From { get; private set; }
-
-        public decimal To { get; private set; }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

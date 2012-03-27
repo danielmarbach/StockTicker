@@ -21,6 +21,7 @@ namespace StockTicker
     using Ninject;
     using Ninject.Syntax;
 
+    using StockTicker.Extensions;
     using StockTicker.Externals;
     using StockTicker.ManageStocks;
     using StockTicker.News;
@@ -34,14 +35,14 @@ namespace StockTicker
             this.resolutionRoot = resolutionRoot;
         }
 
-        public IStockTickerContentViewModel CreateContent(StockDetailModel stock)
+        public IStockTickerContentViewModel CreateContent(StockDetailModel detailModel)
         {
-            if (stock == null)
+            if (detailModel == null)
             {
                 return this.resolutionRoot.Get<INewsViewModel>();
             }
 
-            return this.resolutionRoot.Get<IStockDetailViewModel>();
+            return this.resolutionRoot.Get<IStockDetailViewModel>(new { detailModel });
         }
     }
 }

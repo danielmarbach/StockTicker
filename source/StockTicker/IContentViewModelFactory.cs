@@ -22,6 +22,6 @@ namespace StockTicker
 
     internal interface IContentViewModelFactory
     {
-        IStockTickerContentViewModel CreateContent(StockDetailModel stock);
+        IStockTickerContentViewModel CreateContent(StockDetailModel detailModel);
     }
 }

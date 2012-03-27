@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="StockTicker.ManageStocks.StockDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="http://schemas.root-project.org/xaml/presentation"
+             xmlns:ManageStocks="clr-namespace:StockTicker.ManageStocks" mc:Ignorable="d" 
+             d:DesignHeight="388" d:DesignWidth="529"
+             d:DataContext="{x:Static ManageStocks:StockDetailView.SampleData}">
+    <UserControl.Resources>
+        <ManageStocks:StockDetailModelToTitleConverter x:Key="titleConverter"/>
+        <ManageStocks:RangeToTextConverter x:Key="rangeConverter"/>
+        <ManageStocks:DollarConverter x:Key="dollarConverter"/>
+    </UserControl.Resources>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="150" HorizontalAlignment="Left">
+            <Button Margin="10" Height="35" x:Name="AddPortfolio" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
+            <Button Margin="10" Height="35" x:Name="AddAlerts" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddAlerts}"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="190*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="{Binding Path=Model, Converter={StaticResource titleConverter}}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:TodaysOpen}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Model.TodaysOpen, Converter={StaticResource dollarConverter}}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:PreviousClose}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Model.PreviousClose, Converter={StaticResource dollarConverter}}"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:DailyRange}"/>
+            <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=Model.DailyRange, Converter={StaticResource rangeConverter}}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:FiftyTwoWeekRange}"/>
+            <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=Model.FiftyTwoWeekRange, Converter={StaticResource rangeConverter}}"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:Volume}"/>
+            <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=Model.Volume}"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AverageDailyVolume}"/>
+            <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=Model.AverageDailyVolume}"/>
+            <Label Grid.Row="7" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:Description}"/>
+            <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=Model.Description}" />
+            <Label Grid.Row="8" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:Sector}"/>
+            <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=Model.Sector}"/>
+            <Label Grid.Row="9" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:Industry}"/>
+            <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=Model.Industry}"/>
+        </Grid>
+    </DockPanel>
+</UserControl>

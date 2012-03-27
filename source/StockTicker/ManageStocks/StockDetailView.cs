@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------------------
-// <copyright file="Range.cs" company="bbv Software Services AG">
+﻿//-------------------------------------------------------------------------------
+// <copyright file="StockDetailView.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,20 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Externals
+namespace StockTicker.ManageStocks
 {
-    public class Range
+    using StockTicker.Externals;
+
+    public partial class StockDetailView
     {
-        public Range(decimal from, decimal to)
+        public static object SampleData
         {
-            this.From = @from;
-            this.To = to;
-        }
+            get
+            {
+                var detailViewModel = new StockDetailViewModel(new StockDetailModel("Symbol", "Company", "Fund", "Description", "Sector", "Industry", 10m, 10.05m, new Range(5.05m, 6.10m), new Range(4.00m, 10.50m), 10000, 20000));
 
-        public decimal From { get; private set; }
-
-        public decimal To { get; private set; }
+                return detailViewModel;
+            }
+        } 
     }
 }

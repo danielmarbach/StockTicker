@@ -20,7 +20,15 @@ namespace StockTicker.ManageStocks
 {
     using Caliburn.Micro;
 
-    public class StockDetailViewModel : Screen, IStockDetailViewModel
+    using StockTicker.Externals;
+
+    internal class StockDetailViewModel : Screen, IStockDetailViewModel
     {
+        public StockDetailViewModel(StockDetailModel detailModel)
+        {
+            this.Model = detailModel;
+        }
+
+        public StockDetailModel Model { get; private set; }
     }
 }

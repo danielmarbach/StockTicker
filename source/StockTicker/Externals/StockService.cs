@@ -44,8 +44,8 @@ namespace StockTicker.Externals
 
         private void CreateDetails()
         {
-            this.details.Add(StockSymbols.Ubs, new StockDetailModel("Global financial firm serving a discerning global client base. The Company provides private banking services and is a global asset manager.", "Financials", "Capital Markets", 14.32m, 14.24m, new Range<decimal>(14.26m, 14.49m), new Range<decimal>(10.41m, 20.04m), 3615813, 3879664));
-            this.details.Add(StockSymbols.Mlpl, new StockDetailModel("UBS E-TRACS 2x Leveraged Long Alerian MLP Infrastructure ETN", "Information Technology", "Electronic Equipment, Instruments and Components", 42.77m, 42.35m, new Range<decimal>(42.25m, 42.77m), new Range<decimal>(25.30m, 45.93m), 29370, 30549));
+            this.details.Add(StockSymbols.Ubs, new StockDetailModel(StockSymbols.Ubs, StockCompanies.Ubs, StockMarkets.Nyse, "Global financial firm serving a discerning global client base. The Company provides private banking services and is a global asset manager.", "Financials", "Capital Markets", 14.32m, 14.24m, new Range(14.26m, 14.49m), new Range(10.41m, 20.04m), 3615813, 3879664));
+            this.details.Add(StockSymbols.Mlpl, new StockDetailModel(StockSymbols.Mlpl, StockCompanies.Mlpl, StockMarkets.Amex, "UBS E-TRACS 2x Leveraged Long Alerian MLP Infrastructure ETN", "Information Technology", "Electronic Equipment, Instruments and Components", 42.77m, 42.35m, new Range(42.25m, 42.77m), new Range(25.30m, 45.93m), 29370, 30549));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="FindStocksActionExtensions.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="IConductStockTickerContent.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.FindStocks
+namespace StockTicker.ManageStocks
 {
-    using System.Collections.Generic;
+    using Caliburn.Micro;
 
-    using StockTicker.Actions;
-    using StockTicker.Externals;
-
-    internal static class FindStocksActionExtensions
+    public interface IConductStockTickerContent : IResult
     {
-        public static IActionBuilder Search(this IActionBuilder builder, string searchPattern, ICollection<StockSearchModel> foundStocks)
-        {
-            return builder.Execute<ISearchStocks>(new { searchPattern, foundStocks });
-        }
     }
 }

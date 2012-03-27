@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="ContentViewModelFactory.cs" company="bbv Software Services AG">
+// <copyright file="AnyStockSearchModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,32 +16,13 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Externals
 {
-    using Ninject;
-    using Ninject.Syntax;
-
-    using StockTicker.Externals;
-    using StockTicker.ManageStocks;
-    using StockTicker.News;
-
-    internal class ContentViewModelFactory : IContentViewModelFactory
+    internal class AnyStockSearchModel : StockSearchModel
     {
-        private readonly IResolutionRoot resolutionRoot;
-
-        public ContentViewModelFactory(IResolutionRoot resolutionRoot)
+        internal AnyStockSearchModel()
+            : base("AnySymbol", "AnyCompany", "AnyFund")
         {
-            this.resolutionRoot = resolutionRoot;
-        }
-
-        public IStockTickerContentViewModel CreateContent(StockDetailModel stock)
-        {
-            if (stock == null)
-            {
-                return this.resolutionRoot.Get<INewsViewModel>();
-            }
-
-            return this.resolutionRoot.Get<IStockDetailViewModel>();
         }
     }
 }

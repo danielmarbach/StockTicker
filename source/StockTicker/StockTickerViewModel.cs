@@ -26,14 +26,12 @@ namespace StockTicker
     using StockTicker.Actions;
     using StockTicker.Externals;
     using StockTicker.FindStocks;
+    using StockTicker.ManageStocks;
 
     internal sealed class StockTickerViewModel : Conductor<IStockTickerContentViewModel>, IStockTickerViewModel
     {
-        private readonly IContentViewModelFactory contentFactory;
-
-        public StockTickerViewModel(ISearchViewModel searchViewModel, IBusyIndicationViewModel busyIndication, IContentViewModelFactory contentFactory)
+        public StockTickerViewModel(ISearchViewModel searchViewModel, IBusyIndicationViewModel busyIndication)
         {
-            this.contentFactory = contentFactory;
             this.Search = searchViewModel;
             this.BusyIndication = busyIndication;
 
@@ -55,8 +53,7 @@ namespace StockTicker
         {
             base.OnInitialize();
 
-            IStockTickerContentViewModel content = this.contentFactory.CreateContent(null);
-            this.ActivateItem(content);
+            Coroutine.BeginExecute(this.Actions().ConductDefaultContent(this).GetEnumerator());
         }
     }
 }

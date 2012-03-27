@@ -19,9 +19,12 @@
 namespace StockTicker.TestHelpers
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     using Caliburn.Micro;
 
+    using FluentAssertions.Assertions;
     using FluentAssertions.EventMonitoring;
 
     using Moq;
@@ -56,6 +59,18 @@ namespace StockTicker.TestHelpers
             result.Execute(new ActionExecutionContext());
 
             result.ShouldRaise("Completed");
+        }
+
+        public static void BeDecoratedWith<TAttribute>(this ObjectAssertions assertions)
+            where TAttribute : Attribute
+        {
+            IEnumerable<TAttribute> attributes = assertions.Subject.GetType().GetAttributes<TAttribute>(false);
+
+            FluentAssertions.Execute
+                .Verification
+                .ForCondition(attributes.Any())
+                .BecauseOf("Attribute {0} could not be found.", typeof(TAttribute).FullName)
+                .FailWith("Expected object to declare {0}{reason}", typeof(TAttribute).FullName);
         }
     }
 }

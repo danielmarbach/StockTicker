@@ -60,7 +60,7 @@ namespace StockTicker
         public void ShouldReturnDetailsViewModelForSearchedContent()
         {
             IStockTickerContentViewModel result =
-                this.testee.CreateContent(new StockSearchModel("AnySymbol", "AnyCompany", "AnyFund"));
+                this.testee.CreateContent(new AnyStockDetailModel());
 
             result.Should().NotBeNull()
                 .And.BeAssignableTo<IStockDetailViewModel>();

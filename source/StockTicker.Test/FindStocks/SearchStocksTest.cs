@@ -23,6 +23,8 @@ namespace StockTicker.FindStocks
     using Caliburn.Micro;
     using FluentAssertions;
     using Moq;
+
+    using StockTicker.Actions;
     using StockTicker.Externals;
     using StockTicker.TestHelpers;
     using Xunit;
@@ -49,6 +51,12 @@ namespace StockTicker.FindStocks
         public void ShouldRaiseCompleted()
         {
             this.testee.ShouldRaiseCompleted();
+        }
+
+        [Fact]
+        public void ShouldRequestAsynchronousExecution()
+        {
+            this.testee.Should().BeDecoratedWith<AsyncAttribute>();
         }
 
         [Fact]

@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------------------
-// <copyright file="IContentViewModelFactory.cs" company="bbv Software Services AG">
+﻿//-------------------------------------------------------------------------------
+// <copyright file="IGetStockDetails.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.ManageStocks
 {
-    using StockTicker.Externals;
+    using Caliburn.Micro;
 
-    internal interface IContentViewModelFactory
+    public interface IGetStockDetails : IResult
     {
-        IStockTickerContentViewModel CreateContent(StockDetailModel stock);
     }
 }

@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="IContentViewModelFactory.cs" company="bbv Software Services AG">
+// <copyright file="StockMarkets.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,12 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.Externals
 {
-    using StockTicker.Externals;
-
-    internal interface IContentViewModelFactory
+    internal static class StockMarkets
     {
-        IStockTickerContentViewModel CreateContent(StockDetailModel stock);
+        public const string Nyse = "NYSE";
+
+        public const string Amex = "ETF - AMEX";
     }
 }

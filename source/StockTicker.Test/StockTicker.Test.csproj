@@ -40,9 +40,13 @@
     <Compile Include="Actions\ActionBuilderTest.cs" />
     <Compile Include="Actions\AsyncResultDecoratorTest.cs" />
     <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
+    <Compile Include="Externals\AnyStockDetailModel.cs" />
     <Compile Include="ContentViewModelFactoryTest.cs" />
     <Compile Include="FindStocks\SearchStocksTest.cs" />
     <Compile Include="FindStocks\SearchViewModelTest.cs" />
+    <Compile Include="Externals\AnyStockSearchModel.cs" />
+    <Compile Include="ManageStocks\ConductStockTickerContentTest.cs" />
+    <Compile Include="ManageStocks\GetStockDetailsTest.cs" />
     <Compile Include="TestHelpers\CaliburnIoCFake.cs" />
     <Compile Include="Actions\HideBusyIndicationTest.cs" />
     <Compile Include="Actions\ITestResult.cs" />

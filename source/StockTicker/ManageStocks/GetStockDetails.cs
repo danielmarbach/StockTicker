@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="ContentViewModelFactory.cs" company="bbv Software Services AG">
+// <copyright file="GetStockDetails.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,32 +16,22 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker
+namespace StockTicker.ManageStocks
 {
-    using Ninject;
-    using Ninject.Syntax;
+    using System;
 
-    using StockTicker.Externals;
-    using StockTicker.ManageStocks;
-    using StockTicker.News;
+    using Caliburn.Micro;
 
-    internal class ContentViewModelFactory : IContentViewModelFactory
+    using StockTicker.Actions;
+
+    [Async]
+    internal class GetStockDetails : IGetStockDetails
     {
-        private readonly IResolutionRoot resolutionRoot;
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
 
-        public ContentViewModelFactory(IResolutionRoot resolutionRoot)
+        public void Execute(ActionExecutionContext context)
         {
-            this.resolutionRoot = resolutionRoot;
-        }
-
-        public IStockTickerContentViewModel CreateContent(StockDetailModel stock)
-        {
-            if (stock == null)
-            {
-                return this.resolutionRoot.Get<INewsViewModel>();
-            }
-
-            return this.resolutionRoot.Get<IStockDetailViewModel>();
+            this.Completed(this, new ResultCompletionEventArgs());
         }
     }
 }

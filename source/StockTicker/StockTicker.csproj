@@ -84,6 +84,23 @@
     <Compile Include="Actions\ResultDecoratorBase.cs" />
     <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\ShowBusyIndication.cs" />
+    <Compile Include="Authentication\Authenticate.cs" />
+    <Compile Include="Authentication\AuthenticationExtensions.cs" />
+    <Compile Include="Authentication\AuthenticationModule.cs" />
+    <Compile Include="Authentication\AuthenticationStepFactory.cs" />
+    <Compile Include="Authentication\AuthenticationViewModel.cs" />
+    <Compile Include="Authentication\CreateAccountView.xaml.cs">
+      <DependentUpon>CreateAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Authentication\CreateAccountViewModel.cs" />
+    <Compile Include="Authentication\IAuthenticate.cs" />
+    <Compile Include="Authentication\IAuthenticationStep.cs" />
+    <Compile Include="Authentication\IAuthenticationStepFactory.cs" />
+    <Compile Include="Authentication\IAuthenticationViewModel.cs" />
+    <Compile Include="Authentication\ICreateAccountViewModel.cs" />
+    <Compile Include="Authentication\AuthenticationView.xaml.cs">
+      <DependentUpon>AuthenticationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="ContentViewModelFactory.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
@@ -230,6 +247,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Authentication\AuthenticationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Authentication\CreateAccountView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FindStocks\SearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,5 +295,6 @@
     <Resource Include="News\Images\Retirement.jpg" />
     <Resource Include="News\Images\Taxes.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
 </Project>

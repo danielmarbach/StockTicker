@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="IAuthenticationStepFactory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,12 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.ManageStocks
+namespace StockTicker.Authentication
 {
-    using StockTicker.Actions;
-    using StockTicker.Externals;
+    using System.Collections.Generic;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel, IUseActions
+    internal interface IAuthenticationStepFactory
     {
-        StockDetailModel Model { get; }
+        IEnumerable<IAuthenticationStep> CreateSteps();
     }
 }

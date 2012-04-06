@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="StockDetailViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="AuthenticationStepFactory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,31 +16,25 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.ManageStocks
+namespace StockTicker.Authentication
 {
-    using System;
     using System.Collections.Generic;
 
-    using Caliburn.Micro;
+    using Ninject;
+    using Ninject.Syntax;
 
-    using StockTicker.Actions;
-    using StockTicker.Authentication;
-    using StockTicker.Externals;
-
-    internal class StockDetailViewModel : Screen, IStockDetailViewModel
+    internal class AuthenticationStepFactory : IAuthenticationStepFactory
     {
-        public StockDetailViewModel(StockDetailModel detailModel)
+        private readonly IResolutionRoot resolutionRoot;
+
+        public AuthenticationStepFactory(IResolutionRoot resolutionRoot)
         {
-            this.Model = detailModel;
+            this.resolutionRoot = resolutionRoot;
         }
 
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public StockDetailModel Model { get; private set; }
-
-        public IEnumerable<IResult> AddPortfolio()
+        public IEnumerable<IAuthenticationStep> CreateSteps()
         {
-            return this.Actions().WithLogin(bilder => { });
+            yield return this.resolutionRoot.Get<ICreateAccountViewModel>();
         }
     }
 }

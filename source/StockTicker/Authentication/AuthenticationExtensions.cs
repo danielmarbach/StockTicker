@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="AuthenticationExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,17 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.ManageStocks
+namespace StockTicker.Authentication
 {
-    using StockTicker.Actions;
-    using StockTicker.Externals;
+    using System;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel, IUseActions
+    using StockTicker.Actions;
+
+    internal static class AuthenticationExtensions
     {
-        StockDetailModel Model { get; }
+        public static IActionBuilder WithLogin(this IActionBuilder builder, Action<IActionBuilder> configure)
+        {
+            return builder.Execute<IAuthenticate>();
+        }
     }
 }

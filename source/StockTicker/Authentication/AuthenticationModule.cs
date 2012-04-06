@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="AuthenticationModule.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,17 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.ManageStocks
+namespace StockTicker.Authentication
 {
-    using StockTicker.Actions;
-    using StockTicker.Externals;
+    using Ninject.Modules;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel, IUseActions
+    public class AuthenticationModule : NinjectModule
     {
-        StockDetailModel Model { get; }
+        public override void Load()
+        {
+            this.Bind<IAuthenticationViewModel>().To<AuthenticationViewModel>();
+            this.Bind<ICreateAccountViewModel>().To<CreateAccountViewModel>();
+            this.Bind<IAuthenticationStepFactory>().To<AuthenticationStepFactory>().InSingletonScope();
+        }
     }
 }

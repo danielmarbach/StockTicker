@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IStockDetailViewModel.cs" company="bbv Software Services AG">
+// <copyright file="CreateAccountView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.ManageStocks
+namespace StockTicker.Authentication
 {
-    using StockTicker.Actions;
-    using StockTicker.Externals;
+    using System.Windows.Controls;
 
-    internal interface IStockDetailViewModel : IStockTickerContentViewModel, IUseActions
+    /// <summary>
+    /// Interaction logic for CreateAccountView.xaml
+    /// </summary>
+    public partial class CreateAccountView : UserControl
     {
-        StockDetailModel Model { get; }
+        public CreateAccountView()
+        {
+            this.InitializeComponent();
+        }
     }
 }

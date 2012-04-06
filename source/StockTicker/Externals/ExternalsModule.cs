@@ -33,7 +33,7 @@ namespace StockTicker.Externals
                 .SelectAllClasses()
                 .InNamespaceOf<ExternalsModule>()
                 .Where(t => t.Name.EndsWith("Service", StringComparison.OrdinalIgnoreCase))
-                .BindToDefaultInterface()
+                .BindDefaultInterface()
                 .Configure(c => c.InSingletonScope()));
         }
     }

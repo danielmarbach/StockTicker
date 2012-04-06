@@ -39,7 +39,7 @@ namespace StockTicker.Actions
                 .IncludingNonePublicTypes()
                 .SelectAllClasses()
                 .InheritedFrom<IResult>()
-                .BindToDefaultInterface()
+                .BindDefaultInterface()
                 .Configure(c => c.InTransientScope()));
         }
     }

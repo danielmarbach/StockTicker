@@ -33,7 +33,7 @@ namespace StockTicker.News
                 .SelectAllClasses()
                 .InheritedFrom<INewsContentViewModel>()
                 .InNamespaceOf<NewsModule>()
-                .BindToAllInterfaces()
+                .BindAllInterfaces()
                 .Configure(c => c.InSingletonScope()));
         }
     }

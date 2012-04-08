@@ -40,5 +40,12 @@ namespace StockTicker.Authentication
         {
             return new UserNameChosen(chooseUserNameViewModel.FirstName, chooseUserNameViewModel.LastName, chooseUserNameViewModel.UserName);
         }
+
+        public static void FromChosenUserName(this IChoosePasswordViewModel choosePasswordViewModel, UserNameChosen message)
+        {
+            choosePasswordViewModel.FirstName = message.FirstName;
+            choosePasswordViewModel.LastName = message.LastName;
+            choosePasswordViewModel.UserName = message.UserName;
+        }
     }
 }

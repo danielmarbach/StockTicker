@@ -19,6 +19,7 @@
 namespace StockTicker.Authentication
 {
     using System;
+    using System.Security;
 
     using Caliburn.Micro;
 
@@ -28,8 +29,38 @@ namespace StockTicker.Authentication
     {
         public Func<IActionBuilder> Actions { private get; set; }
 
+        public string FirstName
+        {
+            get; set;
+        }
+
+        public string LastName
+        {
+            get;
+            set;
+        }
+
+        public string UserName
+        {
+            get;
+            set;
+        }
+
+        public SecureString Password
+        {
+            get;
+            set;
+        }
+
+        public SecureString PasswordRetype
+        {
+            get;
+            set;
+        }
+
         public void Handle(UserNameChosen message)
         {
+            this.FromChosenUserName(message);
         }
     }
 }

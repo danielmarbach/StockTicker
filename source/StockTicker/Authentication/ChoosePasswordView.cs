@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="ChoosePasswordView.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,21 @@
 
 namespace StockTicker.Authentication
 {
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-
-    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>
+    public partial class ChoosePasswordView
     {
-        string FirstName { get; set; }
+        public static object SampleData
+        {
+            get
+            {
+                var choosePasswordViewModel = new ChoosePasswordViewModel()
+                    {
+                        FirstName = "User", 
+                        LastName = "Fritz",
+                        UserName = "user.fritz"
+                    };
 
-        string LastName { get; set; }
-
-        string UserName { get; set; }
+                return choosePasswordViewModel;
+            }
+        }
     }
 }

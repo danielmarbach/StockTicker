@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
+// <copyright file="ChoosePasswordView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,16 +18,16 @@
 
 namespace StockTicker.Authentication
 {
-    using Caliburn.Micro;
+    using System.Windows.Controls;
 
-    using StockTicker.Actions;
-
-    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>
+    /// <summary>
+    /// Interaction logic for ChoosePasswordView.xaml
+    /// </summary>
+    public partial class ChoosePasswordView : UserControl
     {
-        string FirstName { get; set; }
-
-        string LastName { get; set; }
-
-        string UserName { get; set; }
+        public ChoosePasswordView()
+        {
+            this.InitializeComponent();
+        }
     }
 }

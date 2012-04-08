@@ -70,6 +70,15 @@ namespace StockTicker.Authentication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s choose your password.
+        /// </summary>
+        internal static string ChoosePassword {
+            get {
+                return ResourceManager.GetString("ChoosePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s choose your username.
         /// </summary>
         internal static string ChooseUserName {
@@ -106,6 +115,15 @@ namespace StockTicker.Authentication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a password.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick a username.
         /// </summary>
         internal static string PickUserName {
@@ -120,6 +138,15 @@ namespace StockTicker.Authentication {
         internal static string Suggestion {
             get {
                 return ResourceManager.GetString("Suggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name.
+        /// </summary>
+        internal static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }

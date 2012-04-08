@@ -101,6 +101,10 @@
       <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authentication\ChooseUserNameViewModel.cs" />
+    <Compile Include="Authentication\ChoosePasswordView.xaml.cs">
+      <DependentUpon>ChoosePasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Authentication\ChoosePasswordView.cs" />
     <Compile Include="Authentication\IAuthenticate.cs" />
     <Compile Include="Authentication\IAuthenticationStep.cs" />
     <Compile Include="Authentication\IAuthenticationStepFactory.cs" />
@@ -111,6 +115,7 @@
       <DependentUpon>AuthenticationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authentication\ISuggestUsernames.cs" />
+    <Compile Include="Authentication\Secure.cs" />
     <Compile Include="Authentication\SuggestUsernames.cs" />
     <Compile Include="Authentication\UserNameChosen.cs" />
     <Compile Include="CaliburnModule.cs" />
@@ -269,6 +274,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Authentication\ChooseUserNameView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Authentication\ChoosePasswordView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -120,6 +120,9 @@
   <data name="AuthenticationTitle" xml:space="preserve">
     <value>Authentication</value>
   </data>
+  <data name="ChoosePassword" xml:space="preserve">
+    <value>Let's choose your password</value>
+  </data>
   <data name="ChooseUserName" xml:space="preserve">
     <value>Let's choose your username</value>
   </data>
@@ -132,10 +135,16 @@
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Create a password</value>
+  </data>
   <data name="PickUserName" xml:space="preserve">
     <value>Pick a username</value>
   </data>
   <data name="Suggestion" xml:space="preserve">
     <value>Fetching suggestion...</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User name</value>
   </data>
 </root>

@@ -61,6 +61,60 @@ namespace StockTicker.Authentication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication.
+        /// </summary>
+        internal static string AuthenticationTitle {
+            get {
+                return ResourceManager.GetString("AuthenticationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s choose your username.
+        /// </summary>
+        internal static string ChooseUserName {
+            get {
+                return ResourceManager.GetString("ChooseUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        internal static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How about one of these?.
+        /// </summary>
+        internal static string HowAbout {
+            get {
+                return ResourceManager.GetString("HowAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        internal static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick a username.
+        /// </summary>
+        internal static string PickUserName {
+            get {
+                return ResourceManager.GetString("PickUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fetching suggestion....
         /// </summary>
         internal static string Suggestion {

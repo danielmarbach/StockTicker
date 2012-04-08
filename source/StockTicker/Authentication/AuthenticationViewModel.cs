@@ -22,13 +22,15 @@ namespace StockTicker.Authentication
 
     using Caliburn.Micro;
 
-    internal class AuthenticationViewModel : Conductor<IAuthenticationStep>.Collection.OneActive, IAuthenticationViewModel
+    internal sealed class AuthenticationViewModel : Conductor<IAuthenticationStep>.Collection.OneActive, IAuthenticationViewModel
     {
         private readonly IAuthenticationStepFactory authenticationStepFactory;
 
         public AuthenticationViewModel(IAuthenticationStepFactory authenticationStepFactory)
         {
             this.authenticationStepFactory = authenticationStepFactory;
+
+            this.DisplayName = Authentication.AuthenticationTitle;
         }
 
         public void Next()

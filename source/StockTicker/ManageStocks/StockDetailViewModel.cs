@@ -40,7 +40,7 @@ namespace StockTicker.ManageStocks
 
         public IEnumerable<IResult> AddPortfolio()
         {
-            return this.Actions().WithLogin(bilder => { });
+            return this.Actions().WithLogin(builder => { });
         }
     }
 }

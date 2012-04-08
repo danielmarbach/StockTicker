@@ -96,6 +96,7 @@
     <Compile Include="Authentication\AuthenticationStepFactory.cs" />
     <Compile Include="Authentication\AuthenticationViewModel.cs" />
     <Compile Include="Authentication\ChoosePasswordViewModel.cs" />
+    <Compile Include="Authentication\ChooseUserNameView.cs" />
     <Compile Include="Authentication\ChooseUserNameView.xaml.cs">
       <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
     </Compile>
@@ -271,7 +272,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DefaultBrushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FindStocks\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

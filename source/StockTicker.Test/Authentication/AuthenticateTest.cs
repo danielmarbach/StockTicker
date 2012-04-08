@@ -18,6 +18,8 @@
 
 namespace StockTicker.Authentication
 {
+    using System.Dynamic;
+
     using Caliburn.Micro;
 
     using Moq;
@@ -52,7 +54,7 @@ namespace StockTicker.Authentication
         {
             this.testee.Execute(new ActionExecutionContext());
 
-            this.windowManager.Verify(w => w.ShowDialog(this.authenticationViewModel.Object, null, null));
+            this.windowManager.Verify(w => w.ShowDialog(this.authenticationViewModel.Object, null, It.IsAny<ExpandoObject>()));
         }
     }
 }

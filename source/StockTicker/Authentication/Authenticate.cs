@@ -19,6 +19,9 @@
 namespace StockTicker.Authentication
 {
     using System;
+    using System.Dynamic;
+    using System.Windows;
+    using System.Windows.Controls.Primitives;
 
     using Caliburn.Micro;
 
@@ -38,7 +41,12 @@ namespace StockTicker.Authentication
 
         public void Execute(ActionExecutionContext context)
         {
-            this.windowManager.ShowDialog(this.authenticationViewModel);
+            dynamic settings = new ExpandoObject();
+            settings.Placement = PlacementMode.Center;
+            settings.ResizeMode = ResizeMode.NoResize;
+            settings.ShowInTaskbar = false;
+
+            this.windowManager.ShowDialog(this.authenticationViewModel, null, settings);
 
             this.Completed(this, new ResultCompletionEventArgs());
         }

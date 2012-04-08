@@ -19,14 +19,26 @@
 namespace StockTicker.Authentication
 {
     using System;
+    using System.Collections.Generic;
 
     using StockTicker.Actions;
+    using StockTicker.Externals;
 
     internal static class AuthenticationExtensions
     {
         public static IActionBuilder WithLogin(this IActionBuilder builder, Action<IActionBuilder> configure)
         {
             return builder.Execute<IAuthenticate>();
+        }
+
+        public static IActionBuilder SuggestUsernames(this IActionBuilder builder, PotentialNewUserModel potentialNewUser, ICollection<string> suggestedUsernames)
+        {
+            return builder.Execute<ISuggestUsernames>(new { potentialNewUser, suggestedUsernames });
+        }
+
+        public static UserNameChosen ToUserNameChosen(this IChooseUserNameViewModel chooseUserNameViewModel)
+        {
+            return new UserNameChosen(chooseUserNameViewModel.FirstName, chooseUserNameViewModel.LastName, chooseUserNameViewModel.UserName);
         }
     }
 }

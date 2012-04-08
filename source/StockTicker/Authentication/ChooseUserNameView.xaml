@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="StockTicker.Authentication.ChooseUserNameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="http://schemas.root-project.org/xaml/presentation" xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="388" d:DesignWidth="529">
+    <Grid>
+        <TextBox Height="23" Name="FirstName" Width="120" Margin="70,72,339,292" TabIndex="0" />
+        <TextBox Height="23" Name="LastName" Width="120" Margin="287,72,122,292" TabIndex="1"/>
+        <TextBox Height="23" Name="UserName" Width="120" Margin="70,149,339,215" TabIndex="2" cal:Message.Attach="[Event GotFocus] = [Action SuggestUsernames(FirstName, LastName)]" />
+    </Grid>
+</UserControl>

@@ -19,7 +19,9 @@
 namespace StockTicker.Authentication
 {
     using Caliburn.Micro;
+
     using Moq;
+
     using StockTicker.TestHelpers;
     using Xunit;
 

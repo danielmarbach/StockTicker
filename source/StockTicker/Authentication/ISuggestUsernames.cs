@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="CreateAccountViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="ISuggestUsernames.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ namespace StockTicker.Authentication
 {
     using Caliburn.Micro;
 
-    internal class CreateAccountViewModel : Screen, ICreateAccountViewModel
+    internal interface ISuggestUsernames : IResult
     {
     }
 }

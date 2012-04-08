@@ -86,24 +86,35 @@
     <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\ShowBusyIndication.cs" />
     <Compile Include="Authentication\Authenticate.cs" />
+    <Compile Include="Authentication\Authentication.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Authentication.resx</DependentUpon>
+    </Compile>
     <Compile Include="Authentication\AuthenticationExtensions.cs" />
     <Compile Include="Authentication\AuthenticationModule.cs" />
     <Compile Include="Authentication\AuthenticationStepFactory.cs" />
     <Compile Include="Authentication\AuthenticationViewModel.cs" />
-    <Compile Include="Authentication\CreateAccountView.xaml.cs">
-      <DependentUpon>CreateAccountView.xaml</DependentUpon>
+    <Compile Include="Authentication\ChoosePasswordViewModel.cs" />
+    <Compile Include="Authentication\ChooseUserNameView.xaml.cs">
+      <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Authentication\CreateAccountViewModel.cs" />
+    <Compile Include="Authentication\ChooseUserNameViewModel.cs" />
     <Compile Include="Authentication\IAuthenticate.cs" />
     <Compile Include="Authentication\IAuthenticationStep.cs" />
     <Compile Include="Authentication\IAuthenticationStepFactory.cs" />
     <Compile Include="Authentication\IAuthenticationViewModel.cs" />
-    <Compile Include="Authentication\ICreateAccountViewModel.cs" />
+    <Compile Include="Authentication\IChoosePasswordViewModel.cs" />
+    <Compile Include="Authentication\IChooseUsernameViewModel.cs" />
     <Compile Include="Authentication\AuthenticationView.xaml.cs">
       <DependentUpon>AuthenticationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Authentication\ISuggestUsernames.cs" />
+    <Compile Include="Authentication\SuggestUsernames.cs" />
+    <Compile Include="Authentication\UserNameChosen.cs" />
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="ContentViewModelFactory.cs" />
+    <Compile Include="Extensions\BindingExtensions.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
     <Compile Include="Externals\AuthenticationService.cs" />
     <Compile Include="Externals\ExternalsModule.cs" />
@@ -223,6 +234,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Actions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Authentication\Authentication.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindStocks\FindStocks.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FindStocks.Designer.cs</LastGenOutput>
@@ -252,7 +267,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Authentication\CreateAccountView.xaml">
+    <Page Include="Authentication\ChooseUserNameView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

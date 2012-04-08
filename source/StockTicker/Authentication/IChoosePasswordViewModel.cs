@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="AuthenticationModule.cs" company="bbv Software Services AG">
+// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +18,11 @@
 
 namespace StockTicker.Authentication
 {
-    using Ninject.Modules;
+    using Caliburn.Micro;
 
-    using StockTicker.Extensions;
+    using StockTicker.Actions;
 
-    public class AuthenticationModule : NinjectModule
-    {
-        public override void Load()
-        {
-            this.Bind<IAuthenticationViewModel>().To<AuthenticationViewModel>();
-
-            this.Bind<IChooseUserNameViewModel>().To<ChooseUserNameViewModel>().RegisterOnEventAggregator();
-            this.Bind<IChoosePasswordViewModel>().To<ChoosePasswordViewModel>().RegisterOnEventAggregator();
-
-            this.Bind<IAuthenticationStepFactory>().To<AuthenticationStepFactory>().InSingletonScope();
-        }
+    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>
+    {         
     }
 }

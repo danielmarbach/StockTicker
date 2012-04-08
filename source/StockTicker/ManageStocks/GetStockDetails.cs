@@ -34,7 +34,7 @@ namespace StockTicker.ManageStocks
 
         private readonly IStockService stockService;
 
-        public GetStockDetails(string symbol, IFutureValueSetter<StockDetailModel> detailModel, IStockService stockService)
+        public GetStockDetails(IStockService stockService, string symbol, IFutureValueSetter<StockDetailModel> detailModel)
         {
             if (string.IsNullOrEmpty(symbol))
             {

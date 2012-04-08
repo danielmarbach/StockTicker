@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="AuthenticationModule.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="UserNameChosen.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +18,19 @@
 
 namespace StockTicker.Authentication
 {
-    using Ninject.Modules;
-
-    using StockTicker.Extensions;
-
-    public class AuthenticationModule : NinjectModule
+    internal class UserNameChosen
     {
-        public override void Load()
+        public UserNameChosen(string firstName, string lastName, string userName)
         {
-            this.Bind<IAuthenticationViewModel>().To<AuthenticationViewModel>();
-
-            this.Bind<IChooseUserNameViewModel>().To<ChooseUserNameViewModel>().RegisterOnEventAggregator();
-            this.Bind<IChoosePasswordViewModel>().To<ChoosePasswordViewModel>().RegisterOnEventAggregator();
-
-            this.Bind<IAuthenticationStepFactory>().To<AuthenticationStepFactory>().InSingletonScope();
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.UserName = userName;
         }
+
+        public string FirstName { get; private set; }
+
+        public string LastName { get; private set; }
+
+        public string UserName { get; private set; }
     }
 }

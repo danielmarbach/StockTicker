@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="AuthenticationModule.cs" company="bbv Software Services AG">
+// <copyright file="BindingExtensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,22 +16,20 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Extensions
 {
-    using Ninject.Modules;
+    using Caliburn.Micro;
 
-    using StockTicker.Extensions;
+    using Ninject;
+    using Ninject.Syntax;
 
-    public class AuthenticationModule : NinjectModule
+    public static class BindingExtensions
     {
-        public override void Load()
+        public static IBindingOnSyntax<T> RegisterOnEventAggregator<T>(this IBindingOnSyntax<T> syntax)
         {
-            this.Bind<IAuthenticationViewModel>().To<AuthenticationViewModel>();
-
-            this.Bind<IChooseUserNameViewModel>().To<ChooseUserNameViewModel>().RegisterOnEventAggregator();
-            this.Bind<IChoosePasswordViewModel>().To<ChoosePasswordViewModel>().RegisterOnEventAggregator();
-
-            this.Bind<IAuthenticationStepFactory>().To<AuthenticationStepFactory>().InSingletonScope();
+            return
+                syntax.OnActivation((ctx, instance) => ctx.Kernel.Get<IEventAggregator>().Subscribe(instance))
+                      .OnDeactivation((ctx, instance) => ctx.Kernel.Get<IEventAggregator>().Unsubscribe(instance));
         }
     }
 }

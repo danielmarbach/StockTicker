@@ -34,7 +34,8 @@ namespace StockTicker.Authentication
 
         public IEnumerable<IAuthenticationStep> CreateSteps()
         {
-            yield return this.resolutionRoot.Get<ICreateAccountViewModel>();
+            yield return this.resolutionRoot.Get<IChooseUserNameViewModel>();
+            yield return this.resolutionRoot.Get<IChoosePasswordViewModel>();
         }
     }
 }

@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="ICreateAccountViewModel.cs" company="bbv Software Services AG">
+// <copyright file="IChooseUserNameViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,14 @@
 
 namespace StockTicker.Authentication
 {
-    public interface ICreateAccountViewModel : IAuthenticationStep
+    using StockTicker.Actions;
+
+    public interface IChooseUserNameViewModel : IAuthenticationStep, IUseActions
     {
+        string FirstName { get; }
+
+        string LastName { get; }
+
+        string UserName { get; }
     }
 }

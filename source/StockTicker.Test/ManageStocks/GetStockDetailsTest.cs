@@ -94,7 +94,7 @@ namespace StockTicker.ManageStocks
 
         private GetStockDetails CreateTestee(string symbol)
         {
-            return new GetStockDetails(symbol, this.detail, this.stockService.Object);
+            return new GetStockDetails(this.stockService.Object, symbol, this.detail);
         }
     }
 }

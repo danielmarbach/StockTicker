@@ -40,8 +40,8 @@ namespace StockTicker.Authentication
         [Fact]
         public void ShouldInitializeWizardSteps()
         {
-            var firstStep = Mock.Of<IAuthenticationStep>();
-            var secondStep = Mock.Of<IAuthenticationStep>();
+            var firstStep = new FakeStep();
+            var secondStep = new FakeStep();
 
             this.authenticationStepFactory.SetupSequence(f => f.CreateSteps()).Returns(
                 new List<IAuthenticationStep> { firstStep, secondStep });
@@ -58,22 +58,26 @@ namespace StockTicker.Authentication
         [Fact]
         public void Next_ShouldMoveToNextStep()
         {
-            var firstStep = Mock.Of<IAuthenticationStep>();
-            var secondStep = Mock.Of<IAuthenticationStep>();
+            var firstStep = new FakeStep();
+            var secondStep = new FakeStep();
 
             this.authenticationStepFactory.SetupSequence(f => f.CreateSteps()).Returns(
                 new List<IAuthenticationStep> { firstStep, secondStep });
 
-            this.ActiveTestee();
+            this.Activate();
 
             this.testee.Next();
 
             this.testee.ActiveItem.Should().Be(secondStep);
         }
 
-        private void ActiveTestee()
+        private void Activate()
         {
             this.testee.As<IActivate>().Activate();
+        }
+
+        private class FakeStep : Screen, IAuthenticationStep
+        {
         }
     }
 }

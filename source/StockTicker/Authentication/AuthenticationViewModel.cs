@@ -18,14 +18,13 @@
 
 namespace StockTicker.Authentication
 {
-    using System.Collections.Generic;
+    using System.Linq;
+
     using Caliburn.Micro;
 
     internal class AuthenticationViewModel : Conductor<IAuthenticationStep>.Collection.OneActive, IAuthenticationViewModel
     {
         private readonly IAuthenticationStepFactory authenticationStepFactory;
-
-        private IEnumerator<IAuthenticationStep> enumerator;
 
         public AuthenticationViewModel(IAuthenticationStepFactory authenticationStepFactory)
         {
@@ -34,11 +33,15 @@ namespace StockTicker.Authentication
 
         public void Next()
         {
-            this.DeactivateItem(this.enumerator.Current, true);
+            this.DeactivateItem(this.ActiveItem, true);
 
-            if (this.enumerator.MoveNext())
+            if (this.Items.Any())
             {
-                this.ActivateItem(this.enumerator.Current);
+                this.ActivateItem(this.Items.First());
+            }
+            else
+            {
+                this.TryClose();
             }
         }
 
@@ -48,17 +51,7 @@ namespace StockTicker.Authentication
 
             this.Items.AddRange(this.authenticationStepFactory.CreateSteps());
 
-            this.enumerator = this.Items.GetEnumerator();
-            this.enumerator.MoveNext();
-
-            this.ActivateItem(this.enumerator.Current);
-        }
-
-        protected override void OnDeactivate(bool close)
-        {
-            base.OnDeactivate(close);
-
-            this.enumerator.Dispose();
+            this.ActivateItem(this.Items.First());
         }
     }
 }

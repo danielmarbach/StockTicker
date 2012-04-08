@@ -26,6 +26,7 @@ namespace StockTicker
         public override void Load()
         {
             this.Kernel.Bind<IWindowManager>().To<WindowManager>().InSingletonScope();
+            this.Kernel.Bind<IEventAggregator>().To<EventAggregator>().InSingletonScope();
         }
     }
 }

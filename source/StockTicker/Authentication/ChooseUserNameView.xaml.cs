@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="CreateAccountView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="ChooseUserNameView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +21,11 @@ namespace StockTicker.Authentication
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for CreateAccountView.xaml
+    /// Interaction logic for ChooseUsernameView.xaml
     /// </summary>
-    public partial class CreateAccountView : UserControl
+    public partial class ChooseUserNameView : UserControl
     {
-        public CreateAccountView()
+        public ChooseUserNameView()
         {
             this.InitializeComponent();
         }

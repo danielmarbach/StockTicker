@@ -32,6 +32,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thinktecture.UIAnnotations">
+      <HintPath>..\packages\thinktectureUIAnnotationsWPF\lib\Thinktecture.UIAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>

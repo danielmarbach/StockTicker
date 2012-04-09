@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ChooseUserNameViewModelTest.cs" company="bbv Software Services AG">
+// <copyright file="NotifyTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,45 +16,44 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Actions
 {
     using Caliburn.Micro;
 
-    using FluentAssertions;
-    using FluentAssertions.EventMonitoring;
-
     using Moq;
+
+    using StockTicker.TestHelpers;
 
     using Xunit;
 
-    public class ChooseUserNameViewModelTest
+    public class NotifyTest
     {
-        private readonly ChooseUserNameViewModel testee;
+        private readonly Mock<IEventAggregator> eventAggregator;
 
-        public ChooseUserNameViewModelTest()
+        private readonly object message;
+
+        private readonly Notify testee;
+
+        public NotifyTest()
         {
-            this.testee = new ChooseUserNameViewModel();
+            this.eventAggregator = new Mock<IEventAggregator>();
+            this.message = new object();
+
+            this.testee = new Notify(this.eventAggregator.Object, this.message);
         }
 
         [Fact]
-        public void UserName_ShouldRaisePropertyChanged()
+        public void ShouldRaiseCompleted()
         {
-            this.testee.MonitorEvents();
-
-            this.testee.UserName = "AnyName";
-
-            this.testee.ShouldRaisePropertyChangeFor(t => t.UserName);
+            this.testee.ShouldRaiseCompleted();
         }
 
         [Fact]
-        public void ShouldRaisePropertyChangedForHasSuggestions()
+        public void ShouldPublish()
         {
-            this.testee.MonitorEvents();
+            this.testee.Execute(new ActionExecutionContext());
 
-            this.testee.Suggestions.Add("AnySuggestion");
-
-            this.testee.ShouldRaisePropertyChangeFor(x => x.HasSuggestions);
-            this.testee.HasSuggestions.Should().BeTrue();
+            this.eventAggregator.Verify(e => e.Publish(this.message));
         }
     }
 }

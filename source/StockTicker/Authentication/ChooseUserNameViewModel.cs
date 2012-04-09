@@ -31,17 +31,14 @@ namespace StockTicker.Authentication
 
     internal class ChooseUserNameViewModel : Screen, IChooseUserNameViewModel
     {
-        private readonly IEventAggregator eventAggregator;
-
         private string userName;
 
         private string firstName;
 
         private string lastName;
 
-        public ChooseUserNameViewModel(IEventAggregator eventAggregator)
+        public ChooseUserNameViewModel()
         {
-            this.eventAggregator = eventAggregator;
             this.Suggestions = new BindableCollection<string>();
             this.Suggestions.CollectionChanged += this.HandleSuggestionsChanged;
         }
@@ -105,8 +102,10 @@ namespace StockTicker.Authentication
 
         public IEnumerable<IResult> SuggestUsernames(string firstName, string lastName)
         {
-            // TODO: Enable busy indication.
-            return this.Actions().SuggestUsernames(new PotentialNewUserModel(firstName, lastName), this.Suggestions);
+            return
+                this.Actions().WithBusyIndication(
+                    busyScope => busyScope.SuggestUsernames(new PotentialNewUserModel(firstName, lastName), this.Suggestions),
+                    Authentication.Suggestion);
         }
 
         protected override void OnDeactivate(bool close)
@@ -115,7 +114,7 @@ namespace StockTicker.Authentication
 
             UserNameChosen message = this.ToUserNameChosen();
 
-            this.eventAggregator.Publish(message);
+            Coroutine.BeginExecute(this.Actions().Notify(message).GetEnumerator());
         }
 
         private void HandleSuggestionsChanged(object sender, NotifyCollectionChangedEventArgs e)

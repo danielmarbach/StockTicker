@@ -16,6 +16,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentAssertions\Lib\net40\FluentAssertions.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=3.3.1.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -43,8 +46,11 @@
     <Compile Include="Actions\ActionBuilderTest.cs" />
     <Compile Include="Actions\AsyncResultDecoratorTest.cs" />
     <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
+    <Compile Include="Actions\MissingTest.cs" />
+    <Compile Include="Actions\NotifyTest.cs" />
     <Compile Include="Authentication\AuthenticateTest.cs" />
     <Compile Include="Authentication\AuthenticationViewModelTest.cs" />
+    <Compile Include="Authentication\ChoosePasswordViewModelTest.cs" />
     <Compile Include="Authentication\ChooseUserNameViewModelTest.cs" />
     <Compile Include="Authentication\SuggestUsernamesTest.cs" />
     <Compile Include="Extensions\BindingExtensionsTest.cs" />

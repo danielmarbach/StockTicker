@@ -27,14 +27,16 @@ namespace StockTicker
     public class StockTickerSpecification
     {
         protected static IKernel Kernel;
+        protected static WindowManager WindowManager;
 
         private static SpecificationBootstrapper Bootstrapper;
 
         Establish context = () =>
             {
                 Bootstrapper = new SpecificationBootstrapper();
+
                 Kernel = Bootstrapper.StandardKernel;
-                Kernel.Rebind<IWindowManager>().To<WindowManager>().InSingletonScope();
+                Kernel.Rebind<IWindowManager>().To<WindowManager>().InSingletonScope().OnActivation(wm => WindowManager = wm);
 
                 Execute.ResetWithoutDispatcher();
             };
@@ -48,7 +50,7 @@ namespace StockTicker
 
         private static void Stop()
         {
-            Bootstrapper.Start();
+            Bootstrapper.Stop();
         }
     }
 }

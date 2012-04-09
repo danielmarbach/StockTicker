@@ -24,7 +24,7 @@ namespace StockTicker.Authentication
         {
             get
             {
-                var choosePasswordViewModel = new ChoosePasswordViewModel()
+                var choosePasswordViewModel = new ChoosePasswordViewModel(null)
                     {
                         FirstName = "User", 
                         LastName = "Fritz",

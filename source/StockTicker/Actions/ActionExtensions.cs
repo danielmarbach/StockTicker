@@ -28,5 +28,10 @@ namespace StockTicker.Actions
 
             return builder.ScopeWith<IShowBusyIndication, IHideBusyIndication>(configure, new { requestId, message }, new { requestId });
         }
+
+        public static IActionBuilder Notify(this IActionBuilder builder, object message)
+        {
+            return builder.Execute<INotify>(new { message });
+        }
     }
 }

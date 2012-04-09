@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-// <copyright file="ChooseUserNameView.cs" company="bbv Software Services AG">
+// <copyright file="Notify.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,31 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Actions
 {
-    public partial class ChooseUserNameView
+    using System;
+
+    using Caliburn.Micro;
+
+    internal class Notify : INotify
     {
-        public static object SampleData
+        private readonly IEventAggregator eventAggregator;
+
+        private readonly object message;
+
+        public Notify(IEventAggregator eventAggregator, object message)
         {
-            get
-            {
-                var chooseUserNameViewModel = new ChooseUserNameViewModel()
-                    {
-                        FirstName = "User", 
-                        LastName = "Fritz"
-                    };
+            this.eventAggregator = eventAggregator;
+            this.message = message;
+        }
 
-                chooseUserNameViewModel.Suggestions.Add("user.fritz");
-                chooseUserNameViewModel.Suggestions.Add("fritz.user");
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
 
-                return chooseUserNameViewModel;
-            }
+        public void Execute(ActionExecutionContext context)
+        {
+            this.eventAggregator.Publish(this.message);
+
+            this.Completed(this, new ResultCompletionEventArgs());
         }
     }
 }

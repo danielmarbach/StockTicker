@@ -18,6 +18,8 @@
 
 namespace StockTicker.Authentication
 {
+    using FluentValidation;
+
     using Ninject.Modules;
 
     using StockTicker.Extensions;
@@ -32,6 +34,8 @@ namespace StockTicker.Authentication
             this.Bind<IChoosePasswordViewModel>().To<ChoosePasswordViewModel>().RegisterOnEventAggregator();
 
             this.Bind<IAuthenticationStepFactory>().To<AuthenticationStepFactory>().InSingletonScope();
+
+            this.Bind<IValidator<IChoosePasswordViewModel>>().To<ChoosePasswordViewModelValidator>();
         }
     }
 }

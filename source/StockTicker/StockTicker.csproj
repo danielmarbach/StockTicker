@@ -13,6 +13,9 @@
     <Reference Include="Caliburn.Micro">
       <HintPath>..\packages\Caliburn.Micro\lib\net40\Caliburn.Micro.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
     </Reference>
@@ -74,12 +77,16 @@
     <Compile Include="Actions\IDecoratorApplicatorPipeline.cs" />
     <Compile Include="Actions\IFinishBusyIndication.cs" />
     <Compile Include="Actions\IHideBusyIndication.cs" />
+    <Compile Include="Actions\IMissing.cs" />
+    <Compile Include="Actions\INotify.cs" />
     <Compile Include="Actions\IScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\IShowBusyIndication.cs" />
     <Compile Include="Actions\IStartBusyIndication.cs" />
     <Compile Include="Actions\IResultFactory.cs" />
     <Compile Include="Actions\IUseActions.cs" />
+    <Compile Include="Actions\Missing.cs" />
     <Compile Include="Actions\NinjectResultFactory.cs" />
+    <Compile Include="Actions\Notify.cs" />
     <Compile Include="Actions\RequestModel.cs" />
     <Compile Include="Actions\RescueResultDecorator.cs" />
     <Compile Include="Actions\ResultDecoratorBase.cs" />
@@ -96,6 +103,7 @@
     <Compile Include="Authentication\AuthenticationStepFactory.cs" />
     <Compile Include="Authentication\AuthenticationViewModel.cs" />
     <Compile Include="Authentication\ChoosePasswordViewModel.cs" />
+    <Compile Include="Authentication\ChoosePasswordViewModelValidator.cs" />
     <Compile Include="Authentication\ChooseUserNameView.cs" />
     <Compile Include="Authentication\ChooseUserNameView.xaml.cs">
       <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
@@ -221,6 +229,8 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IStockTickerViewModel.cs" />
+    <Compile Include="Validation\ValidatorFactory.cs" />
+    <Compile Include="Validation\ValidationModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -281,11 +291,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DefaultBrushes.xaml">
+    <Page Include="Styles\DefaultBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DefaultStyles.xaml">
+    <Page Include="Styles\DefaultStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -293,7 +303,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AllResources.xaml">
+    <Page Include="Styles\AllResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

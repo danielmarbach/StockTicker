@@ -19,14 +19,28 @@
 namespace StockTicker.Authentication
 {
     using System;
+    using System.Linq;
     using System.Security;
 
     using Caliburn.Micro;
+
+    using FluentValidation;
+    using FluentValidation.Results;
 
     using StockTicker.Actions;
 
     internal class ChoosePasswordViewModel : Screen, IChoosePasswordViewModel
     {
+        private readonly IValidatorFactory validatorFactory;
+
+        private SecureString password;
+        private SecureString passwordRetype;
+
+        public ChoosePasswordViewModel(IValidatorFactory validatorFactory)
+        {
+            this.validatorFactory = validatorFactory;
+        }
+
         public Func<IActionBuilder> Actions { private get; set; }
 
         public string FirstName
@@ -48,19 +62,81 @@ namespace StockTicker.Authentication
 
         public SecureString Password
         {
-            get;
-            set;
+            get
+            {
+                return this.password;
+            }
+
+            set
+            {
+                this.password = value;
+                this.NotifyOfPropertyChange(() => this.Password);
+                this.NotifyOfPropertyChange(() => this.PasswordRetype);
+            }
         }
 
         public SecureString PasswordRetype
         {
-            get;
-            set;
+            get
+            {
+                return this.passwordRetype;
+            }
+
+            set
+            {
+                this.passwordRetype = value;
+                this.NotifyOfPropertyChange(() => this.PasswordRetype);
+                this.NotifyOfPropertyChange(() => this.Password);
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                var result = this.GetValidationResult();
+
+                if (result.IsValid)
+                {
+                    return string.Empty;
+                }
+
+                var errors = result.Errors.Select(x => x.ErrorMessage);
+                return string.Join(Environment.NewLine, errors);
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var result = this.GetValidationResult();
+
+                if (result.IsValid)
+                {
+                    return string.Empty;
+                }
+
+                var errors = result.Errors.Where(x => x.PropertyName.Contains(columnName));
+                return string.Join(Environment.NewLine, errors);
+            }
         }
 
         public void Handle(UserNameChosen message)
         {
             this.FromChosenUserName(message);
+        }
+
+        public override void CanClose(Action<bool> callback)
+        {
+            callback(string.IsNullOrEmpty(this.Error));
+        }
+
+        private ValidationResult GetValidationResult()
+        {
+            var validator = this.validatorFactory.GetValidator<IChoosePasswordViewModel>();
+            ValidationResult result = validator.Validate(this);
+            return result;
         }
     }
 }

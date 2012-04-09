@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ChooseUserNameViewModelTest.cs" company="bbv Software Services AG">
+// <copyright file="ChoosePasswordViewModelTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,43 +18,49 @@
 
 namespace StockTicker.Authentication
 {
-    using Caliburn.Micro;
+    using System.Security;
 
-    using FluentAssertions;
     using FluentAssertions.EventMonitoring;
+
+    using FluentValidation;
 
     using Moq;
 
     using Xunit;
 
-    public class ChooseUserNameViewModelTest
+    public class ChoosePasswordViewModelTest
     {
-        private readonly ChooseUserNameViewModel testee;
+        private readonly Mock<IValidatorFactory> validatorFactory;
 
-        public ChooseUserNameViewModelTest()
+        private readonly ChoosePasswordViewModel testee;
+
+        public ChoosePasswordViewModelTest()
         {
-            this.testee = new ChooseUserNameViewModel();
+            this.validatorFactory = new Mock<IValidatorFactory>();
+
+            this.testee = new ChoosePasswordViewModel(this.validatorFactory.Object);
         }
 
         [Fact]
-        public void UserName_ShouldRaisePropertyChanged()
+        public void Password_ShouldRaisePropertyChanged()
         {
             this.testee.MonitorEvents();
 
-            this.testee.UserName = "AnyName";
+            this.testee.Password = new SecureString();
 
-            this.testee.ShouldRaisePropertyChangeFor(t => t.UserName);
+            this.testee.ShouldRaisePropertyChangeFor(t => t.Password);
+            this.testee.ShouldRaisePropertyChangeFor(t => t.PasswordRetype);
         }
 
         [Fact]
-        public void ShouldRaisePropertyChangedForHasSuggestions()
+        public void PasswordRetype_ShouldRaisePropertyChanged()
         {
             this.testee.MonitorEvents();
 
-            this.testee.Suggestions.Add("AnySuggestion");
+            this.testee.PasswordRetype = new SecureString();
 
-            this.testee.ShouldRaisePropertyChangeFor(x => x.HasSuggestions);
-            this.testee.HasSuggestions.Should().BeTrue();
+            this.testee.ShouldRaisePropertyChangeFor(t => t.PasswordRetype);
+            this.testee.ShouldRaisePropertyChangeFor(t => t.Password);
         }
     }
 }

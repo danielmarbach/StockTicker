@@ -22,6 +22,9 @@ namespace StockTicker.Authentication
     using Caliburn.Micro;
     using FluentAssertions;
     using Moq;
+
+    using StockTicker.Actions;
+
     using Xunit;
 
     public class AuthenticationViewModelTest
@@ -34,7 +37,7 @@ namespace StockTicker.Authentication
         {
             this.authenticationStepFactory = new Mock<IAuthenticationStepFactory>();
 
-            this.testee = new AuthenticationViewModel(this.authenticationStepFactory.Object);
+            this.testee = new AuthenticationViewModel(this.authenticationStepFactory.Object, Mock.Of<IBusyIndicationViewModel>());
         }
 
         [Fact]

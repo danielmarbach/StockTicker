@@ -124,6 +124,15 @@ namespace StockTicker.Authentication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retyped password must match!.
+        /// </summary>
+        internal static string PasswordRetypeDoesNotMatch {
+            get {
+                return ResourceManager.GetString("PasswordRetypeDoesNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick a username.
         /// </summary>
         internal static string PickUserName {

@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
+// <copyright file="IMissing.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Actions
 {
-    using System.ComponentModel;
-    using System.Security;
-
     using Caliburn.Micro;
 
-    using StockTicker.Actions;
-
-    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>, IDataErrorInfo
+    internal interface IMissing : IResult
     {
-        string FirstName { get; set; }
-
-        string LastName { get; set; }
-
-        string UserName { get; set; }
-
-        SecureString Password { get; set; }
-
-        SecureString PasswordRetype { get; set; }
     }
 }

@@ -138,6 +138,9 @@
   <data name="Password" xml:space="preserve">
     <value>Create a password</value>
   </data>
+  <data name="PasswordRetypeDoesNotMatch" xml:space="preserve">
+    <value>Retyped password must match!</value>
+  </data>
   <data name="PickUserName" xml:space="preserve">
     <value>Pick a username</value>
   </data>

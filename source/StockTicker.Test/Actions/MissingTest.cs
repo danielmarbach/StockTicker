@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
+// <copyright file="MissingTest.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,25 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Actions
 {
-    using System.ComponentModel;
-    using System.Security;
+    using StockTicker.TestHelpers;
 
-    using Caliburn.Micro;
+    using Xunit;
 
-    using StockTicker.Actions;
-
-    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>, IDataErrorInfo
+    public class MissingTest
     {
-        string FirstName { get; set; }
+        private readonly Missing testee;
 
-        string LastName { get; set; }
+        public MissingTest()
+        {
+            this.testee = new Missing();
+        }
 
-        string UserName { get; set; }
-
-        SecureString Password { get; set; }
-
-        SecureString PasswordRetype { get; set; }
+        [Fact]
+        public void ShouldRaiseCompleted()
+        {
+            this.testee.ShouldRaiseCompleted();
+        }
     }
 }

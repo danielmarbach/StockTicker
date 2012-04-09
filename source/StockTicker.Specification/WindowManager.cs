@@ -25,8 +25,17 @@ namespace StockTicker
 
     using Caliburn.Micro;
 
+    using StockTicker.Actions;
+
     public class WindowManager : IWindowManager
     {
+        private readonly Func<IActionBuilder> actionBuilderFactory;
+
+        public WindowManager(Func<IActionBuilder> actionBuilderFactory)
+        {
+            this.actionBuilderFactory = actionBuilderFactory;
+        }
+
         /// <summary>
         /// Shows a modal dialog for the specified model.
         /// </summary>
@@ -126,6 +135,12 @@ namespace StockTicker
             if (haveDisplayName != null)
             {
                 view.DisplayName = haveDisplayName.DisplayName;
+            }
+
+            var useActions = rootModel as IUseActions;
+            if (useActions != null)
+            {
+                useActions.Actions = this.actionBuilderFactory;
             }
 
             this.ApplySettings(view, settings);

@@ -22,6 +22,7 @@ namespace StockTicker.Externals
     using System.Collections.Generic;
     using System.Globalization;
     using System.Security;
+    using System.Threading;
 
     internal class AuthenticationService : IAuthenticationService
     {
@@ -36,6 +37,8 @@ namespace StockTicker.Externals
 
         public IEnumerable<string> SuggestUsernames(PotentialNewUserModel user)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
             yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant());
             yield return string.Format(CultureInfo.InvariantCulture, "{0}{1}", user.LastName.ToLowerInvariant(), user.FirstName.ToLowerInvariant());
             yield return string.Format(CultureInfo.InvariantCulture, "{0}.{1}", user.FirstName.ToLowerInvariant(), user.LastName.ToLowerInvariant());
@@ -48,12 +51,16 @@ namespace StockTicker.Externals
 
         public void CreateUser(NewUserModel newUser)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
             // Normally we would revalidate here
             this.users.Add(newUser.ToUser());
         }
 
         public void LogOn(UserModel user)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
             if (!this.users.Contains(user))
             {
                 throw new SecurityException();
@@ -62,6 +69,7 @@ namespace StockTicker.Externals
 
         public void LogOff(UserModel user)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
         }
     }
 }

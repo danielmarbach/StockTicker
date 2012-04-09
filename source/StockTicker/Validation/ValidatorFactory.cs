@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="IChoosePasswordViewModel.cs" company="bbv Software Services AG">
+// <copyright file="ValidatorFactory.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,34 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Authentication
+namespace StockTicker.Validation
 {
-    using System.ComponentModel;
-    using System.Security;
+    using System;
 
-    using Caliburn.Micro;
+    using FluentValidation;
 
-    using StockTicker.Actions;
+    using Ninject;
+    using Ninject.Syntax;
 
-    internal interface IChoosePasswordViewModel : IAuthenticationStep, IUseActions, IHandle<UserNameChosen>, IDataErrorInfo
+    public class ValidatorFactory : IValidatorFactory
     {
-        string FirstName { get; set; }
+        private readonly IResolutionRoot resolutionRoot;
 
-        string LastName { get; set; }
+        public ValidatorFactory(IResolutionRoot resolutionRoot)
+        {
+            this.resolutionRoot = resolutionRoot;
+        }
 
-        string UserName { get; set; }
+        public IValidator<T> GetValidator<T>()
+        {
+            return this.resolutionRoot.Get<IValidator<T>>();
+        }
 
-        SecureString Password { get; set; }
+        public IValidator GetValidator(Type type)
+        {
+            var validatorType = typeof(IValidator<>).MakeGenericType(type);
 
-        SecureString PasswordRetype { get; set; }
+            return (IValidator)this.resolutionRoot.Get(validatorType);
+        }
     }
 }

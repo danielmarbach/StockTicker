@@ -28,7 +28,7 @@ namespace StockTicker.Authentication
     {
         public static IActionBuilder WithLogin(this IActionBuilder builder, Action<IActionBuilder> configure)
         {
-            return builder.Execute<IAuthenticate>();
+            return builder.ScopeWith<IAuthenticate, IMissing>(configure);
         }
 
         public static IActionBuilder SuggestUsernames(this IActionBuilder builder, PotentialNewUserModel potentialNewUser, ICollection<string> suggestedUsernames)

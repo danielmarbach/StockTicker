@@ -37,6 +37,7 @@
             </DataTemplate>
         </xctk:BusyIndicator.BusyContentTemplate>
         <DockPanel>
+            <!-- NOTE: We bind here to active item of conductor -->
             <ContentControl cal:View.Model="{Binding ActiveItem}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <StackPanel DockPanel.Dock="Bottom" Height="30" Width="75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
                 <Button x:Name="Next" Content="Next"/>

@@ -26,6 +26,8 @@ namespace StockTicker.FindStocks
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: IResult with asynchronous advice which loads search information from external service. The result itself fills the found stocks into a collection.
+    // The client view model of this search result uses a bindable collection
     [Async]
     internal class SearchStocks : ISearchStocks
     {

@@ -38,14 +38,22 @@ namespace StockTicker
             this.DisplayName = General.StockTickerTitle;
         }
 
+        // NOTE: Comes from the IUseAction interface
         public Func<IActionBuilder> Actions { private get; set; }
 
+        // NOTE: Here for bindings to the busy indicator.
         public IBusyIndicationViewModel BusyIndication { get; private set; }
 
         public ISearchViewModel Search { get; private set; }
 
+        // NOTE: Belongs to ManageStocks
         public IEnumerable<IResult> Display(StockSearchModel searched)
         {
+            // NOTE: Future is a type which holds a reference to a value which will be set later.
+            // this is necessary because we use constructor injection. The GetDetails method below only fetches
+            // the details model upon execution of the underlying IResult. This then sets the value of the future
+            // ConductContent can then retrieve the set value upon execution of the underlying IResult.
+            // If you'd pass only a reference to a StockDetailModel this wouldn't work.
             var detailModel = new Future<StockDetailModel>();
 
             return this.Actions()
@@ -56,6 +64,8 @@ namespace StockTicker
                     General.DisplayStockDetails);
         }
 
+        // NOTE: Default initialization triggers conduction of a details content for a NULL detail (therefore Future<StockDetailModel> is null)
+        // the content factory then needs to return default content which is then conducted by this view model.
         protected override void OnInitialize()
         {
             base.OnInitialize();

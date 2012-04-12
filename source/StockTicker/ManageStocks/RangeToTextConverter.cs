@@ -24,6 +24,7 @@ namespace StockTicker.ManageStocks
 
     using StockTicker.Externals;
 
+    // NOTE: Special conversion should be done by using converters. Converters can be unit tested and simply attached in the XAML.
     [ValueConversion(typeof(Range), typeof(string))]
     public class RangeToTextConverter : IValueConverter
     {

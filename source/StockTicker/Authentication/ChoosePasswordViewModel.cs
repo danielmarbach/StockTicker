@@ -29,6 +29,9 @@ namespace StockTicker.Authentication
 
     using StockTicker.Actions;
 
+    // NOTE: Implements IDataErrorInfo and uses fluent validation for validation of the password. 
+    // The validator is created by using the validator factory. Implementing the data error info pattern is always the same and
+    // considered a cross cutting concern. Ideal place to use tools like PostSharp.
     internal class ChoosePasswordViewModel : Screen, IChoosePasswordViewModel
     {
         private readonly IValidatorFactory validatorFactory;
@@ -45,7 +48,8 @@ namespace StockTicker.Authentication
 
         public string FirstName
         {
-            get; set;
+            get;
+            set;
         }
 
         public string LastName
@@ -122,11 +126,13 @@ namespace StockTicker.Authentication
             }
         }
 
+        // NOTE: Reacts on event aggregator events
         public void Handle(UserNameChosen message)
         {
             this.FromChosenUserName(message);
         }
 
+        // NOTE: We cannot close upon next if we have erros (validation failed).
         public override void CanClose(Action<bool> callback)
         {
             callback(string.IsNullOrEmpty(this.Error));

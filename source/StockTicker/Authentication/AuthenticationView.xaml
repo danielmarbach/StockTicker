@@ -7,6 +7,7 @@
              xmlns:cal="http://www.caliburnproject.org" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="388" d:DesignWidth="529">
+    <!-- NOTE: Needs to redeclare busy indication because the authentication view is used as a new dialog -->
     <xctk:BusyIndicator x:Name="busyIndicator"
                                         DisplayAfter="0"
                                         DockPanel.Dock="Top"

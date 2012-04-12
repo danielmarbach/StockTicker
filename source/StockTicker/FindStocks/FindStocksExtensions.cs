@@ -23,6 +23,7 @@ namespace StockTicker.FindStocks
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: Again easier syntax for action builder.
     internal static class FindStocksExtensions
     {
         public static IActionBuilder Search(this IActionBuilder builder, string searchPattern, ICollection<StockSearchModel> foundStocks)

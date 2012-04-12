@@ -36,6 +36,8 @@ namespace StockTicker.FindStocks
 
         public SearchViewModel()
         {
+            // NOTE: Bindable collection is a collection which can be modified from different thread but fires collection changed on UI thread
+            // This marshaling is necessary because search models are retrieved asynchronously.
             this.FoundStocks = new BindableCollection<StockSearchModel>();
             this.FoundStocks.CollectionChanged += this.HandleFoundStocksChanged;
         }
@@ -66,6 +68,7 @@ namespace StockTicker.FindStocks
             }
         }
 
+        // NOTE: Search method which appropriate busy indication around it
         public IEnumerable<IResult> Search(string searchPattern)
         {
             string busyMessage = string.Format(CultureInfo.InvariantCulture, FindStocks.Searching, searchPattern);
@@ -75,12 +78,14 @@ namespace StockTicker.FindStocks
                     busy => busy.Search(searchPattern, this.FoundStocks), busyMessage);
         }
 
+        // NOTE: Is called when navigated away to clean the search results.
         public void Clear()
         {
             this.Pattern = null;
             this.FoundStocks.Clear();
         }
 
+        // NOTE: When the found stocks are changed HasStocks might also change. We need to indicate this
         private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             this.NotifyOfPropertyChange(() => this.HasStocks);

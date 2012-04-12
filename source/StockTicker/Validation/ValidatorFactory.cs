@@ -25,6 +25,7 @@ namespace StockTicker.Validation
     using Ninject;
     using Ninject.Syntax;
 
+    // NOTE: This factory plugs into fluent validation and allows to build up validators with ninject. (Detail, not really important).
     public class ValidatorFactory : IValidatorFactory
     {
         private readonly IResolutionRoot resolutionRoot;

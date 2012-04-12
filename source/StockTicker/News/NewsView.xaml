@@ -6,6 +6,8 @@
              xmlns:News="clr-namespace:StockTicker.News" xmlns:cal="http://www.caliburnproject.org" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{x:Static News:NewsView.SampleData}">
+    <!-- NOTE: Important here to describe dynamic rendering of items source on conductors items. We do not know what is hosted inside the items collection
+         therefore we must only use the items presenter of the item in the collection. The height of the content is set to the height of the content view. -->
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <ItemsControl ItemsSource="{Binding Path=Items}">
         <ItemsControl.Template>

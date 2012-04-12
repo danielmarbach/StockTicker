@@ -22,6 +22,8 @@ namespace StockTicker.Localization
 
     using StockTicker.Properties;
 
+    // NOTE: Sets the culture of the application. When the underlying threads culture is set the localization extension automatically retrieves the correct 
+    // localized resources.
     internal class Localizer : ILocalizer
     {
         private readonly ISettings settings;

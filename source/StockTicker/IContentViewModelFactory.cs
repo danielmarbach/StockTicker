@@ -20,6 +20,7 @@ namespace StockTicker
 {
     using StockTicker.Externals;
 
+    // NOTE: Factory which decides which kind of dynamic content is rendered on the StockTickerViewModel
     internal interface IContentViewModelFactory
     {
         IStockTickerContentViewModel CreateContent(StockDetailModel detailModel);

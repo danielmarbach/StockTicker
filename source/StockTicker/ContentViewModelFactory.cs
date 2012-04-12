@@ -37,6 +37,7 @@ namespace StockTicker
 
         public IStockTickerContentViewModel CreateContent(StockDetailModel detailModel)
         {
+            // NOTE: When no detail model is present the news model is provided
             if (detailModel == null)
             {
                 return this.resolutionRoot.Get<INewsViewModel>();

@@ -24,6 +24,7 @@ namespace StockTicker.Authentication
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: Provides not only smarter syntax for actions but also some convenience mapping methods which could also be achieved with tools like AutoMapper.
     internal static class AuthenticationExtensions
     {
         public static IActionBuilder WithLogin(this IActionBuilder builder, Action<IActionBuilder> configure)

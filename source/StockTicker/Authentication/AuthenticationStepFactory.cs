@@ -23,6 +23,7 @@ namespace StockTicker.Authentication
     using Ninject;
     using Ninject.Syntax;
 
+    // NOTE: Concrete step factory which knows how the wizard steps are composed.
     internal class AuthenticationStepFactory : IAuthenticationStepFactory
     {
         private readonly IResolutionRoot resolutionRoot;

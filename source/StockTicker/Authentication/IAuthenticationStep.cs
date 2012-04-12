@@ -20,6 +20,7 @@ namespace StockTicker.Authentication
 {
     using Caliburn.Micro;
 
+    // NOTE: A single wizard step.
     public interface IAuthenticationStep : IScreen
     {
     }

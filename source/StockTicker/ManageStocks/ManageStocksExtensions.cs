@@ -25,6 +25,7 @@ namespace StockTicker.ManageStocks
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: All extension methods here hide complexity of builder execution and provide more expressive and meaningful method names without generics.
     internal static class ManageStocksExtensions
     {
         public static IActionBuilder ConductContent(this IActionBuilder builder, IFutureValue<StockDetailModel> detailModel, Conductor<IStockTickerContentViewModel> conductor)

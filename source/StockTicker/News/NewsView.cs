@@ -18,6 +18,7 @@
 
 namespace StockTicker.News
 {
+    // NOTE: Explain nice trick with partial class and sample data providing. This allows to put sample data right where the actual view implementation is laying.
     public partial class NewsView
     {
         public static object SampleData

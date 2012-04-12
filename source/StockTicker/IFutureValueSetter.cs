@@ -18,6 +18,7 @@
 
 namespace StockTicker
 {
+    // NOTE: Consumer interface for future value providers
     public interface IFutureValueSetter<in TValue>
     {
         void SetValue(TValue value);

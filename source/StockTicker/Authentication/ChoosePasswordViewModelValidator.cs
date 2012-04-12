@@ -24,6 +24,7 @@ namespace StockTicker.Authentication
 
     using FluentValidation;
 
+    // NOTE: Validation magic with fluent validator which uses translatable messages.
     internal class ChoosePasswordViewModelValidator : AbstractValidator<IChoosePasswordViewModel>
     {
         public ChoosePasswordViewModelValidator()
@@ -60,6 +61,6 @@ namespace StockTicker.Authentication
             string s = Marshal.PtrToStringBSTR(ptr);
             Marshal.ZeroFreeBSTR(ptr);
             return s;
-        }   
+        }
     }
 }

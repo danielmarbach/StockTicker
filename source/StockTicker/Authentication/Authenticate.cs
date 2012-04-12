@@ -25,6 +25,7 @@ namespace StockTicker.Authentication
 
     using Caliburn.Micro;
 
+    // NOTE: IResult which opens a dialog window with dynamic placement on the screen. The window manager takes care of all the rest.
     internal class Authenticate : IAuthenticate
     {
         private readonly IWindowManager windowManager;

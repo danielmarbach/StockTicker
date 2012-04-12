@@ -8,11 +8,13 @@
              d:DesignHeight="388" d:DesignWidth="529"
              d:DataContext="{x:Static ManageStocks:StockDetailView.SampleData}">
     <UserControl.Resources>
+        <!-- NOTE: converters are declared here. -->
         <ManageStocks:StockDetailModelToTitleConverter x:Key="titleConverter"/>
         <ManageStocks:RangeToTextConverter x:Key="rangeConverter"/>
         <ManageStocks:DollarConverter x:Key="dollarConverter"/>
     </UserControl.Resources>
     <DockPanel>
+        <!-- NOTE: Uses x:Name conventions to hook up AddPortfolio to action method. Explain -->
         <StackPanel DockPanel.Dock="Left" Width="150" HorizontalAlignment="Left">
             <Button Margin="10" Height="35" x:Name="AddPortfolio" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
         </StackPanel>
@@ -34,6 +36,7 @@
                 <RowDefinition Height="29" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <!-- NOTE: All content is localizable. -->
             <TextBlock Grid.ColumnSpan="2" Text="{Binding Path=Model, Converter={StaticResource titleConverter}}"/>
             <Label Grid.Row="1" Grid.Column="0" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:TodaysOpen}"/>
             <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Model.TodaysOpen, Converter={StaticResource dollarConverter}}"/>

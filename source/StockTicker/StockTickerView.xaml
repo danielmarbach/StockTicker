@@ -12,6 +12,7 @@
                                         DisplayAfter="0"
                                         DockPanel.Dock="Top"
                                         IsBusy="{Binding Path=BusyIndication.IsBusy}">
+        <!-- NOTE: Localization must be used here. Resources are also placed in the feature namespace. Explain localization extension. Provide links to localization extension -->
         <xctk:BusyIndicator.BusyContentTemplate>
             <DataTemplate>
                 <StackPanel Margin="4">

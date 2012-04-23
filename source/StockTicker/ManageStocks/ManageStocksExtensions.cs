@@ -33,14 +33,6 @@ namespace StockTicker.ManageStocks
             return builder.Execute<IConductStockTickerContent>(new { detailModel, conductor = (Action<IStockTickerContentViewModel>)conductor.ActivateItem });
         }
 
-        public static IActionBuilder ConductDefaultContent(this IActionBuilder builder, Conductor<IStockTickerContentViewModel> conductor)
-        {
-            var future = new Future<StockDetailModel>();
-            future.SetValue(null);
-
-            return builder.ConductContent(future, conductor);
-        }
-
         public static IActionBuilder GetDetails(this IActionBuilder builder, StockSearchModel searchModel, IFutureValueSetter<StockDetailModel> detailModel)
         {
             return builder.Execute<IGetStockDetails>(new { symbol = searchModel.ToSymbol(), detailModel });

@@ -14,9 +14,8 @@
         <ManageStocks:DollarConverter x:Key="dollarConverter"/>
     </UserControl.Resources>
     <DockPanel>
-        <!-- NOTE: Uses x:Name conventions to hook up AddPortfolio to action method. Explain -->
         <StackPanel DockPanel.Dock="Left" Width="150" HorizontalAlignment="Left">
-            <Button Margin="10" Height="35" x:Name="AddPortfolio" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
+            <Button Margin="10" Height="35" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
             <Grid.ColumnDefinitions>

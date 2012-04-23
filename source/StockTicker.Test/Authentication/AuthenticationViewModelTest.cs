@@ -51,11 +51,11 @@ namespace StockTicker.Authentication
 
             this.Activate();
 
-            this.testee.Items.Should().HaveCount(2)
+            this.testee.As<dynamic>().Items.Should().HaveCount(2)
                 .And.HaveElementAt(0, firstStep)
                 .And.HaveElementAt(1, secondStep);
 
-            this.testee.ActiveItem.Should().Be(firstStep);
+            this.testee.As<dynamic>().ActiveItem.Should().Be(firstStep);
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace StockTicker.Authentication
 
             this.testee.Next();
 
-            this.testee.ActiveItem.Should().Be(secondStep);
+            this.testee.As<dynamic>().ActiveItem.Should().Be(secondStep);
         }
 
         private void Activate()

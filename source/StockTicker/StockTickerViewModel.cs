@@ -25,6 +25,7 @@ namespace StockTicker
     //// TODO: Should be able to host multiple IStockTickerContentViewModel
     //// TODO: The title of the window should contain localized string out of resource "General". Use the title "Stock Ticker"
     //// TODO: Should pre initialize content with static content view model
+    //// TODO: Should provide binding points for IBusyIndicationViewModel and ISearchViewModel
 
     internal sealed class StockTickerViewModel : IStockTickerViewModel
     {

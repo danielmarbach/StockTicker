@@ -19,14 +19,13 @@
                  Text="{Binding Path=Pattern, Mode=TwoWay}"
                  uia:Annotations.CueBanner="{l:LocText StockTicker:FindStocks.FindStocks:SearchHint}">
         </TextBox>
+        <!-- TODO: Double click should navigate to to Display on stock ticker view model -->
+        <!-- TODO: Also on double click all search results must be cleared -->
         <ListBox ItemsSource="{Binding Path=FoundStocks}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,10" Width="180" Height="Auto" 
                  x:Name="SearchHints"
                  Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 cal:Message.Attach="
-                    [Event MouseDoubleClick] = [Action Display(SearchHints.SelectedItem)];
-                    [Event MouseDoubleClick] = [Action Clear()]" 
                  TabIndex="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>

@@ -87,8 +87,7 @@ namespace StockTicker.FindStocks
         // NOTE: Is called when navigated away to clean the search results.
         public void Clear()
         {
-            this.Pattern = null;
-            this.FoundStocks.Clear();
+            //// TODO: Clear here all search results
         }
 
         // NOTE: When the found stocks are changed HasStocks might also change. We need to indicate this

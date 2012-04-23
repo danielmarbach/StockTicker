@@ -19,12 +19,9 @@
 namespace StockTicker.ManageStocks
 {
     using System;
-    using System.Collections.Generic;
-
     using Caliburn.Micro;
 
     using StockTicker.Actions;
-    using StockTicker.Authentication;
     using StockTicker.Externals;
 
     // NOTE: Represents detail information about a stock. This has behavior and therefore can receive actions. 
@@ -39,11 +36,5 @@ namespace StockTicker.ManageStocks
 
         // NOTE: Information about the details model are directly exposed as property and not wrapped. Violates law of demeter but is much simpler.
         public StockDetailModel Model { get; private set; }
-
-        // NOTE: Bound to button add portfolio
-        public IEnumerable<IResult> AddPortfolio()
-        {
-            return this.Actions().WithLogin(builder => { });
-        }
     }
 }

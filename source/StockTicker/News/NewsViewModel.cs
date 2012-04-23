@@ -18,16 +18,9 @@
 
 namespace StockTicker.News
 {
-    using System.Collections.Generic;
-
-    using Caliburn.Micro;
-
-    // NOTE: The news view model is a conductor with all collected items active. All news content is activated and displayed on the screen.
-    internal class NewsViewModel : Conductor<INewsContentViewModel>.Collection.AllActive, INewsViewModel
+    //// TODO: The news view model is a conductor with all collected items active. All news content is activated and displayed on the screen.
+    internal class NewsViewModel : INewsViewModel
     {
-        public NewsViewModel(IEnumerable<INewsContentViewModel> news)
-        {
-            this.Items.AddRange(news);
-        }
+        //// TODO: Get all news content by using construction magic.
     }
 }

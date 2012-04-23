@@ -18,13 +18,11 @@
 
 namespace StockTicker
 {
-    using Ninject;
     using Ninject.Syntax;
 
     using StockTicker.Extensions;
     using StockTicker.Externals;
     using StockTicker.ManageStocks;
-    using StockTicker.News;
 
     internal class ContentViewModelFactory : IContentViewModelFactory
     {
@@ -37,11 +35,7 @@ namespace StockTicker
 
         public IStockTickerContentViewModel CreateContent(StockDetailModel detailModel)
         {
-            // NOTE: When no detail model is present the news model is provided
-            if (detailModel == null)
-            {
-                return this.resolutionRoot.Get<INewsViewModel>();
-            }
+            //// TODO: When no detail model is present the news model is provided
 
             return this.resolutionRoot.Get<IStockDetailViewModel>(new { detailModel });
         }

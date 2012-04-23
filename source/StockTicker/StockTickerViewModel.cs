@@ -66,11 +66,6 @@ namespace StockTicker
 
         // NOTE: Default initialization triggers conduction of a details content for a NULL detail (therefore Future<StockDetailModel> is null)
         // the content factory then needs to return default content which is then conducted by this view model.
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-
-            Coroutine.BeginExecute(this.Actions().ConductDefaultContent(this).GetEnumerator());
-        }
+        //// TODO: Upon initialization fetch default content with Coroutine
     }
 }

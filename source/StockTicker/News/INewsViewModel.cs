@@ -18,7 +18,8 @@
 
 namespace StockTicker.News
 {
-    internal interface INewsViewModel : IStockTickerContentViewModel
+    //// TODO: Add necessary interface
+    internal interface INewsViewModel
     {
     }
 }

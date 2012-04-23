@@ -49,7 +49,7 @@ namespace StockTicker.Authentication
             this.authenticationStepFactory.SetupSequence(f => f.CreateSteps()).Returns(
                 new List<IAuthenticationStep> { firstStep, secondStep });
 
-            this.testee.As<IActivate>().Activate();
+            this.Activate();
 
             this.testee.Items.Should().HaveCount(2)
                 .And.HaveElementAt(0, firstStep)

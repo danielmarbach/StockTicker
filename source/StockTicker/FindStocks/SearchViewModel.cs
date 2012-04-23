@@ -51,7 +51,8 @@ namespace StockTicker.FindStocks
         {
             get
             {
-                return this.FoundStocks.Any();
+                //// TODO: Implement has stocks correctly
+                return false;
             }
         }
 
@@ -65,36 +66,30 @@ namespace StockTicker.FindStocks
             set
             {
                 this.pattern = value;
-                this.NotifyOfPropertyChange(() => this.Pattern);
+                //// TODO: Property changed notification
             }
         }
 
         // NOTE: Search method which appropriate busy indication around it
         public IEnumerable<IResult> Search(string searchPattern, KeyEventArgs eventArgs)
         {
-            if (eventArgs.Key != Key.Enter)
-            {
-                return Enumerable.Empty<IResult>();
-            }
+            //// TODO: Continue only when user presses "ENTER"
 
             string busyMessage = string.Format(CultureInfo.InvariantCulture, FindStocks.Searching, searchPattern);
 
             return this.Actions()
                 .WithBusyIndication(
-                    busy => busy.Search(searchPattern, this.FoundStocks), busyMessage);
-        }
-
-        // NOTE: Is called when navigated away to clean the search results.
-        public void Clear()
-        {
-            this.Pattern = null;
-            this.FoundStocks.Clear();
+                    busy =>
+                        {
+                            //// TODO: Implement search action here. There is an extension method under FindStocksExtensions which can be called.
+                        }, 
+                        busyMessage);
         }
 
         // NOTE: When the found stocks are changed HasStocks might also change. We need to indicate this
         private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            this.NotifyOfPropertyChange(() => this.HasStocks);
+            //// TODO: Indicate that HasStocks could also be changed.
         }
     }
 }

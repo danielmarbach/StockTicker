@@ -48,16 +48,7 @@ namespace StockTicker.FindStocks
 
         public void Execute(ActionExecutionContext context)
         {
-            this.foundStocks.Clear();
-
-            IEnumerable<StockSearchModel> stocks = this.searchService.Find(this.searchPattern);
-
-            foreach (StockSearchModel stock in stocks)
-            {
-                this.foundStocks.Add(stock);
-            }
-
-            this.Completed(this, new ResultCompletionEventArgs());
+            //// TODO: Implement searching on external service here
         }
     }
 }

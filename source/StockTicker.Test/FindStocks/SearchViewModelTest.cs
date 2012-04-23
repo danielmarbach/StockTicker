@@ -54,28 +54,6 @@ namespace StockTicker.FindStocks
         }
 
         [Fact]
-        public void ClearShouldClearFoundStocks()
-        {
-            this.testee.Pattern = "any";
-            this.testee.FoundStocks.Add(new StockSearchModel("AnySymbol", "AnyCompany", "AnyFund"));
-
-            this.testee.Clear();
-
-            this.testee.Pattern.Should().BeNull();
-            this.testee.FoundStocks.Should().BeEmpty();
-        }
-
-        [Fact]
-        public void ShouldRaisePropertyChangedForPattern()
-        {
-            this.testee.MonitorEvents();
-
-            this.testee.Clear();
-
-            this.testee.ShouldRaisePropertyChangeFor(t => t.Pattern);
-        }
-
-        [Fact]
         public void ShouldSearch_WhenEnter()
         {
             this.testee.Search("AnySymbol", new KeyEventArgs(null, new FakePresentationSource(), 21, Key.Enter));

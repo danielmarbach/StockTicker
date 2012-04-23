@@ -14,24 +14,21 @@
         <BooleanToVisibilityConverter x:Key="searchHintVisibilityConverter" />
     </UserControl.Resources>
     <StackPanel>
+        <!-- TODO: Hook up Search method on KeyUp event. Also pass EventArguments to search method -->
         <TextBox x:Name="SearchPattern" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,2" Width="180" TabIndex="0"
-                 cal:Message.Attach="[Event KeyUp] = [Action Search(SearchPattern, $eventArgs)]" 
                  Text="{Binding Path=Pattern, Mode=TwoWay}"
                  uia:Annotations.CueBanner="{l:LocText StockTicker:FindStocks.FindStocks:SearchHint}">
         </TextBox>
+        <!-- TODO: Search result should only be displayed when there are any -->
         <ListBox ItemsSource="{Binding Path=FoundStocks}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,10" Width="180" Height="Auto" 
                  x:Name="SearchHints"
-                 Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" 
+                 Visibility="Visible" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  TabIndex="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Path=Symbol}" />
-                        <Label Content="{Binding Path=Company}" />
-                        <Label Content="{Binding Path=Fund}" />
-                    </StackPanel>
+                    <!-- TODO: Write here a simple data template which displays all informations found on the search result -->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

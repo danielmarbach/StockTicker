@@ -16,7 +16,8 @@
     <DockPanel>
         <!-- NOTE: Uses x:Name conventions to hook up AddPortfolio to action method. Explain -->
         <StackPanel DockPanel.Dock="Left" Width="150" HorizontalAlignment="Left">
-            <Button Margin="10" Height="35" x:Name="AddPortfolio" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
+            <!-- TODO: Use naming convention to hook up adding of portfolio -->
+            <Button Margin="10" Height="35" Content="{l:LocText StockTicker:ManageStocks.ManageStocks:AddPortfolio}"/>
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
             <Grid.ColumnDefinitions>

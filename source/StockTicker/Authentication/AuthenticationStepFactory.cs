@@ -35,7 +35,8 @@ namespace StockTicker.Authentication
 
         public IEnumerable<IAuthenticationStep> CreateSteps()
         {
-            yield return this.resolutionRoot.Get<StaticAuthenticationStepViewModel>();
+            //// TODO: Retrieve here StaticAuthenticationStepViewModel
+            yield break;
         }
     }
 }

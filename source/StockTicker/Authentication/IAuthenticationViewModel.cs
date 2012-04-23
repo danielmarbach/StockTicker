@@ -18,9 +18,8 @@
 
 namespace StockTicker.Authentication
 {
-    using Caliburn.Micro;
-
-    internal interface IAuthenticationViewModel : IConductor
+    //// TODO: Add appropriate interface for base type
+    internal interface IAuthenticationViewModel
     {
     }
 }

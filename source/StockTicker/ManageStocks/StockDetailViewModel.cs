@@ -24,7 +24,6 @@ namespace StockTicker.ManageStocks
     using Caliburn.Micro;
 
     using StockTicker.Actions;
-    using StockTicker.Authentication;
     using StockTicker.Externals;
 
     // NOTE: Represents detail information about a stock. This has behavior and therefore can receive actions. 
@@ -43,7 +42,8 @@ namespace StockTicker.ManageStocks
         // NOTE: Bound to button add portfolio
         public IEnumerable<IResult> AddPortfolio()
         {
-            return this.Actions().WithLogin(builder => { });
+            //// TODO: Use here login call on actions. Hint AuthenticationExtensions
+            yield break;
         }
     }
 }

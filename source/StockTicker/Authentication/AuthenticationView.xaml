@@ -38,9 +38,10 @@
         </xctk:BusyIndicator.BusyContentTemplate>
         <DockPanel>
             <!-- NOTE: We bind here to active item of conductor -->
-            <ContentControl cal:View.Model="{Binding ActiveItem}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <!-- TODO: Add dynamic control which is hooked into currently active step, use Docking "Top" and Stretch for Vertical and horizontal alignment -->
             <StackPanel DockPanel.Dock="Bottom" Height="30" Width="75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
-                <Button x:Name="Next" Content="Next"/>
+                <!-- TODO: Hook up here Next action with naming conventions -->
+                <Button Content="Next"/>
             </StackPanel>
         </DockPanel>
     </xctk:BusyIndicator>

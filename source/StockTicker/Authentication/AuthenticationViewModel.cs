@@ -18,14 +18,10 @@
 
 namespace StockTicker.Authentication
 {
-    using System.Linq;
-
-    using Caliburn.Micro;
-
     using StockTicker.Actions;
 
     // NOTE: Holds the whole authentication wizard. Only one step can be active at the time. Each step which is finished is deactivated and removed from the conductors items collection
-    internal sealed class AuthenticationViewModel : Conductor<IAuthenticationStep>.Collection.OneActive, IAuthenticationViewModel
+    internal sealed class AuthenticationViewModel : IAuthenticationViewModel
     {
         private readonly IAuthenticationStepFactory authenticationStepFactory;
 
@@ -34,7 +30,7 @@ namespace StockTicker.Authentication
             this.authenticationStepFactory = authenticationStepFactory;
             this.BusyIndication = busyIndication;
 
-            this.DisplayName = Authentication.AuthenticationTitle;
+            //// TODO: Set the display name to AuthenticationTitle
         }
 
         public IBusyIndicationViewModel BusyIndication { get; private set; }
@@ -42,26 +38,13 @@ namespace StockTicker.Authentication
         // NOTE: The next method is hooked up by the Next button and simply takes the next item from the items collection and activates it. Previously activated item is deactivated.
         public void Next()
         {
-            this.DeactivateItem(this.ActiveItem, true);
-
-            if (this.Items.Any())
-            {
-                this.ActivateItem(this.Items.First());
-            }
-            else
-            {
-                this.TryClose();
-            }
+            //// TODO: Previous item must be deactivated
+            //// TODO: If there are items available the first one must be activated
+            //// TODO: Otherwise the authentication wizard must be closed
         }
 
         // NOTE: Upon initialization all steps are loaded into the conductor. But only the first is activated
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-
-            this.Items.AddRange(this.authenticationStepFactory.CreateSteps());
-
-            this.ActivateItem(this.Items.First());
-        }
+        //// TODO: Appropriate steps must be created and tracked. 
+        //// TODO: First step must be activated
     }
 }

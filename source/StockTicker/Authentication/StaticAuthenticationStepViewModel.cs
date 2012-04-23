@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="ValidationModule.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="StaticAuthenticationStepViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,17 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.Validation
+namespace StockTicker.Authentication
 {
-    using FluentValidation;
+    using Caliburn.Micro;
 
-    using Ninject.Modules;
-
-    public class ValidationModule : NinjectModule
+    internal class StaticAuthenticationStepViewModel : Screen, IAuthenticationStep
     {
-        public override void Load()
-        {
-            this.Bind<IValidatorFactory>().To<ValidatorFactory>().InSingletonScope();
-        }
     }
 }

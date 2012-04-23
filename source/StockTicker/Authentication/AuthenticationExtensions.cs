@@ -19,10 +19,8 @@
 namespace StockTicker.Authentication
 {
     using System;
-    using System.Collections.Generic;
 
     using StockTicker.Actions;
-    using StockTicker.Externals;
 
     // NOTE: Provides not only smarter syntax for actions but also some convenience mapping methods which could also be achieved with tools like AutoMapper.
     internal static class AuthenticationExtensions
@@ -30,23 +28,6 @@ namespace StockTicker.Authentication
         public static IActionBuilder WithLogin(this IActionBuilder builder, Action<IActionBuilder> configure)
         {
             return builder.ScopeWith<IAuthenticate, IMissing>(configure);
-        }
-
-        public static IActionBuilder SuggestUsernames(this IActionBuilder builder, PotentialNewUserModel potentialNewUser, ICollection<string> suggestedUsernames)
-        {
-            return builder.Execute<ISuggestUsernames>(new { potentialNewUser, suggestedUsernames });
-        }
-
-        public static UserNameChosen ToUserNameChosen(this IChooseUserNameViewModel chooseUserNameViewModel)
-        {
-            return new UserNameChosen(chooseUserNameViewModel.FirstName, chooseUserNameViewModel.LastName, chooseUserNameViewModel.UserName);
-        }
-
-        public static void FromChosenUserName(this IChoosePasswordViewModel choosePasswordViewModel, UserNameChosen message)
-        {
-            choosePasswordViewModel.FirstName = message.FirstName;
-            choosePasswordViewModel.LastName = message.LastName;
-            choosePasswordViewModel.UserName = message.UserName;
         }
     }
 }

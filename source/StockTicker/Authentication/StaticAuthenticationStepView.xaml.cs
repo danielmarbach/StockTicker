@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ChooseUserNameView.xaml.cs" company="bbv Software Services AG">
+// <copyright file="StaticAuthenticationStepView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +21,11 @@ namespace StockTicker.Authentication
     using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for ChooseUsernameView.xaml
+    /// Interaction logic for StaticContentView.xaml
     /// </summary>
-    public partial class ChooseUserNameView : UserControl
+    public partial class StaticAuthenticationStepView : UserControl
     {
-        public ChooseUserNameView()
+        public StaticAuthenticationStepView()
         {
             this.InitializeComponent();
         }

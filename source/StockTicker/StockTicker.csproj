@@ -98,42 +98,7 @@
     <Compile Include="Actions\ResultDecoratorBase.cs" />
     <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\ShowBusyIndication.cs" />
-    <Compile Include="Authentication\Authenticate.cs" />
-    <Compile Include="Authentication\Authentication.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Authentication.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Authentication\AuthenticationExtensions.cs" />
-    <Compile Include="Authentication\AuthenticationModule.cs" />
-    <Compile Include="Authentication\AuthenticationStepFactory.cs" />
-    <Compile Include="Authentication\AuthenticationViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordViewModelValidator.cs" />
-    <Compile Include="Authentication\ChooseUserNameView.cs" />
-    <Compile Include="Authentication\ChooseUserNameView.xaml.cs">
-      <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Authentication\ChooseUserNameViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordView.xaml.cs">
-      <DependentUpon>ChoosePasswordView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Authentication\ChoosePasswordView.cs" />
-    <Compile Include="Authentication\IAuthenticate.cs" />
-    <Compile Include="Authentication\IAuthenticationStep.cs" />
-    <Compile Include="Authentication\IAuthenticationStepFactory.cs" />
-    <Compile Include="Authentication\IAuthenticationViewModel.cs" />
-    <Compile Include="Authentication\IChoosePasswordViewModel.cs" />
-    <Compile Include="Authentication\IChooseUsernameViewModel.cs" />
-    <Compile Include="Authentication\AuthenticationView.xaml.cs">
-      <DependentUpon>AuthenticationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Authentication\ISuggestUsernames.cs" />
-    <Compile Include="Authentication\Secure.cs" />
-    <Compile Include="Authentication\SuggestUsernames.cs" />
-    <Compile Include="Authentication\UserNameChosen.cs" />
     <Compile Include="CaliburnModule.cs" />
-    <Compile Include="ContentViewModelFactory.cs" />
     <Compile Include="Extensions\BindingExtensions.cs" />
     <Compile Include="Extensions\ResolutionRootExtensions.cs" />
     <Compile Include="Externals\AuthenticationService.cs" />
@@ -153,26 +118,13 @@
     <Compile Include="Externals\StockSymbols.cs" />
     <Compile Include="Externals\ExternalExtensions.cs" />
     <Compile Include="Externals\UserModel.cs" />
-    <Compile Include="FindStocks\FindStocks.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FindStocks.resx</DependentUpon>
-    </Compile>
-    <Compile Include="FindStocks\FindStocksExtensions.cs" />
     <Compile Include="FindStocks\FindStocksModule.cs" />
-    <Compile Include="FindStocks\ISearchStocks.cs" />
     <Compile Include="FindStocks\ISearchViewModel.cs" />
-    <Compile Include="FindStocks\SearchStocks.cs" />
-    <Compile Include="FindStocks\SearchView.cs" />
     <Compile Include="FindStocks\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FindStocks\SearchViewModel.cs" />
-    <Compile Include="Future.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IContentViewModelFactory.cs" />
-    <Compile Include="IFutureValue.cs" />
-    <Compile Include="IFutureValueSetter.cs" />
     <Compile Include="IStockTickerContentViewModel.cs" />
     <Compile Include="Localization\ICultureSetter.cs" />
     <Compile Include="Localization\ILocalizationCultureProvider.cs" />
@@ -181,42 +133,6 @@
     <Compile Include="Localization\LocalizationModule.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
-    <Compile Include="ManageStocks\ConductStockTickerContent.cs" />
-    <Compile Include="ManageStocks\DollarConverter.cs" />
-    <Compile Include="ManageStocks\GetStockDetails.cs" />
-    <Compile Include="ManageStocks\IConductStockTickerContent.cs" />
-    <Compile Include="ManageStocks\IGetStockDetails.cs" />
-    <Compile Include="ManageStocks\IStockDetailViewModel.cs" />
-    <Compile Include="ManageStocks\ManageStocks.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ManageStocks.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ManageStocks\ManageStocksExtensions.cs" />
-    <Compile Include="ManageStocks\ManageStocksModule.cs" />
-    <Compile Include="ManageStocks\RangeToTextConverter.cs" />
-    <Compile Include="ManageStocks\StockDetailModelToTitleConverter.cs" />
-    <Compile Include="ManageStocks\StockDetailView.cs" />
-    <Compile Include="ManageStocks\StockDetailView.xaml.cs">
-      <DependentUpon>StockDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManageStocks\StockDetailViewModel.cs" />
-    <Compile Include="News\HeadlinesView.xaml.cs">
-      <DependentUpon>HeadlinesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="News\HeadlinesViewModel.cs" />
-    <Compile Include="News\INewsContentViewModel.cs" />
-    <Compile Include="News\INewsViewModel.cs" />
-    <Compile Include="News\NewsModule.cs" />
-    <Compile Include="News\NewsView.cs" />
-    <Compile Include="News\NewsView.xaml.cs">
-      <DependentUpon>NewsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="News\NewsViewModel.cs" />
-    <Compile Include="News\PromotionView.xaml.cs">
-      <DependentUpon>PromotionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="News\PromotionViewModel.cs" />
     <Compile Include="Properties\ISettings.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="General.Designer.cs">
@@ -224,6 +140,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>General.resx</DependentUpon>
     </Compile>
+    <Compile Include="StaticContentView.xaml.cs">
+      <DependentUpon>StaticContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaticContentViewModel.cs" />
     <Compile Include="StockTickerModule.cs" />
     <Compile Include="StockTickerView.xaml.cs">
       <DependentUpon>StockTickerView.xaml</DependentUpon>
@@ -235,8 +155,6 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IStockTickerViewModel.cs" />
-    <Compile Include="Validation\ValidatorFactory.cs" />
-    <Compile Include="Validation\ValidationModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -256,18 +174,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Actions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authentication\Authentication.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FindStocks\FindStocks.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FindStocks.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManageStocks\ManageStocks.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ManageStocks.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -285,17 +191,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Authentication\AuthenticationView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="StaticContentView.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Authentication\ChooseUserNameView.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Authentication\ChoosePasswordView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\DefaultBrushes.xaml">
       <SubType>Designer</SubType>
@@ -313,41 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ManageStocks\StockDetailView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="News\HeadlinesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="News\NewsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="News\PromotionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StockTickerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="News\Images\NewsPaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="News\Images\PersonalFinance.jpg" />
-    <Resource Include="News\Images\SpecialReports.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="News\Images\Economy.jpg" />
-    <Resource Include="News\Images\Spotlight.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="News\Images\Retirement.jpg" />
-    <Resource Include="News\Images\Taxes.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />

@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ISearchStocks.cs" company="bbv Software Services AG">
+// <copyright file="StaticContentView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.FindStocks
+namespace StockTicker
 {
-    using Caliburn.Micro;
+    using System.Windows.Controls;
 
-    public interface ISearchStocks : IResult
+    /// <summary>
+    /// Interaction logic for StaticContentView.xaml
+    /// </summary>
+    public partial class StaticContentView : UserControl
     {
+        public StaticContentView()
+        {
+            this.InitializeComponent();
+        }
     }
 }

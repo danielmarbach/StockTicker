@@ -18,77 +18,7 @@
 
 namespace StockTicker.FindStocks
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Collections.Specialized;
-    using System.Globalization;
-    using System.Linq;
-
-    using Caliburn.Micro;
-
-    using StockTicker.Actions;
-    using StockTicker.Externals;
-
-    internal class SearchViewModel : Screen, ISearchViewModel
+    internal class SearchViewModel : ISearchViewModel
     {
-        private string pattern;
-
-        public SearchViewModel()
-        {
-            // NOTE: Bindable collection is a collection which can be modified from different thread but fires collection changed on UI thread
-            // This marshaling is necessary because search models are retrieved asynchronously.
-            this.FoundStocks = new BindableCollection<StockSearchModel>();
-            this.FoundStocks.CollectionChanged += this.HandleFoundStocksChanged;
-        }
-
-        public Func<IActionBuilder> Actions { private get; set; }
-
-        public ObservableCollection<StockSearchModel> FoundStocks { get; private set; }
-
-        public bool HasStocks
-        {
-            get
-            {
-                return this.FoundStocks.Any();
-            }
-        }
-
-        public string Pattern
-        {
-            get
-            {
-                return this.pattern;
-            }
-
-            set
-            {
-                this.pattern = value;
-                this.NotifyOfPropertyChange(() => this.Pattern);
-            }
-        }
-
-        // NOTE: Search method which appropriate busy indication around it
-        public IEnumerable<IResult> Search(string searchPattern)
-        {
-            string busyMessage = string.Format(CultureInfo.InvariantCulture, FindStocks.Searching, searchPattern);
-
-            return this.Actions()
-                .WithBusyIndication(
-                    busy => busy.Search(searchPattern, this.FoundStocks), busyMessage);
-        }
-
-        // NOTE: Is called when navigated away to clean the search results.
-        public void Clear()
-        {
-            this.Pattern = null;
-            this.FoundStocks.Clear();
-        }
-
-        // NOTE: When the found stocks are changed HasStocks might also change. We need to indicate this
-        private void HandleFoundStocksChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            this.NotifyOfPropertyChange(() => this.HasStocks);
-        }
     }
 }

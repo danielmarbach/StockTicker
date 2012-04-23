@@ -25,7 +25,8 @@
         <TextBox Height="23" Name="FirstName" Width="120" TabIndex="0" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"/>
         <TextBox Height="23" Name="LastName" Width="120" TabIndex="1" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"/>
         <StackPanel Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto">
-            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Name="UserName" Width="120" TabIndex="2" cal:Message.Attach="[Event GotFocus] = [Action SuggestUsernames(FirstName, LastName)]" />
+            <!-- TODO: When the focus ist lost on the username automatically suggested usernames should be loaded, Hint: SuggestUsernames and pass in right arguments -->
+            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Name="UserName" Width="120" TabIndex="2"/>
             <StackPanel Width="300" Margin="10" Visibility="{Binding Path=HasSuggestions, Converter={StaticResource suggestionsVisibilityConverter}}" >
                 <Label Content="{l:LocText StockTicker:Authentication.Authentication:HowAbout}" Height="38" FontSize="14" FontWeight="SemiBold" Foreground="#FF41B71C"></Label>
                 <ListBox TabIndex="3" ItemsSource="{Binding Path=Suggestions}" Height="Auto" SelectedItem="{Binding UserName}"

@@ -108,10 +108,10 @@ namespace StockTicker.Authentication
         // NOTE: Load suggestions.
         public IEnumerable<IResult> SuggestUsernames(string firstName, string lastName)
         {
-            return
-                this.Actions().WithBusyIndication(
-                    busyScope => busyScope.SuggestUsernames(new PotentialNewUserModel(firstName, lastName), this.Suggestions),
-                    Authentication.Suggestion);
+            //// TODO: Use here suggest usernames which can be found in AuthenticationExtensions
+            //// TODO: Wrap loading of suggested usernames with busy indication, Hint: WithBusyIndication
+            //// TODO: Use loading message "Suggestion"
+            yield break;
         }
 
         // NOTE: Notification by using the event aggregator. This could also be done with the Event Broker
@@ -119,9 +119,8 @@ namespace StockTicker.Authentication
         {
             base.OnDeactivate(close);
 
-            UserNameChosen message = this.ToUserNameChosen();
-
-            Coroutine.BeginExecute(this.Actions().Notify(message).GetEnumerator());
+            //// TODO: The content must be converted to an UserNameChosen, Hint: AuthenticationExtensions
+            //// TODO: Notify potentially interested view models be execution coroutines, Hint: Notify
         }
 
         private void HandleSuggestionsChanged(object sender, NotifyCollectionChangedEventArgs e)

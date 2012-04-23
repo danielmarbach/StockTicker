@@ -122,7 +122,6 @@
       <DependentUpon>AuthenticationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authentication\ISuggestUsernames.cs" />
-    <Compile Include="Authentication\Secure.cs" />
     <Compile Include="Authentication\SuggestUsernames.cs" />
     <Compile Include="Authentication\UserNameChosen.cs" />
     <Compile Include="CaliburnModule.cs" />

@@ -23,11 +23,9 @@ namespace StockTicker.Authentication
 
     using Caliburn.Micro;
 
-    using StockTicker.Actions;
     using StockTicker.Externals;
 
     // NOTE: Gets the suggested usernames with asynchronous advice from the external services.
-    [Async]
     internal class SuggestUsernames : ISuggestUsernames
     {
         private readonly IAuthenticationService authenticationService;
@@ -47,16 +45,6 @@ namespace StockTicker.Authentication
 
         public void Execute(ActionExecutionContext context)
         {
-            this.suggestedUsernames.Clear();
-
-            IEnumerable<string> suggestions = this.authenticationService.SuggestUsernames(this.potentialNewUser);
-
-            foreach (string suggestion in suggestions)
-            {
-                this.suggestedUsernames.Add(suggestion);
-            }
-
-            this.Completed(this, new ResultCompletionEventArgs());
         }
     }
 }

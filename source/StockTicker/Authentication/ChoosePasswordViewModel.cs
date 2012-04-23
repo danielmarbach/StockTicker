@@ -129,20 +129,17 @@ namespace StockTicker.Authentication
         // NOTE: Reacts on event aggregator events
         public void Handle(UserNameChosen message)
         {
-            this.FromChosenUserName(message);
+            //// TODO: Use extension method to expressively map from UserNameChosen to this view model
         }
 
         // NOTE: We cannot close upon next if we have erros (validation failed).
-        public override void CanClose(Action<bool> callback)
-        {
-            callback(string.IsNullOrEmpty(this.Error));
-        }
+        //// TODO: Do not allow closing when there are validation errors.
 
         private ValidationResult GetValidationResult()
         {
-            var validator = this.validatorFactory.GetValidator<IChoosePasswordViewModel>();
-            ValidationResult result = validator.Validate(this);
-            return result;
+            //// TODO: Create the validator which is responsible for this view model
+            //// TODO: Validate and return result
+            return null;
         }
     }
 }

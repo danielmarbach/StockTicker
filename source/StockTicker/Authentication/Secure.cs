@@ -25,17 +25,17 @@ namespace StockTicker.Authentication
     // NOTE: Shows how to use dependency properties.
     internal static class Secure
     {
-        public static readonly DependencyProperty Password =
-            DependencyProperty.RegisterAttached("Password", typeof(SecureString), typeof(Secure), new PropertyMetadata(new SecureString(), HandleBoundPasswordChanged));
+        //// TODO: Define attached property password which maps SecureString to HandleBoundPasswordChanged
 
         public static SecureString GetPassword(DependencyObject dp)
         {
-            return (SecureString)dp.GetValue(Password);
+            //// TODO: Implement get for attached property
+            return null;
         }
 
         public static void SetPassword(DependencyObject dp, SecureString value)
         {
-            dp.SetValue(Password, value);
+            //// TODO: Implement set for attached property
         }
 
         private static void HandlePasswordChanged(object sender, RoutedEventArgs e)

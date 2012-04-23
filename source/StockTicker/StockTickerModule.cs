@@ -24,7 +24,6 @@ namespace StockTicker
     {
         public override void Load()
         {
-            this.Bind<IContentViewModelFactory>().To<ContentViewModelFactory>().InSingletonScope();
             this.Bind<IStockTickerViewModel>().To<StockTickerViewModel>().InSingletonScope();
         }
     }

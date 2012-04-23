@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="NewsModule.cs" company="bbv Software Services AG">
+// <copyright file="StaticContentView.xaml.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,25 +16,18 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.News
+namespace StockTicker
 {
-    using Ninject.Extensions.Conventions;
-    using Ninject.Modules;
+    using System.Windows.Controls;
 
-    public class NewsModule : NinjectModule
+    /// <summary>
+    /// Interaction logic for StaticContentView.xaml
+    /// </summary>
+    public partial class StaticContentView : UserControl
     {
-        public override void Load()
+        public StaticContentView()
         {
-            this.Bind<INewsViewModel>().To<NewsViewModel>().InSingletonScope();
-
-            this.Kernel.Bind(x =>
-                x.FromThisAssembly()
-                .IncludingNonePublicTypes()
-                .SelectAllClasses()
-                .InheritedFrom<INewsContentViewModel>()
-                .InNamespaceOf<NewsModule>()
-                .BindAllInterfaces()
-                .Configure(c => c.InSingletonScope()));
+            this.InitializeComponent();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="INewsViewModel.cs" company="bbv Software Services AG">
+//-------------------------------------------------------------------------------
+// <copyright file="StaticContentViewModel.cs" company="bbv Software Services AG">
 //   Copyright (c) 2012
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,9 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace StockTicker.News
+namespace StockTicker
 {
-    internal interface INewsViewModel : IStockTickerContentViewModel
+    using Caliburn.Micro;
+
+    internal class StaticContentViewModel : Screen, IStockTickerContentViewModel
     {
     }
 }

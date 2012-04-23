@@ -48,22 +48,11 @@
     <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
     <Compile Include="Actions\MissingTest.cs" />
     <Compile Include="Actions\NotifyTest.cs" />
-    <Compile Include="Authentication\AuthenticateTest.cs" />
-    <Compile Include="Authentication\AuthenticationViewModelTest.cs" />
-    <Compile Include="Authentication\ChoosePasswordViewModelTest.cs" />
-    <Compile Include="Authentication\ChooseUserNameViewModelTest.cs" />
-    <Compile Include="Authentication\SuggestUsernamesTest.cs" />
     <Compile Include="Extensions\BindingExtensionsTest.cs" />
     <Compile Include="Externals\AnyStockDetailModel.cs" />
-    <Compile Include="ContentViewModelFactoryTest.cs" />
     <Compile Include="FindStocks\SearchStocksTest.cs" />
     <Compile Include="FindStocks\SearchViewModelTest.cs" />
     <Compile Include="Externals\AnyStockSearchModel.cs" />
-    <Compile Include="ManageStocks\ConductStockTickerContentTest.cs" />
-    <Compile Include="ManageStocks\DollarConverterTest.cs" />
-    <Compile Include="ManageStocks\GetStockDetailsTest.cs" />
-    <Compile Include="ManageStocks\RangeToTextConverterTest.cs" />
-    <Compile Include="ManageStocks\StockDetailModelToTitleConverterTest.cs" />
     <Compile Include="TestHelpers\CaliburnIoCFake.cs" />
     <Compile Include="Actions\HideBusyIndicationTest.cs" />
     <Compile Include="Actions\ITestResult.cs" />
@@ -75,8 +64,6 @@
     <Compile Include="Localization\LocalizationCultureProviderTest.cs" />
     <Compile Include="Localization\LocalizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHelpers\FutureExtensions.cs" />
-    <Compile Include="TestHelpers\FutureMock.cs" />
     <Compile Include="TestHelpers\ResultExtensionsForTesting.cs" />
   </ItemGroup>
   <ItemGroup>

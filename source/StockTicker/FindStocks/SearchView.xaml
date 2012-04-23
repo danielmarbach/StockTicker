@@ -24,9 +24,6 @@
                  Visibility="{Binding Path=HasStocks, Converter={StaticResource searchHintVisibilityConverter}}" 
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 cal:Message.Attach="
-                    [Event MouseDoubleClick] = [Action Display(SearchHints.SelectedItem)];
-                    [Event MouseDoubleClick] = [Action Clear()]" 
                  TabIndex="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>

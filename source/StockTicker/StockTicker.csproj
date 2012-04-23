@@ -108,22 +108,15 @@
     <Compile Include="Authentication\AuthenticationModule.cs" />
     <Compile Include="Authentication\AuthenticationStepFactory.cs" />
     <Compile Include="Authentication\AuthenticationViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordViewModelValidator.cs" />
     <Compile Include="Authentication\ChooseUserNameView.cs" />
     <Compile Include="Authentication\ChooseUserNameView.xaml.cs">
       <DependentUpon>ChooseUserNameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authentication\ChooseUserNameViewModel.cs" />
-    <Compile Include="Authentication\ChoosePasswordView.xaml.cs">
-      <DependentUpon>ChoosePasswordView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Authentication\ChoosePasswordView.cs" />
     <Compile Include="Authentication\IAuthenticate.cs" />
     <Compile Include="Authentication\IAuthenticationStep.cs" />
     <Compile Include="Authentication\IAuthenticationStepFactory.cs" />
     <Compile Include="Authentication\IAuthenticationViewModel.cs" />
-    <Compile Include="Authentication\IChoosePasswordViewModel.cs" />
     <Compile Include="Authentication\IChooseUsernameViewModel.cs" />
     <Compile Include="Authentication\AuthenticationView.xaml.cs">
       <DependentUpon>AuthenticationView.xaml</DependentUpon>
@@ -235,8 +228,6 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IStockTickerViewModel.cs" />
-    <Compile Include="Validation\ValidatorFactory.cs" />
-    <Compile Include="Validation\ValidationModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -290,10 +281,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Authentication\ChooseUserNameView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Authentication\ChoosePasswordView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -22,20 +22,13 @@ namespace StockTicker.ManageStocks
     using System.Globalization;
     using System.Windows.Data;
 
-    using StockTicker.Externals;
-
     // NOTE: Special conversion should be done by using converters. Converters can be unit tested and simply attached in the XAML.
-    [ValueConversion(typeof(Range), typeof(string))]
+    //// TODO: Hint WPF runtime with right value conversion attribute.
     public class RangeToTextConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var range = value as Range;
-
-            if (range != null)
-            {
-                return string.Format(culture, "${0} - ${1}", range.From, range.To);
-            }
+            //// TODO: Implement so that range is displayed with dash and currency symbol dollar.
 
             return null;
         }

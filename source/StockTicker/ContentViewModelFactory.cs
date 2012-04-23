@@ -20,9 +20,7 @@ namespace StockTicker
 {
     using Ninject.Syntax;
 
-    using StockTicker.Extensions;
     using StockTicker.Externals;
-    using StockTicker.ManageStocks;
 
     internal class ContentViewModelFactory : IContentViewModelFactory
     {
@@ -35,7 +33,8 @@ namespace StockTicker
 
         public IStockTickerContentViewModel CreateContent(StockDetailModel detailModel)
         {
-            return this.resolutionRoot.Get<IStockDetailViewModel>(new { detailModel });
+            //// TODO: retrieve IStockDetailViewModel and pass in detailModel, you can use Get from ResolutionRootExtensions
+            return null;
         }
     }
 }

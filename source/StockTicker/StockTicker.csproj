@@ -135,15 +135,6 @@
     <Compile Include="Localization\LocalizeDictionaryDecorator.cs" />
     <Compile Include="Properties\ISettings.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="General.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>General.resx</DependentUpon>
-    </Compile>
-    <Compile Include="StaticContentView.xaml.cs">
-      <DependentUpon>StaticContentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="StaticContentViewModel.cs" />
     <Compile Include="StockTickerModule.cs" />
     <Compile Include="StockTickerView.xaml.cs">
       <DependentUpon>StockTickerView.xaml</DependentUpon>
@@ -178,10 +169,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="General.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>General.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -191,10 +178,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="StaticContentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Styles\DefaultBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

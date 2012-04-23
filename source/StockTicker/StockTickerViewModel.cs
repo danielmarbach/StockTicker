@@ -20,34 +20,15 @@ namespace StockTicker
 {
     using System;
 
-    using Caliburn.Micro;
-
     using StockTicker.Actions;
-    using StockTicker.FindStocks;
 
-    internal sealed class StockTickerViewModel : Conductor<IStockTickerContentViewModel>, IStockTickerViewModel
+    //// TODO: Should be able to host multiple IStockTickerContentViewModel
+    //// TODO: The title of the window should contain localized string out of resource "General". Use the title "Stock Ticker"
+    //// TODO: Should pre initialize content with static content view model
+
+    internal sealed class StockTickerViewModel : IStockTickerViewModel
     {
-        public StockTickerViewModel(ISearchViewModel searchViewModel, IBusyIndicationViewModel busyIndication)
-        {
-            this.Search = searchViewModel;
-            this.BusyIndication = busyIndication;
-
-            this.DisplayName = General.StockTickerTitle;
-        }
-
         // NOTE: Comes from the IUseAction interface
         public Func<IActionBuilder> Actions { private get; set; }
-
-        // NOTE: Here for bindings to the busy indicator.
-        public IBusyIndicationViewModel BusyIndication { get; private set; }
-
-        public ISearchViewModel Search { get; private set; }
-
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-
-            this.ActivateItem(new StaticContentViewModel());
-        }
     }
 }

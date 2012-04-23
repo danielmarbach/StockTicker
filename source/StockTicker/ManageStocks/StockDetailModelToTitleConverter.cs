@@ -22,27 +22,13 @@ namespace StockTicker.ManageStocks
     using System.Globalization;
     using System.Windows.Data;
 
-    using StockTicker.Externals;
-
-    // NOTE: Special converter which combines the company, the fund and the symbol. Might be a good exercise.
-    [ValueConversion(typeof(StockDetailModel), typeof(string))]
+    // NOTE: Special converter which combines the company, the fund and the symbol. 
+    //// TODO: Hint WPF runtime with right value conversion attribute.
     public class StockDetailModelToTitleConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var detailModel = value as StockDetailModel;
-
-            if (detailModel != null)
-            {
-                return string.Format(
-                    culture,
-                    "{0}{1}{2}:{3}",
-                    detailModel.Company,
-                    Environment.NewLine,
-                    detailModel.Fund,
-                    detailModel.Symbol);
-            }
-
+            //// TODO:  Convert so that the following representation is shown Company[NewLine]Fund:Symbol
             return null;
         }
 

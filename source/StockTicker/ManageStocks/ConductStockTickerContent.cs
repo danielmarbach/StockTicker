@@ -46,10 +46,7 @@ namespace StockTicker.ManageStocks
         public void Execute(ActionExecutionContext context)
         {
             // NOTE: We access the future value here
-            IStockTickerContentViewModel contentViewModel = this.contentFactory.CreateContent(this.detailModel.Value);
-            this.conductor(contentViewModel);
-
-            this.Completed(this, new ResultCompletionEventArgs());
+            //// TODO: Use the content factory to retrieve the appropriate content view model for the detail model and conduct it.
         }
     }
 }

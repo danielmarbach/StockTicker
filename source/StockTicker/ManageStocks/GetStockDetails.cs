@@ -52,10 +52,7 @@ namespace StockTicker.ManageStocks
 
         public void Execute(ActionExecutionContext context)
         {
-            StockDetailModel stockDetail = this.stockService.Get(this.symbol);
-            this.detailModel.SetValue(stockDetail);
-
-            this.Completed(this, new ResultCompletionEventArgs());
+            //// TODO: Get the stock details from the external service and set the future. Don't forget to complete the result
         }
     }
 }

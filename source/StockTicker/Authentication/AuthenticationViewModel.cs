@@ -24,6 +24,7 @@ namespace StockTicker.Authentication
 
     using StockTicker.Actions;
 
+    // NOTE: Holds the whole authentication wizard. Only one step can be active at the time. Each step which is finished is deactivated and removed from the conductors items collection
     internal sealed class AuthenticationViewModel : Conductor<IAuthenticationStep>.Collection.OneActive, IAuthenticationViewModel
     {
         private readonly IAuthenticationStepFactory authenticationStepFactory;
@@ -38,6 +39,7 @@ namespace StockTicker.Authentication
 
         public IBusyIndicationViewModel BusyIndication { get; private set; }
 
+        // NOTE: The next method is hooked up by the Next button and simply takes the next item from the items collection and activates it. Previously activated item is deactivated.
         public void Next()
         {
             this.DeactivateItem(this.ActiveItem, true);
@@ -52,6 +54,7 @@ namespace StockTicker.Authentication
             }
         }
 
+        // NOTE: Upon initialization all steps are loaded into the conductor. But only the first is activated
         protected override void OnInitialize()
         {
             base.OnInitialize();

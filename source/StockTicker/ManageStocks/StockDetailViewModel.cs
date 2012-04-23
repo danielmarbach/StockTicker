@@ -27,6 +27,7 @@ namespace StockTicker.ManageStocks
     using StockTicker.Authentication;
     using StockTicker.Externals;
 
+    // NOTE: Represents detail information about a stock. This has behavior and therefore can receive actions. 
     internal class StockDetailViewModel : Screen, IStockDetailViewModel
     {
         public StockDetailViewModel(StockDetailModel detailModel)
@@ -36,8 +37,10 @@ namespace StockTicker.ManageStocks
 
         public Func<IActionBuilder> Actions { private get; set; }
 
+        // NOTE: Information about the details model are directly exposed as property and not wrapped. Violates law of demeter but is much simpler.
         public StockDetailModel Model { get; private set; }
 
+        // NOTE: Bound to button add portfolio
         public IEnumerable<IResult> AddPortfolio()
         {
             return this.Actions().WithLogin(builder => { });

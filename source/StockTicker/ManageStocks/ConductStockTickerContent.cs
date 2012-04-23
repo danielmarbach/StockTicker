@@ -24,6 +24,7 @@ namespace StockTicker.ManageStocks
 
     using StockTicker.Externals;
 
+    // NOTE: This IResult cannot be asynchronous because it conducts view models. View models must be created and conducted on the main dispatcher.
     internal class ConductStockTickerContent : IConductStockTickerContent
     {
         private readonly IFutureValue<StockDetailModel> detailModel;
@@ -32,6 +33,7 @@ namespace StockTicker.ManageStocks
 
         private readonly IContentViewModelFactory contentFactory;
 
+        // NOTE: Lazy initialized detail model is provided here.
         public ConductStockTickerContent(IFutureValue<StockDetailModel> detailModel, Action<IStockTickerContentViewModel> conductor, IContentViewModelFactory contentFactory)
         {
             this.detailModel = detailModel;
@@ -43,6 +45,7 @@ namespace StockTicker.ManageStocks
 
         public void Execute(ActionExecutionContext context)
         {
+            // NOTE: We access the future value here
             IStockTickerContentViewModel contentViewModel = this.contentFactory.CreateContent(this.detailModel.Value);
             this.conductor(contentViewModel);
 

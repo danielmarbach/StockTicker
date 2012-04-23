@@ -20,6 +20,7 @@ namespace StockTicker.News
 {
     using Caliburn.Micro;
 
+    // NOTE: News content is essentially a pluggable news content area which can be retrieved from third party plugins.
     internal interface INewsContentViewModel : IScreen
     {
     }

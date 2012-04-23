@@ -26,6 +26,7 @@ namespace StockTicker.Authentication
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: Gets the suggested usernames with asynchronous advice from the external services.
     [Async]
     internal class SuggestUsernames : ISuggestUsernames
     {

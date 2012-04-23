@@ -22,6 +22,7 @@ namespace StockTicker.News
 
     using Caliburn.Micro;
 
+    // NOTE: The news view model is a conductor with all collected items active. All news content is activated and displayed on the screen.
     internal class NewsViewModel : Conductor<INewsContentViewModel>.Collection.AllActive, INewsViewModel
     {
         public NewsViewModel(IEnumerable<INewsContentViewModel> news)

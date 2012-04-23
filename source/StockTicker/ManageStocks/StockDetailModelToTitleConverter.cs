@@ -24,6 +24,7 @@ namespace StockTicker.ManageStocks
 
     using StockTicker.Externals;
 
+    // NOTE: Special converter which combines the company, the fund and the symbol. Might be a good exercise.
     [ValueConversion(typeof(StockDetailModel), typeof(string))]
     public class StockDetailModelToTitleConverter : IValueConverter
     {

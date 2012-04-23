@@ -20,6 +20,7 @@ namespace StockTicker.News
 {
     using Caliburn.Micro;
 
+    // NOTE: Special news content view model which shows tickers and promotions.
     public class PromotionViewModel : Screen, INewsContentViewModel
     {
     }

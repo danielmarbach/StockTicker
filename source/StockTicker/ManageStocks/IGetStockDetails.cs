@@ -20,6 +20,7 @@ namespace StockTicker.ManageStocks
 {
     using Caliburn.Micro;
 
+    // NOTE: IResult which fetches stock details from remote location.
     public interface IGetStockDetails : IResult
     {
     }

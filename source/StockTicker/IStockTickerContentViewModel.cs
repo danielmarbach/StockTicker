@@ -20,6 +20,7 @@ namespace StockTicker
 {
     using Caliburn.Micro;
 
+    // NOTE: Serves a marker interface for content which can be dynamically plugged into the main view model.
     internal interface IStockTickerContentViewModel : IScreen
     {
     }

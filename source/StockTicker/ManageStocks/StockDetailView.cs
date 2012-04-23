@@ -20,6 +20,7 @@ namespace StockTicker.ManageStocks
 {
     using StockTicker.Externals;
 
+    // NOTE: Again cool fake data for view construction.
     public partial class StockDetailView
     {
         public static object SampleData
@@ -30,6 +31,6 @@ namespace StockTicker.ManageStocks
 
                 return detailViewModel;
             }
-        } 
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace StockTicker.ManageStocks
 {
     using Caliburn.Micro;
 
+    // NOTE: IResult which is responsible for conduction the StockTickerContent (either News or Details)
     public interface IConductStockTickerContent : IResult
     {
     }

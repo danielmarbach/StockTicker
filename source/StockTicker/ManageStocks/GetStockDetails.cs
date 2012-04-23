@@ -25,6 +25,8 @@ namespace StockTicker.ManageStocks
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: Async annotation advices the action builder pipeline to wrap the IResult implementation with an asynchronous decorator. 
+    // This is especially in acceptance tests very flexible approach because the asynchronous execution can be removed during acceptance tests.
     [Async]
     internal class GetStockDetails : IGetStockDetails
     {

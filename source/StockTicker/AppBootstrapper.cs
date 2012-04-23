@@ -57,6 +57,10 @@ namespace StockTicker
 
         protected override void Configure()
         {
+            // NOTE: This shows how to hook into Caliburn.Micro magic. Everytime a new view model is binded I check
+            // whether the view model wants to use action builders. If this is the case a factory is provided for the
+            // target view model. The default Bind Delegate must be saved in local variable and reintroduced in the 
+            // anonymous delegate.
             var defaultBindingAction = ViewModelBinder.Bind;
             ViewModelBinder.Bind = (rootModel, view, context) =>
                 {

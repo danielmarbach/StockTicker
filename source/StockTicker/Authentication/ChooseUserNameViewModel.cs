@@ -29,6 +29,10 @@ namespace StockTicker.Authentication
     using StockTicker.Actions;
     using StockTicker.Externals;
 
+    // NOTE: When a user name needs to be chosen, suggestions need to be loaded from the external services.
+    // When the user clicks next on the parent screen this view model gets deactivated by the parent conductor. Upon deactivation we notify
+    // potentially interested subscribers about the chosen username. We cannot assume which is the next step in the wizard. But we can assume that
+    // subscribers are already alive and listening because the lifetime of the steps is managed by the parent conductor.
     internal class ChooseUserNameViewModel : Screen, IChooseUserNameViewModel
     {
         private string userName;
@@ -97,9 +101,11 @@ namespace StockTicker.Authentication
 
         public ObservableCollection<string> Suggestions
         {
-            get; private set;
+            get;
+            private set;
         }
 
+        // NOTE: Load suggestions.
         public IEnumerable<IResult> SuggestUsernames(string firstName, string lastName)
         {
             return
@@ -108,6 +114,7 @@ namespace StockTicker.Authentication
                     Authentication.Suggestion);
         }
 
+        // NOTE: Notification by using the event aggregator. This could also be done with the Event Broker
         protected override void OnDeactivate(bool close)
         {
             base.OnDeactivate(close);

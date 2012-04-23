@@ -18,6 +18,7 @@
 
 namespace StockTicker
 {
+    // NOTE: Consumer interface for future value consumers.
     public interface IFutureValue<out TValue>
     {
         TValue Value { get; }

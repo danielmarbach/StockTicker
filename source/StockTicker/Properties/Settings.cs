@@ -18,6 +18,7 @@
 
 namespace StockTicker.Properties
 {
+    // NOTE: Makes settings from app.config testable and accessible by ninject.
     internal sealed partial class Settings : ISettings
     {
     }

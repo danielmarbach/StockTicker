@@ -22,6 +22,7 @@ namespace StockTicker.Authentication
     using System.Windows;
     using System.Windows.Controls;
 
+    // NOTE: Shows how to use dependency properties.
     internal static class Secure
     {
         public static readonly DependencyProperty Password =

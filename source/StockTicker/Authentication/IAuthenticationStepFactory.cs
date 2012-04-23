@@ -20,6 +20,7 @@ namespace StockTicker.Authentication
 {
     using System.Collections.Generic;
 
+    // NOTE: Step factory
     internal interface IAuthenticationStepFactory
     {
         IEnumerable<IAuthenticationStep> CreateSteps();

@@ -7,6 +7,7 @@
              xmlns:cal="http://www.caliburnproject.org" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="388" d:DesignWidth="529">
+    <!-- NOTE: Needs to redeclare busy indication because the authentication view is used as a new dialog -->
     <xctk:BusyIndicator x:Name="busyIndicator"
                                         DisplayAfter="0"
                                         DockPanel.Dock="Top"
@@ -36,6 +37,7 @@
             </DataTemplate>
         </xctk:BusyIndicator.BusyContentTemplate>
         <DockPanel>
+            <!-- NOTE: We bind here to active item of conductor -->
             <ContentControl cal:View.Model="{Binding ActiveItem}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <StackPanel DockPanel.Dock="Bottom" Height="30" Width="75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
                 <Button x:Name="Next" Content="Next"/>

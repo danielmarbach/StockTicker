@@ -18,20 +18,28 @@
 
 namespace StockTicker.FindStocks
 {
+    using System.Windows.Input;
+
     using FluentAssertions;
     using FluentAssertions.EventMonitoring;
 
     using StockTicker.Externals;
+    using StockTicker.TestHelpers;
 
     using Xunit;
 
     public class SearchViewModelTest
     {
+        private readonly ActionBuilderMock actionBuilder;
+
         private readonly SearchViewModel testee;
 
         public SearchViewModelTest()
         {
-            this.testee = new SearchViewModel();
+            this.actionBuilder = new ActionBuilderMock();
+
+            this.testee = new SearchViewModel()
+                .AttachBuilder(this.actionBuilder);
         }
 
         [Fact]
@@ -65,6 +73,24 @@ namespace StockTicker.FindStocks
             this.testee.Clear();
 
             this.testee.ShouldRaisePropertyChangeFor(t => t.Pattern);
+        }
+
+        [Fact]
+        public void ShouldSearch_WhenEnter()
+        {
+            this.testee.Search("AnySymbol", new KeyEventArgs(null, new FakePresentationSource(), 21, Key.Enter));
+
+            this.actionBuilder
+                .Should().NotBeEmpty();
+        }
+
+        [Fact]
+        public void ShouldNotSearch_WhenNotEnter()
+        {
+            this.testee.Search("AnySymbol", new KeyEventArgs(null, new FakePresentationSource(), 21, Key.A));
+
+            this.actionBuilder
+                .Should().BeEmpty();
         }
     }
 }

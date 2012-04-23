@@ -25,6 +25,7 @@
     <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject\lib\net40\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -34,6 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="xunit">
       <HintPath>..\packages\xunit\lib\xunit.dll</HintPath>
     </Reference>
@@ -53,6 +55,9 @@
     <Compile Include="FindStocks\SearchStocksTest.cs" />
     <Compile Include="FindStocks\SearchViewModelTest.cs" />
     <Compile Include="Externals\AnyStockSearchModel.cs" />
+    <Compile Include="TestHelpers\ActionBuilderMock.cs" />
+    <Compile Include="TestHelpers\ActionBuilderMockExtensions.cs" />
+    <Compile Include="TestHelpers\ActionInfo.cs" />
     <Compile Include="TestHelpers\CaliburnIoCFake.cs" />
     <Compile Include="Actions\HideBusyIndicationTest.cs" />
     <Compile Include="Actions\ITestResult.cs" />
@@ -65,6 +70,7 @@
     <Compile Include="Localization\LocalizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers\ResultExtensionsForTesting.cs" />
+    <Compile Include="TestHelpers\FakePresentationSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

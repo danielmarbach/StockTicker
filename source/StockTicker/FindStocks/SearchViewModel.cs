@@ -24,6 +24,7 @@ namespace StockTicker.FindStocks
     using System.Collections.Specialized;
     using System.Globalization;
     using System.Linq;
+    using System.Windows.Input;
 
     using Caliburn.Micro;
 
@@ -69,8 +70,13 @@ namespace StockTicker.FindStocks
         }
 
         // NOTE: Search method which appropriate busy indication around it
-        public IEnumerable<IResult> Search(string searchPattern)
+        public IEnumerable<IResult> Search(string searchPattern, KeyEventArgs eventArgs)
         {
+            if (eventArgs.Key != Key.Enter)
+            {
+                return Enumerable.Empty<IResult>();
+            }
+
             string busyMessage = string.Format(CultureInfo.InvariantCulture, FindStocks.Searching, searchPattern);
 
             return this.Actions()

@@ -18,17 +18,11 @@
 
 namespace StockTicker.ManageStocks
 {
-    using System.Collections.Generic;
-
-    using Caliburn.Micro;
-
     using StockTicker.Actions;
     using StockTicker.Externals;
 
     internal interface IStockDetailViewModel : IStockTickerContentViewModel, IUseActions
     {
         StockDetailModel Model { get; }
-
-        IEnumerable<IResult> AddPortfolio();
     }
 }

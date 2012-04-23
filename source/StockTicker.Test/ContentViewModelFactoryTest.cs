@@ -28,7 +28,6 @@ namespace StockTicker
 
     using StockTicker.Externals;
     using StockTicker.ManageStocks;
-    using StockTicker.News;
 
     using Xunit;
 
@@ -41,19 +40,9 @@ namespace StockTicker
         public ContentViewModelFactoryTest()
         {
             this.kernel = new StandardKernel(new NinjectSettings { LoadExtensions = false });
-            this.kernel.Bind<INewsViewModel>().ToConstant(Mock.Of<INewsViewModel>());
             this.kernel.Bind<IStockDetailViewModel>().ToConstant(Mock.Of<IStockDetailViewModel>());
 
             this.testee = new ContentViewModelFactory(this.kernel);
-        }
-
-        [Fact]
-        public void ShouldReturnNewsViewModelAsDefaultContent()
-        {
-            IStockTickerContentViewModel result = this.testee.CreateContent(null);
-
-            result.Should().NotBeNull()
-                .And.BeAssignableTo<INewsViewModel>();
         }
 
         [Fact]

@@ -44,11 +44,7 @@ namespace StockTicker.Authentication
         {
             this.DeactivateItem(this.ActiveItem, true);
 
-            if (this.Items.Any())
-            {
-                this.ActivateItem(this.Items.First());
-            }
-            else
+            if (this.ActiveItem == null)
             {
                 this.TryClose();
             }

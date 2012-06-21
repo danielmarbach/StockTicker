@@ -20,6 +20,7 @@ namespace StockTicker.Actions
 {
     using Caliburn.Micro;
 
+    using Ninject.Activation.Strategies;
     using Ninject.Extensions.Conventions;
     using Ninject.Modules;
 
@@ -27,6 +28,8 @@ namespace StockTicker.Actions
     {
         public override void Load()
         {
+            this.Kernel.Components.Add<IActivationStrategy, UseActionsActivationStrategy>();
+
             this.Bind<IActionBuilder>().To<ActionBuilder>();
             this.Bind<IResultFactory>().To<NinjectResultFactory>();
             this.Bind<IDecoratorApplicatorPipeline>().To<DecoratorApplicatorPipeline>();

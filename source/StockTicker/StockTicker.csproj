@@ -98,6 +98,7 @@
     <Compile Include="Actions\ResultDecoratorBase.cs" />
     <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\ShowBusyIndication.cs" />
+    <Compile Include="Actions\UseActionsActivationStrategy.cs" />
     <Compile Include="Authentication\Authenticate.cs" />
     <Compile Include="Authentication\Authentication.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -50,6 +50,7 @@
     <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
     <Compile Include="Actions\MissingTest.cs" />
     <Compile Include="Actions\NotifyTest.cs" />
+    <Compile Include="Actions\UseActionsActivationStrategyTest.cs" />
     <Compile Include="Authentication\AuthenticateTest.cs" />
     <Compile Include="Authentication\AuthenticationViewModelTest.cs" />
     <Compile Include="Authentication\ChoosePasswordViewModelTest.cs" />

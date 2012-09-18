@@ -48,6 +48,7 @@
     <Compile Include="Actions\BusyIndicationViewModelTest.cs" />
     <Compile Include="Actions\MissingTest.cs" />
     <Compile Include="Actions\NotifyTest.cs" />
+    <Compile Include="Actions\UseActionsActivationStrategyTest.cs" />
     <Compile Include="Extensions\BindingExtensionsTest.cs" />
     <Compile Include="Externals\AnyStockDetailModel.cs" />
     <Compile Include="Externals\AnyStockSearchModel.cs" />

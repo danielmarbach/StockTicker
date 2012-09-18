@@ -98,6 +98,7 @@
     <Compile Include="Actions\ResultDecoratorBase.cs" />
     <Compile Include="Actions\ScopeDecoratorApplicator.cs" />
     <Compile Include="Actions\ShowBusyIndication.cs" />
+    <Compile Include="Actions\UseActionsActivationStrategy.cs" />
     <Compile Include="CaliburnModule.cs" />
     <Compile Include="ContentViewModelFactory.cs" />
     <Compile Include="Extensions\BindingExtensions.cs" />

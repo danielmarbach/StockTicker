@@ -187,7 +187,7 @@
   
   <Target Name="BeforeBuild">
     <Message Text="Checking NuGet packages" />
-    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="$(SolutionDir)..\Tools\NuGet\nuget install $(ProjectDir)packages.config -o $(SolutionDir)Packages -ExcludeVersion" ContinueOnError="true"/>
+    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="$(SolutionDir)..\Tools\NuGet\nuget install $(ProjectDir)packages.config -o $(SolutionDir)Packages" ContinueOnError="true"/>
   </Target>
   <!--<Target Name="AfterBuild"></Target>-->
 </Project>

@@ -24,8 +24,8 @@ namespace StockTicker.TestHelpers
 
     using Caliburn.Micro;
 
-    using FluentAssertions.Assertions;
-    using FluentAssertions.EventMonitoring;
+    using FluentAssertions;
+    using FluentAssertions.Primitives;
 
     using Moq;
 
@@ -66,7 +66,7 @@ namespace StockTicker.TestHelpers
         {
             IEnumerable<TAttribute> attributes = assertions.Subject.GetType().GetAttributes<TAttribute>(false);
 
-            FluentAssertions.Execute
+            FluentAssertions.Execution.Execute
                 .Verification
                 .ForCondition(attributes.Any())
                 .BecauseOf("Attribute {0} could not be found.", typeof(TAttribute).FullName)

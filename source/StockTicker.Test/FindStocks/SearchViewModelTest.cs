@@ -21,7 +21,6 @@ namespace StockTicker.FindStocks
     using System.Windows.Input;
 
     using FluentAssertions;
-    using FluentAssertions.EventMonitoring;
 
     using StockTicker.Externals;
     using StockTicker.TestHelpers;

@@ -18,12 +18,7 @@
 
 namespace StockTicker.Authentication
 {
-    using Caliburn.Micro;
-
     using FluentAssertions;
-    using FluentAssertions.EventMonitoring;
-
-    using Moq;
 
     using Xunit;
 

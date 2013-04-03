@@ -20,7 +20,7 @@ namespace StockTicker.Authentication
 {
     using System.Security;
 
-    using FluentAssertions.EventMonitoring;
+    using FluentAssertions;
 
     using FluentValidation;
 

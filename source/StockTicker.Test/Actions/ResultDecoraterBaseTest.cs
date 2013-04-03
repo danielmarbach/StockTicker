@@ -21,7 +21,6 @@ namespace StockTicker.Actions
     using System;
     using Caliburn.Micro;
     using FluentAssertions;
-    using FluentAssertions.EventMonitoring;
     using Moq;
 
     using StockTicker.TestHelpers;

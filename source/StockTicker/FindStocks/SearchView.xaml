@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:cal="http://www.caliburnproject.org"
-             xmlns:l="http://schemas.root-project.org/xaml/presentation"
+             xmlns:l="http://wpflocalizeextension.codeplex.com"
              xmlns:uia="clr-namespace:Thinktecture.UIAnnotations;assembly=Thinktecture.UIAnnotations"
              xmlns:FindStocks="clr-namespace:StockTicker.FindStocks"
              mc:Ignorable="d" 

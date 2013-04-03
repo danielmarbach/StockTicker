@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:l="http://schemas.root-project.org/xaml/presentation"
+             xmlns:l="http://wpflocalizeextension.codeplex.com"
              xmlns:ManageStocks="clr-namespace:StockTicker.ManageStocks" mc:Ignorable="d" 
              d:DesignHeight="388" d:DesignWidth="529"
              d:DataContext="{x:Static ManageStocks:StockDetailView.SampleData}">

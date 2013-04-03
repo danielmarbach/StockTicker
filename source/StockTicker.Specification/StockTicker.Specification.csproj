@@ -3,6 +3,8 @@
   <PropertyGroup>
     <StockTickerProjectName>StockTicker</StockTickerProjectName>
     <StockTickerProjectType>Specification</StockTickerProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectGuid>{FA85776B-D3B5-439D-A349-5CD1108CE8CB}</ProjectGuid>
@@ -53,4 +55,5 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

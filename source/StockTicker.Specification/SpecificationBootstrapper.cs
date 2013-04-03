@@ -35,11 +35,6 @@ namespace StockTicker
             }
         }
 
-        public void Start()
-        {
-            this.OnStartup(this, null);
-        }
-
         public void Stop()
         {
             this.OnExit(this, null);

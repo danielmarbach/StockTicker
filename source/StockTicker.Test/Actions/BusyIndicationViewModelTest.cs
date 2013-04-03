@@ -21,7 +21,6 @@ namespace StockTicker.Actions
     using System;
 
     using FluentAssertions;
-    using FluentAssertions.EventMonitoring;
     using Xunit;
 
     public class BusyIndicationViewModelTest

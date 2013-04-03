@@ -4,6 +4,8 @@
     <StockTickerProjectName>StockTicker</StockTickerProjectName>
     <StockTickerProjectType>Source</StockTickerProjectType>
     <CodeAnalysisAdditionalOptions>/assemblycomparemode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectGuid>{ECE87891-83C1-4CB9-A253-3EA7D1914269}</ProjectGuid>
@@ -238,4 +240,5 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(SolutionDir)\StockTicker.msbuild" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

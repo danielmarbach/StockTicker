@@ -28,7 +28,7 @@ namespace StockTicker
 
     using StockTicker.Localization;
 
-    public class AppBootstrapper : Bootstrapper
+    public class AppBootstrapper : BootstrapperBase
     {
         private ILocalizer localizer;
 
@@ -40,6 +40,7 @@ namespace StockTicker
         public AppBootstrapper(bool useApplication)
             : base(useApplication)
         {
+            this.Start();
         }
 
         protected StandardKernel Kernel { get; private set; }

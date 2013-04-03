@@ -65,7 +65,7 @@ namespace StockTicker
             this.localizer = this.Kernel.Get<ILocalizer>();
             this.localizer.Initialize();
 
-            DisplayRootViewFor(typeof(IStockTickerViewModel));
+            this.DisplayRootViewFor(typeof(IStockTickerViewModel));
         }
 
         protected override void OnExit(object sender, EventArgs e)
